@@ -38,7 +38,7 @@ public class UC08Test {
 		UserServiceStub userService = new UserServiceStub();
 		
 		//Carica una nuova immagine profilo
-		String imageLocation ="C:\\Users\\lpelosi\\imagetest.jpg";
+		String imageLocation ="C:\\Users\\Luca\\imagetest.jpg";
 		String userId = userService.getSecureConfiguration().getUserId();
 		
 		WriteResultDTO updateProfileImageResult = userService.updateProfileImage(userId, imageLocation, MediaType.APPLICATION_JSON);

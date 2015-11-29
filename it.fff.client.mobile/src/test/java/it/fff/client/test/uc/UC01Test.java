@@ -1,6 +1,5 @@
 package it.fff.client.test.uc;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
@@ -17,6 +16,7 @@ import it.fff.clientserver.common.dto.AuthDataResponseDTO;
 import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
 
 public class UC01Test {
+	
 	@Test
 	public void testUC1(){ //Registra Utente
 		/*

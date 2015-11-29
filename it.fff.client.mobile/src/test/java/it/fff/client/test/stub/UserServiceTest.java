@@ -126,7 +126,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	@Test
 	public void updateProfileImageShouldReturnConfirm(){
 		
-		String imageLocation ="C:\\Users\\lpelosi\\imagetest.jpg";
+		String imageLocation ="C:\\Users\\Luca\\fff\\imagetest.jpg";
 		String userId = "1";
 		
 		WriteResultDTO result = null;
@@ -145,7 +145,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	
 	public static void main(String[] args) {
 		UserServiceTest test = new UserServiceTest();
-		test.getEventsByUserShouldReturnAtLeastOneEvent();
+		test.updateProfileImageShouldReturnConfirm();
 	}
 	
 }

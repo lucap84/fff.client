@@ -1,11 +1,7 @@
 package it.fff.client.stub;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.net.URL;
 import java.util.List;
 
 import javax.ws.rs.client.Client;
@@ -17,9 +13,7 @@ import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
-import org.junit.Test;
 
-import it.fff.client.test.stub.WebServiceRestTest;
 import it.fff.clientserver.common.dto.EventDTO;
 import it.fff.clientserver.common.dto.PlaceDTO;
 import it.fff.clientserver.common.dto.UserDTO;

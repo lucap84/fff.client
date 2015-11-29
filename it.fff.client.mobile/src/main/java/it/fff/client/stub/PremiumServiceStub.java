@@ -5,7 +5,6 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.core.Response;
 
-import it.fff.client.test.stub.WebServiceRestTest;
 import it.fff.clientserver.common.dto.SubscriptionDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
 
