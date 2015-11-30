@@ -1,6 +1,5 @@
 package it.fff.client.test.stub;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -35,15 +34,15 @@ public class UserServiceTest extends WebServiceRestTest{
 		user.setCognome("cognome mod");
 		user.setDescrizione("Descrizione mod");
 		
-		NazioneDTO nazionalita = new NazioneDTO();
+		NationDTO nazionalita = new NationDTO();
 		nazionalita.setId("1");
 		user.setNazionalita(nazionalita);
 		
-		LinguaDTO l1 = new LinguaDTO();
+		LanguageDTO l1 = new LanguageDTO();
 		l1.setId("1");
-		LinguaDTO l2 = new LinguaDTO();
+		LanguageDTO l2 = new LanguageDTO();
 		l1.setId("2");
-		List<LinguaDTO> lingue = new ArrayList<LinguaDTO>();
+		List<LanguageDTO> lingue = new ArrayList<LanguageDTO>();
 		lingue.add(l1);
 		lingue.add(l2);
 		user.setLingue(lingue);

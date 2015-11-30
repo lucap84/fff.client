@@ -25,8 +25,8 @@ public class UserServiceStub  extends StubService{
 		Client client = super.getClientInstance();
 		
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_modifyUserData,userToUpdate.getId());
-		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(MediaType.APPLICATION_JSON);
-		Response response = requestBuilder.put(Entity.entity(userToUpdate, MediaType.APPLICATION_JSON));
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
+		Response response = requestBuilder.put(Entity.entity(userToUpdate, mediaType));
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
 		
 		return writeResult;
@@ -36,8 +36,8 @@ public class UserServiceStub  extends StubService{
 		Client client = super.getClientInstance();
 		
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_setCurrentPosition,userId,eventId);
-		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(MediaType.APPLICATION_JSON);
-		Response response = requestBuilder.post(Entity.entity(currentPlace, MediaType.APPLICATION_JSON));
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
+		Response response = requestBuilder.post(Entity.entity(currentPlace, mediaType));
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
 		
 		return writeResult;
@@ -47,7 +47,7 @@ public class UserServiceStub  extends StubService{
 		Client client = super.getClientInstance();
 		
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getEventsByUser,userId);
-		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(MediaType.APPLICATION_JSON);
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		final List<EventDTO> entity = response.readEntity(new GenericType<List<EventDTO>>(){});
 		
@@ -58,7 +58,7 @@ public class UserServiceStub  extends StubService{
 		Client client = super.getClientInstance();
 
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getUser,userId);
-		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(MediaType.APPLICATION_JSON);
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		UserDTO entity = response.readEntity(UserDTO.class);
 		
