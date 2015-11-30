@@ -37,7 +37,7 @@ public class AuthorizationClientRequestFilter implements ClientRequestFilter {
 		
 		if(isToAuthorize(requestPath)){
 			String nonce = new BigInteger(32,ClientSecureConfiguration.SECURE_RANDOM).toString();
-			String userId = secureConfigurationInstance.getUserId();
+			Integer userId = Integer.valueOf(secureConfigurationInstance.getUserId());
 			String authorizationHeader = AuthenticationUtil.generateHMACAuthorizationHeader(secureConfigurationInstance.retrieveSharedKey(userId, deviceId), userId, httpMethod, requestPath, formattedDate, nonce);
 			requestContext.getHeaders().add("Authorization", authorizationHeader);
 		}

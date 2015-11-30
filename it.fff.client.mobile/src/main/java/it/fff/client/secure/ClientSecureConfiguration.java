@@ -29,12 +29,12 @@ public class ClientSecureConfiguration implements DHSecureConfiguration {
 	}
 	
 	@Override
-	public void removeSharedKey(String userId, String deviceId) {
+	public void removeSharedKey(Integer userId, String deviceId) {
 		storeProperties(userId, deviceId, "");
 	}
 
 	@Override
-	public void storeSharedKey(String userId, String deviceId, String sharedKey) {
+	public void storeSharedKey(Integer userId, String deviceId, String sharedKey) {
 		storeProperties(userId, deviceId, sharedKey);
 	}
 	
@@ -47,12 +47,12 @@ public class ClientSecureConfiguration implements DHSecureConfiguration {
 		this.sharedKey = secureConfigurationProperties.getProperty(ClientConstants.PROP_SECURE_SHAREDKEY);
 	}	
 	
-	public void storeProperties(String userId, String deviceId, String sharedKey) {
+	public void storeProperties(Integer userId, String deviceId, String sharedKey) {
 
 		ClientConfiguration clientConfiguration = ClientConfiguration.getInstance();
-		clientConfiguration.storeSecureConfigurationProperties(userId, deviceId, sharedKey);
+		clientConfiguration.storeSecureConfigurationProperties(String.valueOf(userId), deviceId, sharedKey);
 		
-		this.userId = userId;
+		this.userId = String.valueOf(userId);
 		this.deviceId = deviceId;
 		this.sharedKey = sharedKey;
 
@@ -61,8 +61,9 @@ public class ClientSecureConfiguration implements DHSecureConfiguration {
 
 
 	@Override
-	public String retrieveSharedKey(String userId, String deviceId) {
-		if(this.userId.equals(userId) && this.deviceId.equals(deviceId)){
+	public String retrieveSharedKey(Integer userId, String deviceId) {
+		String userIdStr = String.valueOf(userId);
+		if(this.userId.equals(userIdStr) && this.deviceId.equals(deviceId)){
 			return this.sharedKey;
 		}
 		return "";

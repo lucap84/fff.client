@@ -51,7 +51,8 @@ public class SecurityServiceStub extends StubService{
 			String sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
 	        //Salvo sul client la chiave segreta condivisa con il server
 
-			super.getSecureConfiguration().storeSharedKey(resultDTO.getUserId(), deviceId, sharedSecret);
+			Integer userId = Integer.valueOf(resultDTO.getUserId());
+			super.getSecureConfiguration().storeSharedKey(userId, deviceId, sharedSecret);
         
 		}
 		catch(Exception e){
@@ -76,7 +77,8 @@ public class SecurityServiceStub extends StubService{
 		Response response = requestBuilder.post(null);
 		
 		result = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
-		super.getSecureConfiguration().removeSharedKey(userId, deviceId);
+		Integer userIdInt = Integer.valueOf(userId);
+		super.getSecureConfiguration().removeSharedKey(userIdInt, deviceId);
 		
 		return result;
 	}
@@ -103,7 +105,8 @@ public class SecurityServiceStub extends StubService{
 			byte[] serverPublicKey =  Base64.decodeBase64(resultDTO.getServerPublicKey());
 			String sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
 			//Salvo sul client la chiave segreta condivisa con il server
-			super.getSecureConfiguration().storeSharedKey(resultDTO.getUserId(), deviceId, sharedSecret);				
+			Integer userId = Integer.valueOf(resultDTO.getUserId());
+			super.getSecureConfiguration().storeSharedKey(userId, deviceId, sharedSecret);				
 			
 		}
 		catch(Exception e){

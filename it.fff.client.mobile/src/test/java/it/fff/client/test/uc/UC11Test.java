@@ -17,8 +17,8 @@ public class UC11Test {
 		 * Preconditions:  UC9 Login (oppure UC1)
 		 */
 		
-		UC09Test loginTest = new UC09Test();
-		loginTest.testUC9();
+//		UC09Test loginTest = new UC09Test();
+//		loginTest.testUC9();
 		
 		/*
 		 * UC3
