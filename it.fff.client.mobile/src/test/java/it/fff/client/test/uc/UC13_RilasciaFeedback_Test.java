@@ -2,10 +2,10 @@ package it.fff.client.test.uc;
 
 import org.junit.Test;
 
-public class UC05Test {
+public class UC13_RilasciaFeedback_Test {
 	
 	@Test
-	public void testUC5(){//Annulla un Evento
+	public void test(){//Rilascia un feedback
 		/*
 		 * Preconditions:  
 		 */

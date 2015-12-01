@@ -2,10 +2,10 @@ package it.fff.client.test.uc;
 
 import org.junit.Test;
 
-public class UC12Test {
+public class UC16_AttivaPremium_Test {
 	
 	@Test
-	public void testUC12(){//Reset password (password dimenticata)
+	public void test(){//Utente attiva servizi premium
 		/*
 		 * Preconditions:  
 		 */

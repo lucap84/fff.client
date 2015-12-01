@@ -2,10 +2,10 @@ package it.fff.client.test.uc;
 
 import org.junit.Test;
 
-public class UC10Test {
+public class UC08_AnnullaEvento_Test {
 	
 	@Test
-	public void testUC10(){//Abbandona Evento
+	public void test(){//Annulla un Evento
 		/*
 		 * Preconditions:  
 		 */

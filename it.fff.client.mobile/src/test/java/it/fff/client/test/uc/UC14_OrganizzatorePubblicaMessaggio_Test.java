@@ -2,10 +2,10 @@ package it.fff.client.test.uc;
 
 import org.junit.Test;
 
-public class UC13Test {
+public class UC14_OrganizzatorePubblicaMessaggio_Test {
 	
 	@Test
-	public void testUC13(){//Organizzatore evento pubblica messaggio
+	public void test(){//Organizzatore evento pubblica messaggio
 		/*
 		 * Preconditions:  
 		 */

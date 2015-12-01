@@ -19,19 +19,15 @@ import it.fff.clientserver.common.dto.NationDTO;
 import it.fff.clientserver.common.dto.UserDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
 
-public class UC08Test {
+public class UC04_ModificaDatiUtente_Test {
 	
 	@Test
-	public void testUC8(){//Modifica i dati utente
+	public void test(){//Modifica i dati utente
 		/*
-		 * Preconditions:  UC9 Login (oppure UC1 Registrazione)
+		 * Preconditions:   Login (oppure Registrazione)
 		 */
 		
-		UC09Test loginTest = new UC09Test();
-		loginTest.testUC9();
-		
 		/*
-		 * UC3:
 		 * Modifica la propria immagine
 		 * Modifica i propri dati
 		 */		

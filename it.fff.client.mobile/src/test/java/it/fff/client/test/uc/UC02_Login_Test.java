@@ -13,10 +13,13 @@ import it.fff.client.stub.SecurityServiceStub;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
 import it.fff.clientserver.common.dto.LoginDataRequestDTO;
 
-public class UC09Test {
+public class UC02_Login_Test {
 
 	@Test
-	public void testUC9(){ //Login UTENTE
+	public void test(){ //Login UTENTE
+		/*
+		 * Preconditions:  not logged
+		 */
 		SecurityServiceStub securityService = new SecurityServiceStub();
 		
 		LoginDataRequestDTO loginInput = new LoginDataRequestDTO();

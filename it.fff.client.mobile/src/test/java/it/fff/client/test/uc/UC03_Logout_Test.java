@@ -9,20 +9,14 @@ import org.junit.Test;
 import it.fff.client.stub.SecurityServiceStub;
 import it.fff.clientserver.common.dto.WriteResultDTO;
 
-public class UC11Test {
+public class UC03_Logout_Test {
 	
 	@Test
-	public void testUC11(){//Logout
+	public void test(){//Logout
 		/*
-		 * Preconditions:  UC9 Login (oppure UC1)
+		 * Preconditions:  Login (oppure registrazione)
 		 */
 		
-//		UC09Test loginTest = new UC09Test();
-//		loginTest.testUC9();
-		
-		/*
-		 * UC3
-		 */
 		SecurityServiceStub securityService = new SecurityServiceStub();
 
 		WriteResultDTO result = null;

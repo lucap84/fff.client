@@ -15,21 +15,15 @@ import it.fff.client.stub.StubService;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
 import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
 
-public class UC01Test {
+public class UC01_RegistraUtente_Test {
 	
 	@Test
-	public void testUC1(){ //Registra Utente
+	public void test(){ //Registra Utente
 		/*
 		 * Preconditions:  not logged
 		 */
-		StubService service = new StubService();
-//		assertEquals("", service.getSecureConfiguration().getDeviceId());
-//		assertEquals("", service.getSecureConfiguration().getSharedKey());
 		
-		/*
-		 * UC1
-		 */
-		SecurityServiceStub stub = new SecurityServiceStub();
+		SecurityServiceStub securityService = new SecurityServiceStub();
 		
 		RegistrationDataRequestDTO input1 = new RegistrationDataRequestDTO();
 		input1.setNome("Luca");
@@ -39,7 +33,7 @@ public class UC01Test {
 		input1.setEmail("lucap84@gmail.com");
 		input1.setEncodedPassword(DigestUtils.md5Hex("mypassword"));
 
-		AuthDataResponseDTO result = stub.registerUser(input1, MediaType.APPLICATION_JSON);
+		AuthDataResponseDTO result = securityService.registerUser(input1, MediaType.APPLICATION_JSON);
 		assertNotNull(result);
 		assertTrue(result.isOk());
 		assertNotNull(result.getServerPublicKey());
@@ -65,8 +59,8 @@ public class UC01Test {
 		 * Postconditions: User is logged
 		 */
 		
-		assertNotEquals("", service.getSecureConfiguration().getDeviceId());
-		assertNotEquals("", service.getSecureConfiguration().getSharedKey());
+		assertNotEquals("", securityService.getSecureConfiguration().getDeviceId());
+		assertNotEquals("", securityService.getSecureConfiguration().getSharedKey());
 	}
 
 }

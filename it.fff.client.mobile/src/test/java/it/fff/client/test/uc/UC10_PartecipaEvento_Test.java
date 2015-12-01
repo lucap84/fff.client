@@ -2,10 +2,10 @@ package it.fff.client.test.uc;
 
 import org.junit.Test;
 
-public class UC14Test {
+public class UC10_PartecipaEvento_Test {
 	
 	@Test
-	public void testUC14(){//Partecipante evento pubblica messaggio predefinito
+	public void test(){//Partecipa ad un evento
 		/*
 		 * Preconditions:  
 		 */

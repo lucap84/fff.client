@@ -105,7 +105,7 @@ public class EventServiceTest extends WebServiceRestTest{
 		attendanceToAddFeedback.setEvent(event);
 		attendanceToAddFeedback.setUser(attendee);
 		attendanceToAddFeedback.setOrganizer(false);
-		attendanceToAddFeedback.setNumPartecipanti(22);
+		attendanceToAddFeedback.setNumPartecipanti("22");
 		attendanceToAddFeedback.setFeedback(feedback);
 		
 		WriteResultDTO result = null;
@@ -137,7 +137,7 @@ public class EventServiceTest extends WebServiceRestTest{
 		attendanceToCreate.setEvent(event);
 		attendanceToCreate.setUser(attendee);
 		attendanceToCreate.setOrganizer(false);
-		attendanceToCreate.setNumPartecipanti(22);
+		attendanceToCreate.setNumPartecipanti("22");
 		attendanceToCreate.setFeedback(feedback);
 		
 		WriteResultDTO result = null;

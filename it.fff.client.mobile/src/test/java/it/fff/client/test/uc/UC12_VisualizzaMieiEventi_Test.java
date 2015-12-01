@@ -12,16 +12,16 @@ import org.junit.Test;
 import it.fff.client.stub.UserServiceStub;
 import it.fff.clientserver.common.dto.EventDTO;
 
-public class UC06Test {
+public class UC12_VisualizzaMieiEventi_Test {
 	
 	@Test
-	public void testUC6(){//Visualizza i miei eventi
+	public void test(){//Visualizza i miei eventi
 		/*
 		 * Preconditions: UC1/UC9 + UC3/UC4 
 		 */
 		
-		UC01Test registerTest = new UC01Test();
-		registerTest.testUC1();
+		UC01_RegistraUtente_Test registerTest = new UC01_RegistraUtente_Test();
+		registerTest.test();
 		
 		/*
 		 * UC6

@@ -16,11 +16,11 @@ import it.fff.clientserver.common.dto.AttendanceDTO;
 import it.fff.clientserver.common.dto.EventDTO;
 import it.fff.clientserver.common.dto.UserDTO;
 
-public class UC02Test {
+public class UC09_RicercaEventoTest {
 
 	
 	@Test
-	public void testUC2(){ //Ricerca evento
+	public void test(){ //Ricerca evento
 		/*
 		 * Preconditions: UC1 Register or UC9 Login 
 		 */
@@ -29,8 +29,8 @@ public class UC02Test {
 		String clientSharedKey = service.getSecureConfiguration().getSharedKey();
 		String clientDeviceId = service.getSecureConfiguration().getDeviceId();
 		if(clientSharedKey==null || "".equals(clientSharedKey) || clientDeviceId==null || "".equals(clientDeviceId)){
-			UC01Test registerTest = new UC01Test();
-			registerTest.testUC1();		
+			UC01_RegistraUtente_Test registerTest = new UC01_RegistraUtente_Test();
+			registerTest.test();		
 		}
 		
 		
