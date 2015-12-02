@@ -15,6 +15,7 @@ import it.fff.clientserver.common.dto.EventCategoryDTO;
 import it.fff.clientserver.common.dto.EventStateDTO;
 import it.fff.clientserver.common.dto.LanguageDTO;
 import it.fff.clientserver.common.dto.MessageStandardDTO;
+import it.fff.clientserver.common.dto.NationDTO;
 import it.fff.clientserver.common.dto.SubscriptionTypeDTO;
 
 public class TypologicalServiceStub extends StubService{
@@ -96,6 +97,16 @@ public class TypologicalServiceStub extends StubService{
 		List<EventCategoryDTO> entity = response.readEntity(new GenericType<List<EventCategoryDTO>>(){});
 		return entity;
 	}
+	
+	public List<NationDTO> getAllNations(String mediaType){
+		Client client = super.getClientInstance();
+		
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getAllNations);
+		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
+		Response response = requestBuilder.get();
+		List<NationDTO> entity = response.readEntity(new GenericType<List<NationDTO>>(){});
+		return entity;
+	}	
 	
 	public static void main(String[] args) {
 		new TypologicalServiceStub().getAllLanguages(MediaType.APPLICATION_JSON);

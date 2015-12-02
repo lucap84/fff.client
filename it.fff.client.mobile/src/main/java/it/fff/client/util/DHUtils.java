@@ -51,6 +51,9 @@ public class DHUtils {
 	
 	public String generateSharedSecret(KeyAgreement clientKeyAgree, byte[] serverPublicKey){
 		String sharedSecret = "";
+		if(serverPublicKey==null || serverPublicKey.length==0){
+			return sharedSecret;
+		}
 			try{
 		        /*
 		         * Il client usa la chiave pubblica del server per la sua fase del protocollo

@@ -92,9 +92,8 @@ public class UC07_CreaEvento_Test {
 		event.setDataInizio(dataStartEvento);
 		event.setDurata("5");
 		
-		EventCategoryDTO categoriaEvento = new EventCategoryDTO();
-		categoriaEvento.setId("1");
-		categoriaEvento.setNome("Categoria1");
+		List<EventCategoryDTO> allEventCategories = typologicalService.getAllEventCategories(MediaType.APPLICATION_JSON);
+		EventCategoryDTO categoriaEvento = allEventCategories.get(0); //Scelgo categoria
 		
 		event.setCategoria(categoriaEvento);
 		//TODO immagine evento solo con premium

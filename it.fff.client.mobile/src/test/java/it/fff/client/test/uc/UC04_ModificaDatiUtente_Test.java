@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 
 import it.fff.client.stub.SecurityServiceStub;
+import it.fff.client.stub.TypologicalServiceStub;
 import it.fff.client.stub.UserServiceStub;
 import it.fff.clientserver.common.dto.LanguageDTO;
 import it.fff.clientserver.common.dto.NationDTO;
@@ -54,17 +55,15 @@ public class UC04_ModificaDatiUtente_Test {
 		user.setCognome("cognome mod");
 		user.setDescrizione("Descrizione mod");
 		
-		NationDTO nazionalita = new NationDTO();
-		nazionalita.setId("1");
+		TypologicalServiceStub typologicalService = new TypologicalServiceStub();
+		List<NationDTO> allNations = typologicalService.getAllNations(MediaType.APPLICATION_JSON);
+		NationDTO nazionalita = allNations.get(0); //scelgo nazione
 		user.setNazionalita(nazionalita);
 		
-		LanguageDTO l1 = new LanguageDTO();
-		l1.setId("1");
-		LanguageDTO l2 = new LanguageDTO();
-		l1.setId("2");
+		List<LanguageDTO> allLanguages = typologicalService.getAllLanguages(MediaType.APPLICATION_JSON);
 		List<LanguageDTO> lingue = new ArrayList<LanguageDTO>();
-		lingue.add(l1);
-		lingue.add(l2);
+		lingue.add(allLanguages.get(0));//Scelgo lingue
+		lingue.add(allLanguages.get(1));
 		user.setLingue(lingue);
 		
 		//TODO info impostate in modo silente dal sistema

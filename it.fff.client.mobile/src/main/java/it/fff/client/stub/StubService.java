@@ -52,7 +52,6 @@ public class StubService{
 	public static final String WSRS_PATH_getEventsByUser 			= "users/#/events/";
 	public static final String WSRS_PATH_getUser 					= "users/#/";
 	public static final String WSRS_PATH_updateProfileImage 		= "users/#/images/";
-	
 	public static final String WSRS_PATH_getAllLanguages 			= "typological/languages/";
 	public static final String WSRS_PATH_getAllSubscriptionTypes 	= "typological/subscriptionTypes/";
 	public static final String WSRS_PATH_getAllAchievementTypes 	= "typological/achievementTypes/";
@@ -60,6 +59,7 @@ public class StubService{
 	public static final String WSRS_PATH_getAllAttendanceStates 	= "typological/attendanceStates/";
 	public static final String WSRS_PATH_getAllEventStates 			= "typological/eventStates/";
 	public static final String WSRS_PATH_getAllEventCategories 		= "typological/eventCategories/";
+	public static final String WSRS_PATH_getAllNations 				= "typological/nations/";
 	
 
 
