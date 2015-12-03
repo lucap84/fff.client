@@ -16,7 +16,7 @@ public class PlaceServiceStub extends StubService{
 		
 		List<PlaceDTO> entityFromJSON = null;
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getPlacesByDescription);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getPlacesByDescription);
 		{//Test JSON
 			Builder requestBuilderJSON = client.target(getBaseURI()).path(restPath).
 					queryParam("description", description).

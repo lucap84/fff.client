@@ -31,7 +31,7 @@ public class TypologicalServiceStub extends StubService{
 	public List<LanguageDTO> getAllLanguages(String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getAllLanguages);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllLanguages);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		List<LanguageDTO> entity = response.readEntity(new GenericType<List<LanguageDTO>>(){});
@@ -41,7 +41,7 @@ public class TypologicalServiceStub extends StubService{
 	public List<SubscriptionTypeDTO> getAllSubscriptionTypes(String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getAllSubscriptionTypes);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllSubscriptionTypes);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		List<SubscriptionTypeDTO> entity = response.readEntity(new GenericType<List<SubscriptionTypeDTO>>(){});
@@ -51,7 +51,7 @@ public class TypologicalServiceStub extends StubService{
 	public List<AchievementTypeDTO> getAllAchievementTypes(String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getAllAchievementTypes);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllAchievementTypes);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(MediaType.APPLICATION_JSON);
 		Response response = requestBuilder.get();
 		List<AchievementTypeDTO> entity = response.readEntity(new GenericType<List<AchievementTypeDTO>>(){});
@@ -61,7 +61,7 @@ public class TypologicalServiceStub extends StubService{
 	public List<MessageStandardDTO> getAllStandardMessages(String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getAllStandardMessages);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllStandardMessages);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		List<MessageStandardDTO> entity = response.readEntity(new GenericType<List<MessageStandardDTO>>(){});
@@ -71,7 +71,7 @@ public class TypologicalServiceStub extends StubService{
 	public List<AttendanceStateDTO> getAllAttendanceStates(String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getAllAttendanceStates);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllAttendanceStates);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		List<AttendanceStateDTO> entity = response.readEntity(new GenericType<List<AttendanceStateDTO>>(){});
@@ -81,7 +81,7 @@ public class TypologicalServiceStub extends StubService{
 	public List<EventStateDTO> getAllEventStates(String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getAllEventStates);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllEventStates);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		List<EventStateDTO> entity = response.readEntity(new GenericType<List<EventStateDTO>>(){});
@@ -91,7 +91,7 @@ public class TypologicalServiceStub extends StubService{
 	public List<EventCategoryDTO> getAllEventCategories(String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getAllEventCategories);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllEventCategories);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		List<EventCategoryDTO> entity = response.readEntity(new GenericType<List<EventCategoryDTO>>(){});
@@ -101,7 +101,7 @@ public class TypologicalServiceStub extends StubService{
 	public List<NationDTO> getAllNations(String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_getAllNations);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllNations);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		List<NationDTO> entity = response.readEntity(new GenericType<List<NationDTO>>(){});

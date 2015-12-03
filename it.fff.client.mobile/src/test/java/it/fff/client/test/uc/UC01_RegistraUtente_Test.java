@@ -50,7 +50,7 @@ public class UC01_RegistraUtente_Test {
 //		{//Test JSON
 //			result = stub.registerUser(input2, MediaType.APPLICATION_JSON);
 //			assertNotNull(result);
-//			assertFalse(result.isOk());
+//			assertFalse(result.isOk()==null);
 //			assertNotNull(result.getErrorsMap());
 //			assertTrue(result.getErrorsMap().size()>0);
 //		}

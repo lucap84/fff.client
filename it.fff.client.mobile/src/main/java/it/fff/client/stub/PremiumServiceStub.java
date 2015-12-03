@@ -15,7 +15,7 @@ public class PremiumServiceStub  extends StubService{
 		
 		String userId = super.getSecureConfiguration().getUserId();
 
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_upgradeToPremium,userId);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_upgradeToPremium,userId);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.post(Entity.entity(subscription, mediaType));
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);

@@ -13,9 +13,10 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
+import it.fff.clientserver.common.dto.SessionDTO;
 import it.fff.client.stub.SecurityServiceStub;
+import it.fff.clientserver.common.dto.AccountDTO;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
-import it.fff.clientserver.common.dto.LoginDataRequestDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -67,14 +68,17 @@ public class SecurityServiceTest extends WebServiceRestTest{
 	
 	@Test
 	public void t3_loginShouldReturnConfirm(){
-		LoginDataRequestDTO dtoInput = new LoginDataRequestDTO();
-		dtoInput.setEmail("lucap84@gmail.com");
-		dtoInput.setEncodedPassword(DigestUtils.md5Hex("mypassword"));
+		AccountDTO accountDTO = new AccountDTO();
+		accountDTO.setEmail("lucap84@gmail.com");
+		accountDTO.setPassword(DigestUtils.md5Hex("mypassword"));
+		
+		SessionDTO sessionToCreate = new SessionDTO();
+		sessionToCreate.setAccount(accountDTO);
 		
 		AuthDataResponseDTO result = null;
 		{//Test JSON
 			SecurityServiceStub stub = new SecurityServiceStub();
-			result = stub.login(dtoInput, MediaType.APPLICATION_JSON);
+			result = stub.login(sessionToCreate, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertNotNull(result.getUserId());

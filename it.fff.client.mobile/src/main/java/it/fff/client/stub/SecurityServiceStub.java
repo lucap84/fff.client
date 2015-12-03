@@ -1,6 +1,8 @@
 package it.fff.client.stub;
 
 
+import java.util.ArrayList;
+
 import javax.crypto.KeyAgreement;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Entity;
@@ -13,8 +15,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 import it.fff.client.secure.ClientSecureConfiguration;
 import it.fff.client.util.DHUtils;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
-import it.fff.clientserver.common.dto.LoginDataRequestDTO;
 import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
+import it.fff.clientserver.common.dto.SessionDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
 
 public class SecurityServiceStub extends StubService{
@@ -35,7 +37,7 @@ public class SecurityServiceStub extends StubService{
 		
 		AuthDataResponseDTO resultDTO = null;
 
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_registerUser);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_registerUser);
 		try{
 			Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
 			
@@ -71,7 +73,7 @@ public class SecurityServiceStub extends StubService{
 		
 		WriteResultDTO result = null;	
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_logout, userId);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_logout, userId);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		
 		Response response = requestBuilder.post(null);
@@ -83,14 +85,14 @@ public class SecurityServiceStub extends StubService{
 		return result;
 	}
 	
-	public AuthDataResponseDTO login(LoginDataRequestDTO dtoInput, String mediaType){
+	public AuthDataResponseDTO login(SessionDTO dtoInput, String mediaType){
 		Client client = super.getClientInstance();
 		
 		String deviceId = super.getSecureConfiguration().getDeviceId();
-		dtoInput.setDeviceId(deviceId);
+		
 		AuthDataResponseDTO resultDTO = null;
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_login);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_login);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		try{
 			KeyAgreement clientKeyAgree = KeyAgreement.getInstance("DH");
@@ -125,7 +127,7 @@ public class SecurityServiceStub extends StubService{
 		
 		WriteResultDTO writeResult = null;
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_updatePassword,email);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_PUT_updatePassword,email);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.put(Entity.entity(encodedNewPassword,mediaType));
 		writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
@@ -136,7 +138,7 @@ public class SecurityServiceStub extends StubService{
 	public WriteResultDTO checkVerificationCode(String email, String verificationCode, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_checkVerificationCode,email);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_PUT_checkVerificationCode,email);
 		WriteResultDTO writeResult = null;
 		
 		Builder requestBuilder  =  client.target(getBaseURI()).path(restPath).request(mediaType);
@@ -149,7 +151,7 @@ public class SecurityServiceStub extends StubService{
 	public WriteResultDTO sendVerificationCode(String email, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_sendVerificationCode,email);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_sendVerificationCode,email);
 		WriteResultDTO writeResult = null;
 		
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
