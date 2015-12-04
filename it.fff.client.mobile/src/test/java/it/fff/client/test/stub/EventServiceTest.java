@@ -157,12 +157,13 @@ public class EventServiceTest extends WebServiceRestTest{
 	public void cancelEventShouldReturnConfirm(){ //annulla evento da parte dell'organizzatore
 		
 		String eventToDelete = "1";
+		String userOrganizerId = "1";
 		
 		WriteResultDTO result = null;
 
 		{//Test JSON
 			EventServiceStub stub = new EventServiceStub();
-			result = stub.cancelEvent(eventToDelete, MediaType.APPLICATION_JSON);
+			result = stub.cancelEvent(eventToDelete, userOrganizerId, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);

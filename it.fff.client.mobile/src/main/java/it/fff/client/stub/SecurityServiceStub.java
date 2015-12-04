@@ -17,6 +17,7 @@ import it.fff.client.util.DHUtils;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
 import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
 import it.fff.clientserver.common.dto.SessionDTO;
+import it.fff.clientserver.common.dto.UpdatePasswordDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
 
 public class SecurityServiceStub extends StubService{
@@ -119,17 +120,17 @@ public class SecurityServiceStub extends StubService{
 		return resultDTO;
 	}
 	
-	public WriteResultDTO updatePassword(String email, String oldPassword,String newPassword, String mediaType){
+	public WriteResultDTO updatePassword(UpdatePasswordDTO dtoInput, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String encodedOldPassword = DigestUtils.md5Hex(oldPassword);
-		String encodedNewPassword = DigestUtils.md5Hex(newPassword);
+		dtoInput.setOldPassword(DigestUtils.md5Hex(dtoInput.getOldPassword()));
+		dtoInput.setNewPassword(DigestUtils.md5Hex(dtoInput.getNewPassword()));
 		
 		WriteResultDTO writeResult = null;
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_PUT_updatePassword,email);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_PUT_updatePassword,dtoInput.getEmail());
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
-		Response response = requestBuilder.put(Entity.entity(encodedNewPassword,mediaType));
+		Response response = requestBuilder.put(Entity.entity(dtoInput,mediaType));
 		writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
 		
 		return writeResult;

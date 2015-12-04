@@ -35,7 +35,7 @@ public class UC04_ModificaDatiUtente_Test {
 		UserServiceStub userService = new UserServiceStub();
 		
 		//Carica una nuova immagine profilo
-		String imageLocation ="C:\\Users\\Luca\\fff\\imagetest.jpg";
+		String imageLocation ="C:\\Users\\Luca\\fff\\client\\imagetest.jpg";
 		String userId = userService.getSecureConfiguration().getUserId();
 		
 		WriteResultDTO updateProfileImageResult = userService.updateProfileImage(userId, imageLocation, MediaType.APPLICATION_JSON);

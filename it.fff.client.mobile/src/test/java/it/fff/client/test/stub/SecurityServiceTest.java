@@ -14,6 +14,7 @@ import org.junit.runners.MethodSorters;
 
 import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
 import it.fff.clientserver.common.dto.SessionDTO;
+import it.fff.clientserver.common.dto.UpdatePasswordDTO;
 import it.fff.client.stub.SecurityServiceStub;
 import it.fff.clientserver.common.dto.AccountDTO;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
@@ -91,13 +92,17 @@ public class SecurityServiceTest extends WebServiceRestTest{
 
 	@Test
 	public void t4_updatePasswordShouldReturnConfirm(){
-		String email = "lucap84@gmail.com";
-		String oldPassword = "mypassword";
-		String newPassword = "mypasswordUpdated";
+		
+		UpdatePasswordDTO updatePasswordInput = new UpdatePasswordDTO();
+		updatePasswordInput.setUserId("1");
+		updatePasswordInput.setEmail("lucap84@gmail.com");
+		updatePasswordInput.setOldPassword("mypassword");
+		updatePasswordInput.setNewPassword("mypasswordupdated");
+		
 		WriteResultDTO result = null;
 		{//Test JSON
 			SecurityServiceStub stub = new SecurityServiceStub();
-			result = stub.updatePassword(email, oldPassword, newPassword, MediaType.APPLICATION_JSON);
+			result = stub.updatePassword(updatePasswordInput, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);

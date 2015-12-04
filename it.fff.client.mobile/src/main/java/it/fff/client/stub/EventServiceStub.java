@@ -88,11 +88,13 @@ public class EventServiceStub  extends StubService{
 	}	
 	
 	
-	public WriteResultDTO cancelEvent(String eventToCancel, String mediaType){ //annulla evento da parte dell'organizzatore
+	public WriteResultDTO cancelEvent(String eventIdToCancel, String organizerId, String mediaType){ //annulla evento da parte dell'organizzatore
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_DELETE_cancelEvent, eventToCancel);
-		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_DELETE_cancelEvent, eventIdToCancel);
+		Builder requestBuilder  = client.target(getBaseURI()).path(restPath)
+				.queryParam("organizerId", organizerId)
+				.request(mediaType);
 		Response response = requestBuilder.delete();
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
 		return writeResult;
