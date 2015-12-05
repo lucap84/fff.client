@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientRequestFilter;
+import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,9 +37,24 @@ public class AuthorizationClientRequestFilter implements ClientRequestFilter {
 		requestContext.getHeaders().add("Device", deviceId);		
 		
 		if(isToAuthorize(requestPath)){
-			String nonce = new BigInteger(32,ClientSecureConfiguration.SECURE_RANDOM).toString();
+			logger.debug("Request path is to authorize: "+requestPath);
 			Integer userId = Integer.valueOf(secureConfigurationInstance.getUserId());
-			String authorizationHeader = AuthenticationUtil.generateHMACAuthorizationHeader(secureConfigurationInstance.retrieveSharedKey(userId, deviceId), userId, httpMethod, requestPath, formattedDate, nonce);
+			
+			if(userId==null){
+				logger.error("Client is not registerd");
+				requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("Client is not registerd").build());
+				return;
+			}
+			String retrievedSharedKey = secureConfigurationInstance.retrieveSharedKey(userId, deviceId);
+			
+			if(retrievedSharedKey==null || "".equals(retrievedSharedKey)){
+				logger.error("Client is not logged");
+				requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("Client is not logged").build());
+				return;
+			}
+			
+			String nonce = new BigInteger(32,ClientSecureConfiguration.SECURE_RANDOM).toString();
+			String authorizationHeader = AuthenticationUtil.generateHMACAuthorizationHeader(retrievedSharedKey, userId, httpMethod, requestPath, formattedDate, nonce);
 			requestContext.getHeaders().add("Authorization", authorizationHeader);
 		}
 		

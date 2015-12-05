@@ -27,12 +27,15 @@ public class UserServiceTest extends WebServiceRestTest{
 		
 		UserDTO  user = new UserDTO();
 		user.setId("1");
-		user.setEmail("nuovamail@mail.it");
 		user.setSesso("F");
 		user.setDataNascita("1900-01-01");
 		user.setNome("Nome mod");
 		user.setCognome("cognome mod");
 		user.setDescrizione("Descrizione mod");
+
+		AccountDTO accountDTO = new AccountDTO();
+		accountDTO.setEmail("nuovamail@mail.it");
+		user.setAccount(accountDTO);
 		
 		NationDTO nazionalita = new NationDTO();
 		nazionalita.setId("1");
@@ -109,7 +112,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	@Test
 	public void getUserShouldReturnOneUser(){
 
-		String userId = "1";
+		String userId = "8";
 
 		UserDTO result = null;
 

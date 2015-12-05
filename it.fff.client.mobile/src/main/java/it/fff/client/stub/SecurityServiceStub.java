@@ -80,8 +80,10 @@ public class SecurityServiceStub extends StubService{
 		Response response = requestBuilder.post(null);
 		
 		result = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
-		Integer userIdInt = Integer.valueOf(userId);
-		super.getSecureConfiguration().removeSharedKey(userIdInt, deviceId);
+		if(result!=null && result.isOk() && result.getIdentifier()!=null && !"".equals(result.getIdentifier())){
+			Integer userIdInt = Integer.valueOf(userId);
+			super.getSecureConfiguration().removeSharedKey(userIdInt, deviceId);
+		}
 		
 		return result;
 	}

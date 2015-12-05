@@ -48,7 +48,7 @@ public class UC04_ModificaDatiUtente_Test {
 		//Modifica i propri dati
 		UserDTO  user = new UserDTO();
 		user.setId(userId);
-		user.setEmail("nuovamail@mail.it");
+//		user.setEmail("nuovamail@mail.it");
 		user.setSesso("F");
 		user.setDataNascita("1900-01-01");
 		user.setNome("Nome mod");
@@ -85,7 +85,7 @@ public class UC04_ModificaDatiUtente_Test {
 		 */
 		
 		UserDTO userCheck = userService.getUser(userId, MediaType.APPLICATION_JSON);
-		assertEquals(user.getEmail(),userCheck.getEmail());
+//		assertEquals(user.getEmail(),userCheck.getEmail());
 		assertEquals(user.getSesso(),userCheck.getSesso());
 		assertEquals(user.getDataNascita(),userCheck.getDataNascita());
 		assertEquals(user.getNome(),userCheck.getNome());
