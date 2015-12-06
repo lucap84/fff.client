@@ -33,7 +33,7 @@ public class UC01_RegistraUtente_Test {
 		input1.setEmail("lucap84@gmail.com");
 		input1.setEncodedPassword(DigestUtils.md5Hex("mypassword"));
 
-		AuthDataResponseDTO result = securityService.registerUser(input1, MediaType.APPLICATION_JSON);
+		AuthDataResponseDTO result = securityService.registerUser(input1, MediaType.APPLICATION_JSON, true);
 		assertNotNull(result);
 		assertTrue(result.isOk());
 		assertNotNull(result.getServerPublicKey());

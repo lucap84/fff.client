@@ -94,7 +94,7 @@ public class StubService{
 		client.register(MultiPartFeature.class);
 		client.register(MoxyJsonFeature.class);
 		client.register(MoxyXmlFeature.class);
-		client.register(AuthorizationClientRequestFilter.class);
+//		client.register(AuthorizationClientRequestFilter.class);
 		ContextResolver<MoxyJsonConfig> jsonConfigResolver = getJsonConfigResolver();
 		client.register(jsonConfigResolver);
 		

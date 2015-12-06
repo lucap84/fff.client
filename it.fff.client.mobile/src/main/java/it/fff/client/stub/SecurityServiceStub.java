@@ -30,7 +30,7 @@ public class SecurityServiceStub extends StubService{
 		super(secureConfiguration);
 	}
 	
-	public AuthDataResponseDTO registerUser(RegistrationDataRequestDTO dtoInput, String mediaType){
+	public AuthDataResponseDTO registerUser(RegistrationDataRequestDTO dtoInput, String mediaType, boolean enableSecurity){
 		Client client = super.getClientInstance();
 		
 		String deviceId = "android-mobile-0001";
@@ -39,21 +39,27 @@ public class SecurityServiceStub extends StubService{
 		AuthDataResponseDTO resultDTO = null;
 
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_registerUser);
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
 		try{
-			Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
-			
-			KeyAgreement clientKeyAgree = KeyAgreement.getInstance("DH");
-			DHUtils dhUtil = new DHUtils();
-			String clientPpublicKey = dhUtil.generateClientPublicKey(clientKeyAgree);
-			requestBuilder = requestBuilder.header("dh", clientPpublicKey);
+			KeyAgreement clientKeyAgree = null;
+			DHUtils dhUtil = null;
+			if(enableSecurity){
+				clientKeyAgree = KeyAgreement.getInstance("DH");
+				dhUtil = new DHUtils();
+				String clientPpublicKey = dhUtil.generateClientPublicKey(clientKeyAgree);
+				requestBuilder = requestBuilder.header("dh", clientPpublicKey);
+			}
 			
 			Response response = requestBuilder.post(Entity.entity(dtoInput, mediaType));
 			
 			resultDTO = (AuthDataResponseDTO)response.readEntity(AuthDataResponseDTO.class);
-			byte[] serverPublicKey =  Base64.decodeBase64(resultDTO.getServerPublicKey());
-			String sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
-	        //Salvo sul client la chiave segreta condivisa con il server
-
+			
+			String sharedSecret = null;
+			if(enableSecurity){
+				byte[] serverPublicKey =  Base64.decodeBase64(resultDTO.getServerPublicKey());
+				 sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
+			}
+			//Salvo sul client la chiave segreta condivisa con il server
 			Integer userId = Integer.valueOf(resultDTO.getUserId());
 			super.getSecureConfiguration().storeSharedKey(userId, deviceId, sharedSecret);
         
@@ -88,7 +94,7 @@ public class SecurityServiceStub extends StubService{
 		return result;
 	}
 	
-	public AuthDataResponseDTO login(SessionDTO dtoInput, String mediaType){
+	public AuthDataResponseDTO login(SessionDTO dtoInput, String mediaType, boolean enableSecurity){
 		Client client = super.getClientInstance();
 		
 		String deviceId = super.getSecureConfiguration().getDeviceId();
@@ -98,17 +104,24 @@ public class SecurityServiceStub extends StubService{
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_login);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		try{
-			KeyAgreement clientKeyAgree = KeyAgreement.getInstance("DH");
-			DHUtils dhUtil = new DHUtils();
-			String clientPpublicKey = dhUtil.generateClientPublicKey(clientKeyAgree);
-			requestBuilder = requestBuilder.header("dh", clientPpublicKey);
+			KeyAgreement clientKeyAgree = null;
+			DHUtils dhUtil = null;
+			if(enableSecurity){
+				clientKeyAgree = KeyAgreement.getInstance("DH");
+				dhUtil = new DHUtils();
+				String clientPpublicKey = dhUtil.generateClientPublicKey(clientKeyAgree);
+				requestBuilder = requestBuilder.header("dh", clientPpublicKey);
+			}
 			
 			Response responseJSON = requestBuilder.post(Entity.entity(dtoInput, mediaType));
 			
 			resultDTO = (AuthDataResponseDTO)responseJSON.readEntity(AuthDataResponseDTO.class);
 			
-			byte[] serverPublicKey =  Base64.decodeBase64(resultDTO.getServerPublicKey());
-			String sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
+			String sharedSecret = null;
+			if(enableSecurity){
+				byte[] serverPublicKey =  Base64.decodeBase64(resultDTO.getServerPublicKey());
+				sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
+			}
 			//Salvo sul client la chiave segreta condivisa con il server
 			Integer userId = Integer.valueOf(resultDTO.getUserId());
 			super.getSecureConfiguration().storeSharedKey(userId, deviceId, sharedSecret);				

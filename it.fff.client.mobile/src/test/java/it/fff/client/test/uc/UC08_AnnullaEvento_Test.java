@@ -50,7 +50,7 @@ public class UC08_AnnullaEvento_Test {
 		List<EventStateDTO> allEventStates = typologicalService.getAllEventStates(MediaType.APPLICATION_JSON);
 		EventStateDTO statoAnnullato = null;
 		for (EventStateDTO eventStateDTO : allEventStates) {
-			if(eventStateDTO.getNome().equalsIgnoreCase("CANCELED")){
+			if(eventStateDTO.getNome().equalsIgnoreCase("Annullato")){
 				statoAnnullato = eventStateDTO;
 			}
 		}

@@ -183,6 +183,7 @@ public class EventServiceTest extends WebServiceRestTest{
 		EventDTO event = new EventDTO();
 		event.setTitolo("nuovo evento");
 		event.setDescrizione("Descr nuovo evento");
+		event.setDurata("3");
 		
 		AttendanceDTO attendance = new AttendanceDTO();
 		attendance.setUser(organizer);

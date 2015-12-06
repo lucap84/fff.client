@@ -34,7 +34,7 @@ public class UC02_Login_Test {
 		sessionToCreate.setAccount(accountDTO);
 		
 		AuthDataResponseDTO loginOutput = null;
-		loginOutput = securityService.login(sessionToCreate, MediaType.APPLICATION_JSON);
+		loginOutput = securityService.login(sessionToCreate, MediaType.APPLICATION_JSON, true);
 		assertNotNull(loginOutput);
 		assertTrue(loginOutput.isOk());
 		assertNotNull(loginOutput.getUserId());
