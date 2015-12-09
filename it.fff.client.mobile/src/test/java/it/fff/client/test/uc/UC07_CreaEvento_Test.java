@@ -20,10 +20,10 @@ import it.fff.clientserver.common.dto.AttendanceDTO;
 import it.fff.clientserver.common.dto.CityDTO;
 import it.fff.clientserver.common.dto.EventCategoryDTO;
 import it.fff.clientserver.common.dto.EventDTO;
-import it.fff.clientserver.common.dto.EventStateDTO;
 import it.fff.clientserver.common.dto.PlaceDTO;
 import it.fff.clientserver.common.dto.UserDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
+import it.fff.clientserver.common.enums.EventStateEnum;
 import it.fff.clientserver.common.secure.SecureConfiguration;
 
 public class UC07_CreaEvento_Test {
@@ -61,16 +61,17 @@ public class UC07_CreaEvento_Test {
 		event.setTitolo("nuovo evento");
 		event.setDescrizione("Descr nuovo evento");
 
-		//Scelgo stato ATTIVO in creazione evento
 		TypologicalServiceStub typologicalService = new TypologicalServiceStub();
-		List<EventStateDTO> allEventStates = typologicalService.getAllEventStates(MediaType.APPLICATION_JSON);
-		EventStateDTO statoAttivo = null;
-		for (EventStateDTO eventStateDTO : allEventStates) {
-			if(eventStateDTO.getNome().equalsIgnoreCase("ACTIVE")){
-				statoAttivo = eventStateDTO;
-			}
-		}
-		event.setStato(statoAttivo);
+
+		//Scelgo stato ATTIVO in creazione evento
+//		List<EventStateDTO> allEventStates = typologicalService.getAllEventStates(MediaType.APPLICATION_JSON);
+//		EventStateDTO statoAttivo = null;
+//		for (EventStateDTO eventStateDTO : allEventStates) {
+//			if(eventStateDTO.getNome().equalsIgnoreCase("ACTIVE")){
+//				statoAttivo = eventStateDTO;
+//			}
+//		}
+		event.setStato(EventStateEnum.ACTIVE);
 		
 		//Scelta luogo
 		PlaceServiceStub placeService = new PlaceServiceStub();

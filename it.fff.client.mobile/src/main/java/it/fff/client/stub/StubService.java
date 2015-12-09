@@ -36,7 +36,7 @@ public class StubService{
 	public static final String WSRS_PATH_POST_joinEvent 				= "events/#/attendances/";
 	public static final String WSRS_PATH_DELETE_cancelEvent 			= "events/#/";
 	public static final String WSRS_PATH_POST_createEvent 				= "events/";
-	public static final String WSRS_PATH_GET_getAttendacesByEvent 		= "events/#/attendaces/";
+	public static final String WSRS_PATH_GET_getAttendacesByEvent 		= "events/#/attendances/";
 	public static final String WSRS_PATH_GET_getEvent 					= "events/#/";
 	public static final String WSRS_PATH_GET_searchEvents 				= "events/";
 	public static final String WSRS_PATH_GET_getPlacesByDescription 	= "places/";
@@ -57,7 +57,7 @@ public class StubService{
 	public static final String WSRS_PATH_GET_getAllAchievementTypes 	= "typological/achievementTypes/";
 	public static final String WSRS_PATH_GET_getAllStandardMessages 	= "typological/standardMessages/";
 	public static final String WSRS_PATH_GET_getAllAttendanceStates 	= "typological/attendanceStates/";
-	public static final String WSRS_PATH_GET_getAllEventStates 			= "typological/eventStates/";
+//	public static final String WSRS_PATH_GET_getAllEventStates 			= "typological/eventStates/";
 	public static final String WSRS_PATH_GET_getAllEventCategories 		= "typological/eventCategories/";
 	public static final String WSRS_PATH_GET_getAllNations 				= "typological/nations/";
 	

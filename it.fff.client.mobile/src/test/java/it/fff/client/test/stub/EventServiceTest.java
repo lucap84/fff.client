@@ -241,7 +241,7 @@ public class EventServiceTest extends WebServiceRestTest{
 		}
 	}
 
-	@Test
+	
 	public void getEventShouldReturnOneEventAsynch(){
 		
 		String requestedEventId = "1";

@@ -10,13 +10,12 @@ import javax.ws.rs.core.Response;
 
 import it.fff.client.secure.ClientSecureConfiguration;
 import it.fff.clientserver.common.dto.AchievementTypeDTO;
-import it.fff.clientserver.common.dto.AttendanceStateDTO;
 import it.fff.clientserver.common.dto.EventCategoryDTO;
-import it.fff.clientserver.common.dto.EventStateDTO;
 import it.fff.clientserver.common.dto.LanguageDTO;
 import it.fff.clientserver.common.dto.MessageStandardDTO;
 import it.fff.clientserver.common.dto.NationDTO;
 import it.fff.clientserver.common.dto.SubscriptionTypeDTO;
+import it.fff.clientserver.common.enums.EventStateEnum;
 
 public class TypologicalServiceStub extends StubService{
 	
@@ -68,25 +67,25 @@ public class TypologicalServiceStub extends StubService{
 		return entity;
 	}
 	
-	public List<AttendanceStateDTO> getAllAttendanceStates(String mediaType){
-		Client client = super.getClientInstance();
-		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllAttendanceStates);
-		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
-		Response response = requestBuilder.get();
-		List<AttendanceStateDTO> entity = response.readEntity(new GenericType<List<AttendanceStateDTO>>(){});
-		return entity;
-	}
+//	public List<AttendanceStateDTO> getAllAttendanceStates(String mediaType){
+//		Client client = super.getClientInstance();
+//		
+//		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllAttendanceStates);
+//		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
+//		Response response = requestBuilder.get();
+//		List<AttendanceStateDTO> entity = response.readEntity(new GenericType<List<AttendanceStateDTO>>(){});
+//		return entity;
+//	}
 	
-	public List<EventStateDTO> getAllEventStates(String mediaType){
-		Client client = super.getClientInstance();
-		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllEventStates);
-		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
-		Response response = requestBuilder.get();
-		List<EventStateDTO> entity = response.readEntity(new GenericType<List<EventStateDTO>>(){});
-		return entity;
-	}
+//	public List<EventStateEnum> getAllEventStates(String mediaType){
+//		Client client = super.getClientInstance();
+//		
+//		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getAllEventStates);
+//		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
+//		Response response = requestBuilder.get();
+//		List<EventStateEnum> entity = response.readEntity(new GenericType<List<EventStateEnum>>(){});
+//		return entity;
+//	}
 	
 	public List<EventCategoryDTO> getAllEventCategories(String mediaType){
 		Client client = super.getClientInstance();

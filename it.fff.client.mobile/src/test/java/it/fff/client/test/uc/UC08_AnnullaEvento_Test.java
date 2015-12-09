@@ -15,8 +15,8 @@ import org.junit.Test;
 import it.fff.client.stub.EventServiceStub;
 import it.fff.client.stub.TypologicalServiceStub;
 import it.fff.clientserver.common.dto.EventDTO;
-import it.fff.clientserver.common.dto.EventStateDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
+import it.fff.clientserver.common.enums.EventStateEnum;
 
 public class UC08_AnnullaEvento_Test {
 	
@@ -46,16 +46,16 @@ public class UC08_AnnullaEvento_Test {
 		 */
 		
 		//Scelgo stato CANCELED
-		TypologicalServiceStub typologicalService = new TypologicalServiceStub();
-		List<EventStateDTO> allEventStates = typologicalService.getAllEventStates(MediaType.APPLICATION_JSON);
-		EventStateDTO statoAnnullato = null;
-		for (EventStateDTO eventStateDTO : allEventStates) {
-			if(eventStateDTO.getNome().equalsIgnoreCase("Annullato")){
-				statoAnnullato = eventStateDTO;
-			}
-		}
+//		TypologicalServiceStub typologicalService = new TypologicalServiceStub();
+//		EventStateDTO statoAnnullato = null;
+//		List<EventStateDTO> allEventStates = typologicalService.getAllEventStates(MediaType.APPLICATION_JSON);
+//		for (EventStateDTO eventStateDTO : allEventStates) {
+//			if(eventStateDTO.getNome().equalsIgnoreCase("Annullato")){
+//				statoAnnullato = eventStateDTO;
+//			}
+//		}
 		
 		EventDTO eventToCheck = eventService.getEvent(cancelEventResult.getIdentifier(), MediaType.APPLICATION_JSON);
-		assertEquals(eventToCheck.getStato().getNome(),statoAnnullato);
+		assertEquals(eventToCheck.getStato(),EventStateEnum.CANCELED);
 	}
 }
