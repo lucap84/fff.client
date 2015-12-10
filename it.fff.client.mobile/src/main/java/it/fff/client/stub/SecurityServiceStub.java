@@ -16,6 +16,7 @@ import it.fff.client.secure.ClientSecureConfiguration;
 import it.fff.client.util.DHUtils;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
 import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
+import it.fff.clientserver.common.dto.ResetPasswordDTO;
 import it.fff.clientserver.common.dto.SessionDTO;
 import it.fff.clientserver.common.dto.UpdatePasswordDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
@@ -172,6 +173,21 @@ public class SecurityServiceStub extends StubService{
 		
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.post(null);
+		writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
+		
+		return writeResult;
+	}
+
+	public WriteResultDTO resetPassword(ResetPasswordDTO resetPasswordInput, String mediaType) {
+		Client client = super.getClientInstance();
+		
+		resetPasswordInput.setNewPassword(DigestUtils.md5Hex(resetPasswordInput.getNewPassword()));
+		
+		WriteResultDTO writeResult = null;
+		
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_PUT_resetPassword,resetPasswordInput.getEmail());
+		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
+		Response response = requestBuilder.put(Entity.entity(resetPasswordInput,mediaType));
 		writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
 		
 		return writeResult;

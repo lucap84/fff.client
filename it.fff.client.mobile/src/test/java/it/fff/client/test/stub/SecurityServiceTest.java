@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
+import it.fff.clientserver.common.dto.ResetPasswordDTO;
 import it.fff.clientserver.common.dto.SessionDTO;
 import it.fff.clientserver.common.dto.UpdatePasswordDTO;
 import it.fff.client.stub.SecurityServiceStub;
@@ -142,6 +143,26 @@ public class SecurityServiceTest extends WebServiceRestTest{
 		}
 	}	
 	
+	@Test
+	public void t7_resetPasswordShouldReturnConfirm(){
+		
+		ResetPasswordDTO resetPasswordInput = new ResetPasswordDTO();
+		resetPasswordInput.setEmail("lucap84@gmail.com");
+		resetPasswordInput.setNewPassword("mypasswordresettata");
+		resetPasswordInput.setVerificationCode("1234567890");
+		
+		WriteResultDTO resultResetPassword = null;
+		
+		SecurityServiceStub stub = new SecurityServiceStub();
+		{//Test JSON
+			resultResetPassword = stub.resetPassword(resetPasswordInput, MediaType.APPLICATION_JSON);
+			assertNotNull(resultResetPassword);
+			assertTrue(resultResetPassword.isOk());
+			assertTrue(resultResetPassword.getAffectedRecords()>0);
+			assertNotNull(resultResetPassword.getIdentifier());
+			assertFalse(resultResetPassword.getIdentifier().isEmpty());
+		}
+	}	
 	
 
 	

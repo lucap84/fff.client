@@ -45,6 +45,7 @@ public class StubService{
 	public static final String WSRS_PATH_POST_login 					= "security/login/";
 	public static final String WSRS_PATH_POST_logout 					= "security/#/logout/";
 	public static final String WSRS_PATH_PUT_updatePassword 			= "security/#/password/";
+	public static final String WSRS_PATH_PUT_resetPassword 				= "security/#/password/reset/";
 	public static final String WSRS_PATH_PUT_checkVerificationCode 		= "security/#/verificationcode/";
 	public static final String WSRS_PATH_POST_sendVerificationCode 		= "security/#/verificationcode/";
 	public static final String WSRS_PATH_PUT_modifyUserData 			= "users/#/";
