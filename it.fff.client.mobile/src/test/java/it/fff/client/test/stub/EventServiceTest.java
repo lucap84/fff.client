@@ -73,23 +73,6 @@ public class EventServiceTest extends WebServiceRestTest{
 		}
 	}	
 	
-	@Test
-	public void cancelAttendanceShouldReturnConfirm(){//annulla partecipazione da parte di uno partecipante
-		
-		String eventId = "1";
-		String attendanceToDel = "1";
-		WriteResultDTO result = null;
-
-		{//Test JSON
-			EventServiceStub stub = new EventServiceStub();
-			result = stub.cancelAttendance(eventId, attendanceToDel, MediaType.APPLICATION_JSON);
-			assertNotNull(result);
-			assertTrue(result.isOk());
-			assertTrue(result.getAffectedRecords()>0);
-			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
-		}
-	}	
 	
 	@Test
 	public void addFeedbackShouldReturnConfirm(){
@@ -261,8 +244,11 @@ public class EventServiceTest extends WebServiceRestTest{
 	public void searchEventsShouldReturnAtLeastOneEvent(){
 		
 		
-		String gpsLat = "1.1234";
-		String gpsLong = "2.4567";
+		String userGpsLat = "1.1234";
+		String userGgpsLong = "2.4567";
+		String radiusKM = "10";
+		String desideredGpsLat = "1.1235";
+		String desideredGgpsLong = "2.4566";		
 		String idCategoria = "1";
 		String partecipanti = "3";
 		
@@ -270,7 +256,7 @@ public class EventServiceTest extends WebServiceRestTest{
 
 		{//Test JSON
 			EventServiceStub stub = new EventServiceStub();
-			result = stub.searchEvents(gpsLat, gpsLong, idCategoria, partecipanti, MediaType.APPLICATION_JSON);
+			result = stub.searchEvents(userGpsLat, userGgpsLong, radiusKM, desideredGpsLat, desideredGgpsLong, idCategoria, partecipanti, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));

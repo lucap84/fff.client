@@ -12,6 +12,8 @@ import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
+
+import it.fff.client.stub.EventServiceStub;
 import it.fff.client.stub.UserServiceStub;
 import it.fff.clientserver.common.dto.*;
 
@@ -144,6 +146,24 @@ public class UserServiceTest extends WebServiceRestTest{
 		}	
 
 	}
+	
+	@Test
+	public void cancelAttendanceShouldReturnConfirm(){//annulla partecipazione da parte di uno partecipante (abbandona evento)
+		
+		String eventId = "1";
+		String userId = "1";
+		WriteResultDTO result = null;
+
+		{//Test JSON
+			UserServiceStub stub = new UserServiceStub();
+			result = stub.cancelAttendance(eventId, userId, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+			assertTrue(result.isOk());
+			assertTrue(result.getAffectedRecords()>0);
+			assertNotNull(result.getIdentifier());
+			assertFalse(result.getIdentifier().isEmpty());
+		}
+	}		
 	
 	public static void main(String[] args) {
 		UserServiceTest test = new UserServiceTest();

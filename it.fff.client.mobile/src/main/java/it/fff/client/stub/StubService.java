@@ -31,7 +31,6 @@ public class StubService{
 	public static final String WSRS_PATH_GET_getEventMessages 			= "events/#/messages/";
 	public static final String WSRS_PATH_POST_postEventStandardMessage	= "events/#/attendances/#/messages/standard/#/";
 	public static final String WSRS_PATH_POST_postEventMessage 			= "events/#/attendances/#/messages/";
-	public static final String WSRS_PATH_DELETE_cancelAttendance 		= "events/#/attendances/#/";
 	public static final String WSRS_PATH_POST_addFeedback 				= "events/#/attendances/#/feedback/";
 	public static final String WSRS_PATH_POST_joinEvent 				= "events/#/attendances/";
 	public static final String WSRS_PATH_DELETE_cancelEvent 			= "events/#/";
@@ -51,6 +50,7 @@ public class StubService{
 	public static final String WSRS_PATH_PUT_modifyUserData 			= "users/#/";
 	public static final String WSRS_PATH_POST_setCurrentPosition 		= "users/#/events/#/position/";
 	public static final String WSRS_PATH_GET_getEventsByUser 			= "users/#/events/";
+	public static final String WSRS_PATH_DELETE_cancelAttendance 		= "users/#/events/#/attendances/";
 	public static final String WSRS_PATH_GET_getUser 					= "users/#/";
 	public static final String WSRS_PATH_POST_updateProfileImage 		= "users/#/images/";
 	public static final String WSRS_PATH_GET_getAllLanguages 			= "typological/languages/";

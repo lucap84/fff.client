@@ -51,17 +51,6 @@ public class EventServiceStub  extends StubService{
 	}	
 	
 	
-	public WriteResultDTO cancelAttendance(String eventId, String attendanceToDel, String mediaType){
-		Client client = super.getClientInstance();
-		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_DELETE_cancelAttendance, eventId,attendanceToDel);
-		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
-		Response response = requestBuilder.delete();
-		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
-		return writeResult;
-	}	
-	
-	
 	public WriteResultDTO addFeedback(AttendanceDTO attendanceToAddFeedback, String mediaType){
 		Client client = super.getClientInstance();
 		
@@ -154,13 +143,23 @@ public class EventServiceStub  extends StubService{
 	}	
 	
 	
-	public List<EventDTO> searchEvents(String gpsLat, String gpsLong, String idCategoria, String partecipanti, String mediaType){
+	public List<EventDTO> searchEvents( String userGpsLat, 
+										String userGpsLong, 
+										String radiusKM, 
+										String desideredGpsLat, 
+										String desideredGpsLong,
+										String idCategoria, 
+										String partecipanti, 
+										String mediaType){
 		Client client = super.getClientInstance();
 		
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_searchEvents);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).
-				queryParam("gpsLat", gpsLat).
-				queryParam("gpsLong", gpsLong).
+				queryParam("userGpsLat", userGpsLat).
+				queryParam("userGpsLong", userGpsLong).
+				queryParam("radiusKM", radiusKM).
+				queryParam("desideredGpsLat", desideredGpsLat).
+				queryParam("desideredGpsLong", desideredGpsLong).
 				queryParam("idCategoria", idCategoria).
 				queryParam("partecipanti", partecipanti).request(mediaType);
 		Response response = requestBuilder.get();

@@ -10,10 +10,12 @@ import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 
 import it.fff.client.stub.EventServiceStub;
+import it.fff.client.stub.PlaceServiceStub;
 import it.fff.client.stub.StubService;
 import it.fff.client.stub.UserServiceStub;
 import it.fff.clientserver.common.dto.AttendanceDTO;
 import it.fff.clientserver.common.dto.EventDTO;
+import it.fff.clientserver.common.dto.PlaceDTO;
 import it.fff.clientserver.common.dto.UserDTO;
 
 public class UC09_RicercaEventoTest {
@@ -22,34 +24,61 @@ public class UC09_RicercaEventoTest {
 	@Test
 	public void test(){ //Ricerca evento
 		/*
-		 * Preconditions: UC1 Register or UC9 Login 
+		 * Preconditions: Register or Login 
 		 */
 		
-		StubService service = new StubService();
-		String clientSharedKey = service.getSecureConfiguration().getSharedKey();
-		String clientDeviceId = service.getSecureConfiguration().getDeviceId();
-		if(clientSharedKey==null || "".equals(clientSharedKey) || clientDeviceId==null || "".equals(clientDeviceId)){
-			UC01_RegistraUtente_Test registerTest = new UC01_RegistraUtente_Test();
-			registerTest.test();		
-		}
+//		StubService service = new StubService();
+//		String clientSharedKey = service.getSecureConfiguration().getSharedKey();
+//		String clientDeviceId = service.getSecureConfiguration().getDeviceId();
+//		if(clientSharedKey==null || "".equals(clientSharedKey) || clientDeviceId==null || "".equals(clientDeviceId)){
+//			UC01_RegistraUtente_Test registerTest = new UC01_RegistraUtente_Test();
+//			registerTest.test();		
+//		}
 		
 		
 		/* 
-		 * UC2:
+		 * getPlacesByDescription
 		 * SearchEvents
 		 * GetEvent
 		 */
 		EventServiceStub eventService = new EventServiceStub();
 		UserServiceStub userService = new UserServiceStub();
+		PlaceServiceStub placeService = new PlaceServiceStub();
 
+		//individuo la posizione dell'utente
+		double userGpsLat = 1.2;
+		double userGpsLong = 1.3;
 		
-		 // SearchEvents
-		String gpsLat = "1.1234";
-		String gpsLong = "2.4567";
+		double radiusKM = 10; //ipotizzo di ricercare in un raggio di 10KM
+		
+		//cerco un luogo dove vorrei l'evento 
+		String description = "chiringuito";
+
+		List<PlaceDTO> resultGetPlacesByDescription = placeService.getPlacesByDescription(description, MediaType.APPLICATION_JSON);
+		assertNotNull(resultGetPlacesByDescription);
+		assertTrue(resultGetPlacesByDescription.size()>0);
+
+		//filtro i luoghi desiderati che rientrano a nella distanza imposta
+		List<PlaceDTO> filteredResults = this.filterByposition(resultGetPlacesByDescription, userGpsLat, userGpsLong, radiusKM);
+		//Scelgo uno tra i luoghi filtrati
+		PlaceDTO placeDTO = filteredResults.get(0);
+		String desideredGpsLat = placeDTO.getGpsLat();
+		String desideredGpsLong = placeDTO.getGpsLong();
+
+		//Altri criteri di ricerca
 		String idCategoria = "1";
 		String partecipanti = "3";
 		
-		List<EventDTO> searchEventsOutput = eventService.searchEvents(gpsLat, gpsLong, idCategoria, partecipanti, MediaType.APPLICATION_JSON);
+
+		// SearchEvents
+		List<EventDTO> searchEventsOutput = eventService.searchEvents(	String.valueOf(userGpsLat), 
+																		String.valueOf(userGpsLong), 
+																		String.valueOf(radiusKM),
+																		String.valueOf(desideredGpsLat), 
+																		String.valueOf(desideredGpsLong),
+																		idCategoria, 
+																		partecipanti, 
+																		MediaType.APPLICATION_JSON);
 		assertNotNull(searchEventsOutput);
 		assertTrue(searchEventsOutput.size()>0);
 		assertNotNull(searchEventsOutput.get(0));
@@ -83,5 +112,13 @@ public class UC09_RicercaEventoTest {
 		assertTrue(getUserOutput.isOk());
 		assertNotNull(getUserOutput.getId());
 		
+	}
+
+	private List<PlaceDTO> filterByposition(List<PlaceDTO> resultGetPlacesByDescription, 
+											double userGpsLat,
+											double userGpsLong, 
+											double radiusKM) {
+		// TODO Auto-generated method stub
+		return resultGetPlacesByDescription;
 	}
 }

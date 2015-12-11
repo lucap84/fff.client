@@ -83,4 +83,14 @@ public class UserServiceStub  extends StubService{
 
 		return writeResult;
 	}
+	
+	public WriteResultDTO cancelAttendance(String eventId, String userId, String mediaType){
+		Client client = super.getClientInstance();
+		
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_DELETE_cancelAttendance, eventId,userId);
+		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
+		Response response = requestBuilder.delete();
+		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
+		return writeResult;
+	}	
 }
