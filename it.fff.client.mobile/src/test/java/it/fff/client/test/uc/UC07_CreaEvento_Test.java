@@ -23,6 +23,7 @@ import it.fff.clientserver.common.dto.EventDTO;
 import it.fff.clientserver.common.dto.PlaceDTO;
 import it.fff.clientserver.common.dto.UserDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
+import it.fff.clientserver.common.enums.AttendanceStateEnum;
 import it.fff.clientserver.common.enums.EventStateEnum;
 import it.fff.clientserver.common.secure.SecureConfiguration;
 
@@ -46,6 +47,7 @@ public class UC07_CreaEvento_Test {
 		UserDTO organizer = new UserDTO();
 		organizer.setId(eventService.getSecureConfiguration().getUserId());
 		
+		EventDTO event = new EventDTO();
 		
 		List<AttendanceDTO> partecipazioni = new ArrayList<AttendanceDTO>();
 		AttendanceDTO attendance = new AttendanceDTO();
@@ -53,9 +55,10 @@ public class UC07_CreaEvento_Test {
 		attendance.setOrganizer(true);
 		attendance.setValid(true);
 		attendance.setNumPartecipanti("3");
+		attendance.setEventId(event.getId());
+		attendance.setStato(AttendanceStateEnum.UNDETECTED);
 		partecipazioni.add(attendance);
 
-		EventDTO event = new EventDTO();
 		event.setPartecipazioni(partecipazioni);
 
 		event.setTitolo("nuovo evento");
@@ -77,7 +80,7 @@ public class UC07_CreaEvento_Test {
 		PlaceServiceStub placeService = new PlaceServiceStub();
 		List<PlaceDTO> getPlacesResult = null;
 		{//Test JSON
-			getPlacesResult =  placeService.getPlacesByDescription("luogo test", MediaType.APPLICATION_JSON);
+			getPlacesResult =  placeService.getPlacesByDescription("birra", MediaType.APPLICATION_JSON);
 			assertNotNull(getPlacesResult);
 			assertTrue(getPlacesResult.size()>0);
 			assertNotNull(getPlacesResult.get(0));

@@ -51,7 +51,7 @@ public class UC10_PartecipaEvento_Test {
 		
 		//creo la partecipazione a questo evento
 		AttendanceDTO attendanceToCreate = new AttendanceDTO();
-		attendanceToCreate.setEvent(event); //la lego all'evento
+		attendanceToCreate.setEventId(event.getId()); //la lego all'evento
 		attendanceToCreate.setUser(attendee);
 		attendanceToCreate.setOrganizer(false);
 		attendanceToCreate.setNumPartecipanti("3");

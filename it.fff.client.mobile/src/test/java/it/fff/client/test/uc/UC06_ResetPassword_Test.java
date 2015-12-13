@@ -31,7 +31,7 @@ public class UC06_ResetPassword_Test {
 			assertTrue(resultSendVerificationCode.isOk());
 		}
 		
-		String verificationCode = "1234567890";//preso dalla mail
+		String verificationCode = "1947307542";//preso dalla mail
 		
 		WriteResultDTO resultCheckVerificationCode = null;
 		{//Test JSON
@@ -63,5 +63,7 @@ public class UC06_ResetPassword_Test {
 		/*
 		 * Postconditions:  è possibile fare login con email e password nuova
 		 */
+		
+		
 	}
 }

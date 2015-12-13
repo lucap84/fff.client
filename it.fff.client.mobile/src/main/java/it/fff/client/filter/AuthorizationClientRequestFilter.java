@@ -66,6 +66,10 @@ public class AuthorizationClientRequestFilter implements ClientRequestFilter {
 		isToAuthorize &= !requestPath.matches("^security/registration.*");
 		isToAuthorize &= !requestPath.matches("^security/login.*");
 		
+		//servizi per reset password
+		isToAuthorize &= !requestPath.matches("^security/.*/password/reset/.*");
+		isToAuthorize &= !requestPath.matches("^security/.*/verificationcode/.*");		
+		
 		return isToAuthorize;
 	}	
 	

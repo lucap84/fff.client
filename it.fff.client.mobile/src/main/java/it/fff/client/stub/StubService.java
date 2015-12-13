@@ -57,7 +57,7 @@ public class StubService{
 	public static final String WSRS_PATH_GET_getAllSubscriptionTypes 	= "typological/subscriptionTypes/";
 	public static final String WSRS_PATH_GET_getAllAchievementTypes 	= "typological/achievementTypes/";
 	public static final String WSRS_PATH_GET_getAllStandardMessages 	= "typological/standardMessages/";
-	public static final String WSRS_PATH_GET_getAllAttendanceStates 	= "typological/attendanceStates/";
+//	public static final String WSRS_PATH_GET_getAllAttendanceStates 	= "typological/attendanceStates/";
 //	public static final String WSRS_PATH_GET_getAllEventStates 			= "typological/eventStates/";
 	public static final String WSRS_PATH_GET_getAllEventCategories 		= "typological/eventCategories/";
 	public static final String WSRS_PATH_GET_getAllNations 				= "typological/nations/";

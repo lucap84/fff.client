@@ -54,7 +54,7 @@ public class EventServiceStub  extends StubService{
 	public WriteResultDTO addFeedback(AttendanceDTO attendanceToAddFeedback, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String eventId = attendanceToAddFeedback.getEvent().getId();
+		String eventId = attendanceToAddFeedback.getEventId();
 		
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_addFeedback, eventId,attendanceToAddFeedback.getId());
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
@@ -67,7 +67,7 @@ public class EventServiceStub  extends StubService{
 	public WriteResultDTO joinEvent(AttendanceDTO attendanceToCreate, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String eventId = attendanceToCreate.getEvent().getId();
+		String eventId = attendanceToCreate.getEventId();
 		
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_joinEvent, eventId);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);

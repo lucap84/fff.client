@@ -81,15 +81,13 @@ public class EventServiceTest extends WebServiceRestTest{
 		event.setId("1");
 		UserDTO attendee = new UserDTO();
 		attendee.setId("1");
-		FeedbackDTO feedback = new FeedbackDTO();
-		feedback.setPositiveFeedback(true);
 		AttendanceDTO attendanceToAddFeedback = new AttendanceDTO();
 		attendanceToAddFeedback.setId("1");
-		attendanceToAddFeedback.setEvent(event);
+		attendanceToAddFeedback.setEventId(event.getId());
 		attendanceToAddFeedback.setUser(attendee);
 		attendanceToAddFeedback.setOrganizer(false);
 		attendanceToAddFeedback.setNumPartecipanti("22");
-		attendanceToAddFeedback.setFeedback(feedback);
+		attendanceToAddFeedback.setPositiveFeedback(true);
 		
 		WriteResultDTO result = null;
 
@@ -112,16 +110,13 @@ public class EventServiceTest extends WebServiceRestTest{
 		UserDTO attendee = new UserDTO();
 		attendee.setId("1");
 		
-		FeedbackDTO feedback = new FeedbackDTO();
-		feedback.setPositiveFeedback(true);
-
 		AttendanceDTO attendanceToCreate = new AttendanceDTO();
 		attendanceToCreate.setId("1");
-		attendanceToCreate.setEvent(event);
+		attendanceToCreate.setEventId(event.getId());
 		attendanceToCreate.setUser(attendee);
 		attendanceToCreate.setOrganizer(false);
 		attendanceToCreate.setNumPartecipanti("22");
-		attendanceToCreate.setFeedback(feedback);
+		attendanceToCreate.setPositiveFeedback(true);
 		
 		WriteResultDTO result = null;
 
@@ -172,6 +167,8 @@ public class EventServiceTest extends WebServiceRestTest{
 		attendance.setUser(organizer);
 		attendance.setOrganizer(true);
 		attendance.setValid(true);
+		attendance.setEventId(event.getId());
+		attendance.setNumPartecipanti("1");
 		
 		List<AttendanceDTO> partecipazioni = new ArrayList<AttendanceDTO>();
 		partecipazioni.add(attendance);
