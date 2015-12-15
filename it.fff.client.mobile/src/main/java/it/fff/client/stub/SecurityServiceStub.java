@@ -15,7 +15,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 import it.fff.client.secure.ClientSecureConfiguration;
 import it.fff.client.util.DHUtils;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
-import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
+import it.fff.clientserver.common.dto.LoginInputDTO;
+import it.fff.clientserver.common.dto.RegistrationInputDTO;
 import it.fff.clientserver.common.dto.ResetPasswordDTO;
 import it.fff.clientserver.common.dto.SessionDTO;
 import it.fff.clientserver.common.dto.UpdatePasswordDTO;
@@ -31,7 +32,7 @@ public class SecurityServiceStub extends StubService{
 		super(secureConfiguration);
 	}
 	
-	public AuthDataResponseDTO registerUser(RegistrationDataRequestDTO dtoInput, String mediaType, boolean enableSecurity){
+	public AuthDataResponseDTO registerUser(RegistrationInputDTO dtoInput, String mediaType, boolean enableSecurity){
 		Client client = super.getClientInstance();
 		
 		String deviceId = "android-mobile-0001";
@@ -95,7 +96,7 @@ public class SecurityServiceStub extends StubService{
 		return result;
 	}
 	
-	public AuthDataResponseDTO login(SessionDTO dtoInput, String mediaType, boolean enableSecurity){
+	public AuthDataResponseDTO login(LoginInputDTO loginInfo, String mediaType, boolean enableSecurity){
 		Client client = super.getClientInstance();
 		
 		String deviceId = super.getSecureConfiguration().getDeviceId();
@@ -114,7 +115,7 @@ public class SecurityServiceStub extends StubService{
 				requestBuilder = requestBuilder.header("dh", clientPpublicKey);
 			}
 			
-			Response responseJSON = requestBuilder.post(Entity.entity(dtoInput, mediaType));
+			Response responseJSON = requestBuilder.post(Entity.entity(loginInfo, mediaType));
 			
 			resultDTO = (AuthDataResponseDTO)responseJSON.readEntity(AuthDataResponseDTO.class);
 			

@@ -13,7 +13,7 @@ import org.junit.Test;
 import it.fff.client.stub.SecurityServiceStub;
 import it.fff.client.stub.StubService;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
-import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
+import it.fff.clientserver.common.dto.RegistrationInputDTO;
 
 public class UC01_RegistraUtente_Test {
 	
@@ -25,7 +25,7 @@ public class UC01_RegistraUtente_Test {
 		
 		SecurityServiceStub securityService = new SecurityServiceStub();
 		
-		RegistrationDataRequestDTO input1 = new RegistrationDataRequestDTO();
+		RegistrationInputDTO input1 = new RegistrationInputDTO();
 		input1.setNome("Luca");
 		input1.setCognome("Pelosi");
 		input1.setSesso("M");
@@ -61,6 +61,12 @@ public class UC01_RegistraUtente_Test {
 		
 		assertNotEquals("", securityService.getSecureConfiguration().getDeviceId());
 		assertNotEquals("", securityService.getSecureConfiguration().getSharedKey());
+	}
+	
+	public static void main(String[] args) {
+		long l = Long.
+				valueOf("1450200050612");
+		System.out.println(l);
 	}
 
 }

@@ -12,13 +12,14 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import it.fff.clientserver.common.dto.RegistrationDataRequestDTO;
+import it.fff.clientserver.common.dto.RegistrationInputDTO;
 import it.fff.clientserver.common.dto.ResetPasswordDTO;
 import it.fff.clientserver.common.dto.SessionDTO;
 import it.fff.clientserver.common.dto.UpdatePasswordDTO;
 import it.fff.client.stub.SecurityServiceStub;
 import it.fff.clientserver.common.dto.AccountDTO;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
+import it.fff.clientserver.common.dto.LoginInputDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -30,7 +31,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 	@Test
 	public void t1_registerUserShouldReturnConfirm(){
 		
-		RegistrationDataRequestDTO dtoInput = new RegistrationDataRequestDTO();
+		RegistrationInputDTO dtoInput = new RegistrationInputDTO();
 		dtoInput.setNome("Luca");
 		dtoInput.setCognome("Pelosi");
 		dtoInput.setSesso("M");
@@ -70,17 +71,14 @@ public class SecurityServiceTest extends WebServiceRestTest{
 	
 	@Test
 	public void t3_loginShouldReturnConfirm(){
-		AccountDTO accountDTO = new AccountDTO();
-		accountDTO.setEmail("lucap84@gmail.com");
-		accountDTO.setPassword(DigestUtils.md5Hex("mypassword"));
-		
-		SessionDTO sessionToCreate = new SessionDTO();
-		sessionToCreate.setAccount(accountDTO);
+		LoginInputDTO loginInfo = new LoginInputDTO();
+		loginInfo.setEmail("lucap84@gmail.com");
+		loginInfo.setPassword(DigestUtils.md5Hex("mypassword"));
 		
 		AuthDataResponseDTO result = null;
 		{//Test JSON
 			SecurityServiceStub stub = new SecurityServiceStub();
-			result = stub.login(sessionToCreate, MediaType.APPLICATION_JSON, false);
+			result = stub.login(loginInfo, MediaType.APPLICATION_JSON, false);
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertNotNull(result.getUserId());

@@ -44,18 +44,17 @@ public class UC07_CreaEvento_Test {
 
 		EventServiceStub eventService = new EventServiceStub();
 		
-		UserDTO organizer = new UserDTO();
-		organizer.setId(eventService.getSecureConfiguration().getUserId());
+		String userId = eventService.getSecureConfiguration().getUserId();
 		
 		EventDTO event = new EventDTO();
 		
 		List<AttendanceDTO> partecipazioni = new ArrayList<AttendanceDTO>();
 		AttendanceDTO attendance = new AttendanceDTO();
-		attendance.setUser(organizer);
+		attendance.setUserId(userId);
 		attendance.setOrganizer(true);
 		attendance.setValid(true);
 		attendance.setNumPartecipanti("3");
-		attendance.setEventId(event.getId());
+		attendance.setEventId(null);//non conosco l'id ancora perché l'evento ancora non esiste
 		attendance.setStato(AttendanceStateEnum.UNDETECTED);
 		partecipazioni.add(attendance);
 

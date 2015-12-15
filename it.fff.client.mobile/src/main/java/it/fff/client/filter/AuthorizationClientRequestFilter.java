@@ -52,7 +52,7 @@ public class AuthorizationClientRequestFilter implements ClientRequestFilter {
 				requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("Client is not logged").build());
 				return;
 			}
-			
+			//genero un nonce a 32 bit (grandezza di un Integer, cosi da poterlo trattare come Integer sul server
 			String nonce = new BigInteger(32,ClientSecureConfiguration.SECURE_RANDOM).toString();
 			String authorizationHeader = AuthenticationUtil.generateHMACAuthorizationHeader(retrievedSharedKey, userId, httpMethod, requestPath, formattedDate, nonce);
 			requestContext.getHeaders().add("Authorization", authorizationHeader);

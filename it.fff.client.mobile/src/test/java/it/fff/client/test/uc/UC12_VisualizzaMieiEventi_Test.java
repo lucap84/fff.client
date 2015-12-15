@@ -20,8 +20,8 @@ public class UC12_VisualizzaMieiEventi_Test {
 		 * Preconditions: UC1/UC9 + UC3/UC4 
 		 */
 		
-		UC01_RegistraUtente_Test registerTest = new UC01_RegistraUtente_Test();
-		registerTest.test();
+//		UC01_RegistraUtente_Test registerTest = new UC01_RegistraUtente_Test();
+//		registerTest.test();
 		
 		/*
 		 * UC6

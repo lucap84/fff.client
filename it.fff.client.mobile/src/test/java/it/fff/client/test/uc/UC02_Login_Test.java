@@ -14,6 +14,7 @@ import org.junit.Test;
 import it.fff.client.stub.SecurityServiceStub;
 import it.fff.clientserver.common.dto.AccountDTO;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
+import it.fff.clientserver.common.dto.LoginInputDTO;
 import it.fff.clientserver.common.dto.SessionDTO;
 
 public class UC02_Login_Test {
@@ -25,16 +26,12 @@ public class UC02_Login_Test {
 		 */
 		SecurityServiceStub securityService = new SecurityServiceStub();
 		
-//		LoginDataRequestDTO loginInput = new LoginDataRequestDTO();
-		AccountDTO accountDTO = new AccountDTO();
-		accountDTO.setEmail("lucap84@gmail.com");
-		accountDTO.setPassword(DigestUtils.md5Hex("mypassword"));
-		
-		SessionDTO sessionToCreate = new SessionDTO();
-		sessionToCreate.setAccount(accountDTO);
+		LoginInputDTO loginInfo = new LoginInputDTO();
+		loginInfo.setEmail("lucap84@gmail.com");
+		loginInfo.setPassword(DigestUtils.md5Hex("mypassword"));
 		
 		AuthDataResponseDTO loginOutput = null;
-		loginOutput = securityService.login(sessionToCreate, MediaType.APPLICATION_JSON, true);
+		loginOutput = securityService.login(loginInfo, MediaType.APPLICATION_JSON, true);
 		assertNotNull(loginOutput);
 		assertTrue(loginOutput.isOk());
 		assertNotNull(loginOutput.getUserId());

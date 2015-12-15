@@ -27,8 +27,6 @@ public class UC10_PartecipaEvento_Test {
 		EventServiceStub eventService = new EventServiceStub();
 		
 		String userId = eventService.getSecureConfiguration().getUserId();
-		UserDTO attendee = new UserDTO();
-		attendee.setId(userId);
 		
 		//Cerco un evento
 		String userGpsLat = "1.23";
@@ -52,7 +50,7 @@ public class UC10_PartecipaEvento_Test {
 		//creo la partecipazione a questo evento
 		AttendanceDTO attendanceToCreate = new AttendanceDTO();
 		attendanceToCreate.setEventId(event.getId()); //la lego all'evento
-		attendanceToCreate.setUser(attendee);
+		attendanceToCreate.setUserId(userId);
 		attendanceToCreate.setOrganizer(false);
 		attendanceToCreate.setNumPartecipanti("3");
 		attendanceToCreate.setStato(AttendanceStateEnum.UNDETECTED);

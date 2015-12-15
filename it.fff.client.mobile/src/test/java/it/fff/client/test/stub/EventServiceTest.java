@@ -2,6 +2,8 @@ package it.fff.client.test.stub;
 
 import it.fff.client.stub.EventServiceStub;
 import it.fff.clientserver.common.dto.*;
+import it.fff.clientserver.common.enums.FeedbackEnum;
+
 import javax.ws.rs.core.MediaType;
 
 import org.junit.Test;
@@ -77,17 +79,13 @@ public class EventServiceTest extends WebServiceRestTest{
 	@Test
 	public void addFeedbackShouldReturnConfirm(){
 		
-		EventDTO event = new EventDTO();
-		event.setId("1");
-		UserDTO attendee = new UserDTO();
-		attendee.setId("1");
 		AttendanceDTO attendanceToAddFeedback = new AttendanceDTO();
 		attendanceToAddFeedback.setId("1");
-		attendanceToAddFeedback.setEventId(event.getId());
-		attendanceToAddFeedback.setUser(attendee);
+		attendanceToAddFeedback.setEventId("1");
+		attendanceToAddFeedback.setUserId("1");
 		attendanceToAddFeedback.setOrganizer(false);
 		attendanceToAddFeedback.setNumPartecipanti("22");
-		attendanceToAddFeedback.setPositiveFeedback(true);
+		attendanceToAddFeedback.setFeedback(FeedbackEnum.NEGATIVE);
 		
 		WriteResultDTO result = null;
 
@@ -105,18 +103,13 @@ public class EventServiceTest extends WebServiceRestTest{
 	@Test
 	public void joinEventShouldReturnAnAttendance(){
 		
-		EventDTO event = new EventDTO();
-		event.setId("1");
-		UserDTO attendee = new UserDTO();
-		attendee.setId("1");
-		
 		AttendanceDTO attendanceToCreate = new AttendanceDTO();
 		attendanceToCreate.setId("1");
-		attendanceToCreate.setEventId(event.getId());
-		attendanceToCreate.setUser(attendee);
+		attendanceToCreate.setEventId("1");
+		attendanceToCreate.setUserId("1");
 		attendanceToCreate.setOrganizer(false);
 		attendanceToCreate.setNumPartecipanti("22");
-		attendanceToCreate.setPositiveFeedback(true);
+		attendanceToCreate.setFeedback(FeedbackEnum.POSITIVE);
 		
 		WriteResultDTO result = null;
 
@@ -153,18 +146,13 @@ public class EventServiceTest extends WebServiceRestTest{
 	@Test
 	public void createEventShouldReturnConfirm(){
 		
-		UserDTO organizer = new UserDTO();
-		organizer.setId("1");
-		organizer.setNome("Nome organizer");
-		organizer.setCognome("Cognome organizer");
-		
 		EventDTO event = new EventDTO();
 		event.setTitolo("nuovo evento");
 		event.setDescrizione("Descr nuovo evento");
 		event.setDurata("3");
 		
 		AttendanceDTO attendance = new AttendanceDTO();
-		attendance.setUser(organizer);
+		attendance.setUserId("1");
 		attendance.setOrganizer(true);
 		attendance.setValid(true);
 		attendance.setEventId(event.getId());

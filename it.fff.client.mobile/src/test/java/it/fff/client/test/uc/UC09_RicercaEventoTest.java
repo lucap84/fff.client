@@ -106,7 +106,7 @@ public class UC09_RicercaEventoTest {
 		assertNotNull(getAttendacesByEventOutput.get(0).getId());
 		
 		 //getUser
-		String userId = getAttendacesByEventOutput.get(0).getUser().getId();
+		String userId = getAttendacesByEventOutput.get(0).getUserId();
 		UserDTO getUserOutput = userService.getUser(userId, MediaType.APPLICATION_JSON);
 		assertNotNull(getUserOutput);
 		assertTrue(getUserOutput.isOk());
