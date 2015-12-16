@@ -15,6 +15,7 @@ import it.fff.clientserver.common.dto.AttendanceDTO;
 import it.fff.clientserver.common.dto.EventDTO;
 import it.fff.clientserver.common.dto.MessageDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
+import it.fff.clientserver.common.enums.FeedbackEnum;
 
 public class EventServiceStub  extends StubService{
 
@@ -51,14 +52,12 @@ public class EventServiceStub  extends StubService{
 	}	
 	
 	
-	public WriteResultDTO addFeedback(AttendanceDTO attendanceToAddFeedback, String mediaType){
+	public WriteResultDTO addFeedback(String eventId, String attendanceId, FeedbackEnum feedback, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String eventId = attendanceToAddFeedback.getEventId();
-		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_addFeedback, eventId,attendanceToAddFeedback.getId());
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_addFeedback, eventId, attendanceId);
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
-		Response response = requestBuilder.post(Entity.entity(attendanceToAddFeedback, mediaType));
+		Response response = requestBuilder.post(Entity.entity(feedback, mediaType));
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
 		return writeResult;
 	}	

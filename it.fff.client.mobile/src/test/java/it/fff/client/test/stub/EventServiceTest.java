@@ -79,19 +79,14 @@ public class EventServiceTest extends WebServiceRestTest{
 	@Test
 	public void addFeedbackShouldReturnConfirm(){
 		
-		AttendanceDTO attendanceToAddFeedback = new AttendanceDTO();
-		attendanceToAddFeedback.setId("1");
-		attendanceToAddFeedback.setEventId("1");
-		attendanceToAddFeedback.setUserId("1");
-		attendanceToAddFeedback.setOrganizer(false);
-		attendanceToAddFeedback.setNumPartecipanti("22");
-		attendanceToAddFeedback.setFeedback(FeedbackEnum.NEGATIVE);
+		String eventId = "1";
+		String attendanceId = "1";
 		
 		WriteResultDTO result = null;
 
 		{//Test JSON
 			EventServiceStub stub = new EventServiceStub();
-			result = stub.addFeedback(attendanceToAddFeedback, MediaType.APPLICATION_JSON);
+			result = stub.addFeedback(eventId, attendanceId, FeedbackEnum.NEGATIVE, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);

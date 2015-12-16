@@ -41,10 +41,9 @@ public class UC13_RilasciaFeedback_Test {
 		AttendanceDTO attendanceToAddFeedback = partecipazioni.get(0);
 		
 		//Imposto il feedback positivo/negativo
-		attendanceToAddFeedback.setFeedback(FeedbackEnum.POSITIVE);
+		String attendanceId = attendanceToAddFeedback.getId();
 		
-		//Salvo il nuovo feedback
-		WriteResultDTO result = eventService.addFeedback(attendanceToAddFeedback, MediaType.APPLICATION_JSON);
+		WriteResultDTO result = eventService.addFeedback(eventDTO.getId(), attendanceId, FeedbackEnum.POSITIVE, MediaType.APPLICATION_JSON);
 		assertNotNull(result);
 		assertTrue(result.isOk());
 		assertTrue(result.getAffectedRecords()>0);
