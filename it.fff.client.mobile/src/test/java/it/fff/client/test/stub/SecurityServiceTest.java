@@ -43,7 +43,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 
 		{//Test JSON
 			SecurityServiceStub stub = new SecurityServiceStub();
-			result = stub.registerUser(dtoInput, MediaType.APPLICATION_JSON, false);
+			result = stub.registerUser(dtoInput, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.isOk());
 //			assertNotNull(result.getServerPublicKey());
@@ -78,7 +78,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 		AuthDataResponseDTO result = null;
 		{//Test JSON
 			SecurityServiceStub stub = new SecurityServiceStub();
-			result = stub.login(loginInfo, MediaType.APPLICATION_JSON, false);
+			result = stub.login(loginInfo, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertNotNull(result.getUserId());

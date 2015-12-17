@@ -57,14 +57,13 @@ public class StubService{
 	public static final String WSRS_PATH_GET_getAllSubscriptionTypes 	= "typological/subscriptionTypes/";
 	public static final String WSRS_PATH_GET_getAllAchievementTypes 	= "typological/achievementTypes/";
 	public static final String WSRS_PATH_GET_getAllStandardMessages 	= "typological/standardMessages/";
-//	public static final String WSRS_PATH_GET_getAllAttendanceStates 	= "typological/attendanceStates/";
-//	public static final String WSRS_PATH_GET_getAllEventStates 			= "typological/eventStates/";
 	public static final String WSRS_PATH_GET_getAllEventCategories 		= "typological/eventCategories/";
 	public static final String WSRS_PATH_GET_getAllNations 				= "typological/nations/";
 	
 
 
 	private ClientSecureConfiguration secureConfiguration;
+	private static Boolean isSecure;
 
 	public StubService(ClientSecureConfiguration secureConfiguration){
 		this.secureConfiguration = secureConfiguration;
@@ -140,6 +139,15 @@ public class StubService{
 		}
 		path += mediaType.toLowerCase().substring("application/".length());
 		return path;
+	}
+	
+	public static boolean isSecurityEnabled(){
+		if(StubService.isSecure==null){
+			Properties clientConfigurationProperties = ClientConfiguration.getInstance().getClientConfigurationProperties();
+			String securityEnabled = clientConfigurationProperties.getProperty(ClientConstants.PROP_SECURITY_ENABLED);
+			StubService.isSecure = "1".equals(securityEnabled);		
+		}
+		return StubService.isSecure;
 	}
 
 }

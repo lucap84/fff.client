@@ -32,7 +32,7 @@ public class SecurityServiceStub extends StubService{
 		super(secureConfiguration);
 	}
 	
-	public AuthDataResponseDTO registerUser(RegistrationInputDTO dtoInput, String mediaType, boolean enableSecurity){
+	public AuthDataResponseDTO registerUser(RegistrationInputDTO dtoInput, String mediaType){
 		Client client = super.getClientInstance();
 		
 		String deviceId = "android-mobile-0001";
@@ -45,7 +45,7 @@ public class SecurityServiceStub extends StubService{
 		try{
 			KeyAgreement clientKeyAgree = null;
 			DHUtils dhUtil = null;
-			if(enableSecurity){
+			if(StubService.isSecurityEnabled()){
 				clientKeyAgree = KeyAgreement.getInstance("DH");
 				dhUtil = new DHUtils();
 				String clientPpublicKey = dhUtil.generateClientPublicKey(clientKeyAgree);
@@ -57,7 +57,7 @@ public class SecurityServiceStub extends StubService{
 			resultDTO = (AuthDataResponseDTO)response.readEntity(AuthDataResponseDTO.class);
 			
 			String sharedSecret = null;
-			if(enableSecurity){
+			if(StubService.isSecurityEnabled()){
 				byte[] serverPublicKey =  Base64.decodeBase64(resultDTO.getServerPublicKey());
 				 sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
 			}
@@ -96,7 +96,7 @@ public class SecurityServiceStub extends StubService{
 		return result;
 	}
 	
-	public AuthDataResponseDTO login(LoginInputDTO loginInfo, String mediaType, boolean enableSecurity){
+	public AuthDataResponseDTO login(LoginInputDTO loginInfo, String mediaType){
 		Client client = super.getClientInstance();
 		
 		String deviceId = super.getSecureConfiguration().getDeviceId();
@@ -108,7 +108,7 @@ public class SecurityServiceStub extends StubService{
 		try{
 			KeyAgreement clientKeyAgree = null;
 			DHUtils dhUtil = null;
-			if(enableSecurity){
+			if(StubService.isSecurityEnabled()){
 				clientKeyAgree = KeyAgreement.getInstance("DH");
 				dhUtil = new DHUtils();
 				String clientPpublicKey = dhUtil.generateClientPublicKey(clientKeyAgree);
@@ -120,7 +120,7 @@ public class SecurityServiceStub extends StubService{
 			resultDTO = (AuthDataResponseDTO)responseJSON.readEntity(AuthDataResponseDTO.class);
 			
 			String sharedSecret = null;
-			if(enableSecurity){
+			if(StubService.isSecurityEnabled()){
 				byte[] serverPublicKey =  Base64.decodeBase64(resultDTO.getServerPublicKey());
 				sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
 			}

@@ -31,7 +31,7 @@ public class UC02_Login_Test {
 		loginInfo.setPassword(DigestUtils.md5Hex("mypassword"));
 		
 		AuthDataResponseDTO loginOutput = null;
-		loginOutput = securityService.login(loginInfo, MediaType.APPLICATION_JSON, true);
+		loginOutput = securityService.login(loginInfo, MediaType.APPLICATION_JSON);
 		assertNotNull(loginOutput);
 		assertTrue(loginOutput.isOk());
 		assertNotNull(loginOutput.getUserId());

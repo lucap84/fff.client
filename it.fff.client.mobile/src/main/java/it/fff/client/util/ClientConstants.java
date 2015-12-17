@@ -1,6 +1,11 @@
 package it.fff.client.util;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 public class ClientConstants {
+	
+	public final static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd_hh-mm-ss");
 
 	public static final String PROP_SECURE_FILEPATH		= "secure.configuration.file";
 	public static final String PROP_SECURE_DEVICE		= "device.id";
@@ -9,6 +14,8 @@ public class ClientConstants {
 
 	public static final String CLIENT_CONFIG_FILENAME	= "configuration.properties";
 	public static final String PROP_SERVER_REST_URI		= "server.restapi.uri";
+	public static final String PROP_SECURITY_ENABLED	= "secure.enabled";
+	
 	
 	 
 

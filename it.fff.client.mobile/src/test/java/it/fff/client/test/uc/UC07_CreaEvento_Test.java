@@ -16,6 +16,7 @@ import it.fff.client.stub.EventServiceStub;
 import it.fff.client.stub.PlaceServiceStub;
 import it.fff.client.stub.StubService;
 import it.fff.client.stub.TypologicalServiceStub;
+import it.fff.client.util.ClientConstants;
 import it.fff.clientserver.common.dto.AttendanceDTO;
 import it.fff.clientserver.common.dto.CityDTO;
 import it.fff.clientserver.common.dto.EventCategoryDTO;
@@ -91,7 +92,7 @@ public class UC07_CreaEvento_Test {
 		
 		event.setLocation(luogo);
 		
-		String dataStartEvento = SecureConfiguration.DATE_FORMATTER.format(new Date());
+		String dataStartEvento = ClientConstants.DATE_FORMATTER.format(new Date());
 		event.setDataInizio(dataStartEvento);
 		event.setDurata("5");
 		
