@@ -23,7 +23,7 @@ public class UC05_CambioPassword_Test {
 		SecurityServiceStub securityService = new SecurityServiceStub();
 		
 		UpdatePasswordDTO updatePasswordInput = new UpdatePasswordDTO();
-		updatePasswordInput.setUserId(securityService.getSecureConfiguration().getUserId());
+		updatePasswordInput.setUserId(Integer.valueOf(securityService.getSecureConfiguration().getUserId()));
 		updatePasswordInput.setEmail("lucap84@gmail.com");
 		updatePasswordInput.setOldPassword("mypassword");
 		updatePasswordInput.setNewPassword("mypasswordupdated");
@@ -35,7 +35,7 @@ public class UC05_CambioPassword_Test {
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}		
 		
 		/*

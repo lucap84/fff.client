@@ -26,7 +26,7 @@ public class UC11_AbbandonaEvento_Test {
 		
 		UserServiceStub userService = new UserServiceStub();
 		
-		String userId = userService.getSecureConfiguration().getUserId();
+		int userId = Integer.valueOf(userService.getSecureConfiguration().getUserId());
 
 		
 		//recupero gli eventi a cui partecipo
@@ -38,7 +38,7 @@ public class UC11_AbbandonaEvento_Test {
 		
 		//Scelgo l'evento da abbandonare tra i miei
 		EventDTO eventDTO = resultGetEventsByUser.get(0);
-		String idEventoDaAbbandonare = eventDTO.getId();
+		int idEventoDaAbbandonare = eventDTO.getId();
 		
 		//Abbandono evento
 		WriteResultDTO cancelAttendanceResult = userService.cancelAttendance(idEventoDaAbbandonare, userId, MediaType.APPLICATION_JSON);
@@ -46,7 +46,7 @@ public class UC11_AbbandonaEvento_Test {
 		assertTrue(cancelAttendanceResult.isOk());
 		assertTrue(cancelAttendanceResult.getAffectedRecords()>0);
 		assertNotNull(cancelAttendanceResult.getIdentifier());
-		assertFalse(cancelAttendanceResult.getIdentifier().isEmpty());		
+		assertFalse(cancelAttendanceResult.getIdentifier()<=0);		
 		
 		/*
 		 * Postconditions:  l'evento non è piu tra gli eventi dell'utente

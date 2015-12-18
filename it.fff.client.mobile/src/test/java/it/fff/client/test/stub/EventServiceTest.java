@@ -21,7 +21,7 @@ public class EventServiceTest extends WebServiceRestTest{
 	@Test
 	public void getEventMessagesShouldReturnAtLeastOneMessage(){
 		
-		String eventId = "1";
+		int eventId = 1;
 		
 		List<MessageDTO> result = null;
 
@@ -38,9 +38,9 @@ public class EventServiceTest extends WebServiceRestTest{
 	@Test
 	public void postEventStandardMessageShouldReturnConfirm(){
 		
-		String eventId = "1";
-		String attendanceId = "1";
-		String sdtMsgId = "1";
+		int eventId = 1;
+		int attendanceId = 1;
+		int sdtMsgId = 1;
 		
 		WriteResultDTO result = null;
 
@@ -51,7 +51,7 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}
 	
@@ -59,8 +59,8 @@ public class EventServiceTest extends WebServiceRestTest{
 	public void postEventMessageShouldReturnConfirm(){
 		
 		
-		String eventId = "1";
-		String attendanceId = "1";
+		int eventId = 1;
+		int attendanceId = 1;
 		String message = "Very long message posted to server Very long message posted to server Very long message posted to server Very long message posted to server...";
 		WriteResultDTO result = null;
 
@@ -71,7 +71,7 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}	
 	
@@ -79,8 +79,8 @@ public class EventServiceTest extends WebServiceRestTest{
 	@Test
 	public void addFeedbackShouldReturnConfirm(){
 		
-		String eventId = "1";
-		String attendanceId = "1";
+		int eventId = 1;
+		int attendanceId = 1;
 		
 		WriteResultDTO result = null;
 
@@ -91,7 +91,7 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}	
 	
@@ -99,9 +99,9 @@ public class EventServiceTest extends WebServiceRestTest{
 	public void joinEventShouldReturnAnAttendance(){
 		
 		AttendanceDTO attendanceToCreate = new AttendanceDTO();
-		attendanceToCreate.setId("1");
-		attendanceToCreate.setEventId("1");
-		attendanceToCreate.setUserId("1");
+		attendanceToCreate.setId(1);
+		attendanceToCreate.setEventId(1);
+		attendanceToCreate.setUserId(1);
 		attendanceToCreate.setOrganizer(false);
 		attendanceToCreate.setNumPartecipanti("22");
 		attendanceToCreate.setFeedback(FeedbackEnum.POSITIVE);
@@ -115,7 +115,7 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}	
 	
@@ -134,7 +134,7 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}	
 	
@@ -144,10 +144,10 @@ public class EventServiceTest extends WebServiceRestTest{
 		EventDTO event = new EventDTO();
 		event.setTitolo("nuovo evento");
 		event.setDescrizione("Descr nuovo evento");
-		event.setDurata("3");
+		event.setDurata(3);
 		
 		AttendanceDTO attendance = new AttendanceDTO();
-		attendance.setUserId("1");
+		attendance.setUserId(1);
 		attendance.setOrganizer(true);
 		attendance.setValid(true);
 		attendance.setEventId(event.getId());
@@ -167,14 +167,14 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}	
 	
 	@Test
 	public void getAttendacesByEventShouldReturnAtLeastOneAttendance(){
 		
-		String requestedEventId = "1";
+		int requestedEventId = 1;
 		
 		List<AttendanceDTO> result = null;
 
@@ -192,7 +192,7 @@ public class EventServiceTest extends WebServiceRestTest{
 	@Test
 	public void getEventShouldReturnOneEvent(){
 		
-		String requestedEventId = "1";
+		int requestedEventId = 1;
 		
 		EventDTO result = null;
 

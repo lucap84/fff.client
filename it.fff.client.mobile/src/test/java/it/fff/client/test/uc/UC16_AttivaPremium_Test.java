@@ -32,7 +32,7 @@ public class UC16_AttivaPremium_Test {
 		TypologicalServiceStub typologicalService = new TypologicalServiceStub();
 		PremiumServiceStub premiumService = new PremiumServiceStub();
 
-		String userIdAbbonato = premiumService.getSecureConfiguration().getUserId(); 
+		int userIdAbbonato = Integer.valueOf(premiumService.getSecureConfiguration().getUserId()); 
 		
 		List<SubscriptionTypeDTO> allSubscriptionTypes = typologicalService.getAllSubscriptionTypes(MediaType.APPLICATION_JSON);
 		SubscriptionTypeDTO subscriptionTypeDTO = allSubscriptionTypes.get(0);
@@ -66,7 +66,7 @@ public class UC16_AttivaPremium_Test {
 		assertTrue(upgradeToPremiumResult.isOk());
 		assertTrue(upgradeToPremiumResult.getAffectedRecords()>0);
 		assertNotNull(upgradeToPremiumResult.getIdentifier());
-		assertFalse(upgradeToPremiumResult.getIdentifier().isEmpty());
+		assertFalse(upgradeToPremiumResult.getIdentifier()<=0);
 
 		
 		

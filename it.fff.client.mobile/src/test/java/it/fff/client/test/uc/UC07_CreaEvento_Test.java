@@ -45,7 +45,7 @@ public class UC07_CreaEvento_Test {
 
 		EventServiceStub eventService = new EventServiceStub();
 		
-		String userId = eventService.getSecureConfiguration().getUserId();
+		int userId = Integer.valueOf(eventService.getSecureConfiguration().getUserId());
 		
 		EventDTO event = new EventDTO();
 		
@@ -55,7 +55,7 @@ public class UC07_CreaEvento_Test {
 		attendance.setOrganizer(true);
 		attendance.setValid(true);
 		attendance.setNumPartecipanti("3");
-		attendance.setEventId(null);//non conosco l'id ancora perché l'evento ancora non esiste
+		attendance.setEventId(0);//non conosco l'id ancora perché l'evento ancora non esiste
 		attendance.setStato(AttendanceStateEnum.UNDETECTED);
 		partecipazioni.add(attendance);
 
@@ -94,7 +94,7 @@ public class UC07_CreaEvento_Test {
 		
 		String dataStartEvento = ClientConstants.DATE_FORMATTER.format(new Date());
 		event.setDataInizio(dataStartEvento);
-		event.setDurata("5");
+		event.setDurata(5);
 		
 		List<EventCategoryDTO> allEventCategories = typologicalService.getAllEventCategories(MediaType.APPLICATION_JSON);
 		EventCategoryDTO categoriaEvento = allEventCategories.get(0); //Scelgo categoria
@@ -109,7 +109,7 @@ public class UC07_CreaEvento_Test {
 			assertTrue(createEventResult.isOk());
 			assertTrue(createEventResult.getAffectedRecords()>0);
 			assertNotNull(createEventResult.getIdentifier());
-			assertFalse(createEventResult.getIdentifier().isEmpty());
+			assertFalse(createEventResult.getIdentifier()<=0);
 		}		
 		
 		

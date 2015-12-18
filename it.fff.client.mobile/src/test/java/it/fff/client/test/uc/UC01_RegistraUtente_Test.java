@@ -38,7 +38,7 @@ public class UC01_RegistraUtente_Test {
 		assertTrue(result.isOk());
 		assertNotNull(result.getServerPublicKey());
 		assertNotNull(result.getUserId());
-		assertFalse(result.getUserId().isEmpty());
+		assertFalse(result.getUserId()<=0);
 		
 //		RegistrationDataRequestDTO input2 = new RegistrationDataRequestDTO();
 //		input2.setNome("Tizio");

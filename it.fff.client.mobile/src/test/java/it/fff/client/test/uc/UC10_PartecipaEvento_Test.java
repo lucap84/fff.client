@@ -26,7 +26,7 @@ public class UC10_PartecipaEvento_Test {
 		 */
 		EventServiceStub eventService = new EventServiceStub();
 		
-		String userId = eventService.getSecureConfiguration().getUserId();
+		int userId = Integer.valueOf(eventService.getSecureConfiguration().getUserId());
 		
 		//Cerco un evento
 		String userGpsLat = "1.23";
@@ -63,7 +63,7 @@ public class UC10_PartecipaEvento_Test {
 		assertTrue(resultJoinEvent.isOk());
 		assertTrue(resultJoinEvent.getAffectedRecords()>0);
 		assertNotNull(resultJoinEvent.getIdentifier());
-		assertFalse(resultJoinEvent.getIdentifier().isEmpty());
+		assertFalse(resultJoinEvent.getIdentifier()<=0);
 		
 		/*
 		 * Postconditions:  

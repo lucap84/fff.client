@@ -31,31 +31,31 @@ public class UC15_PartecipantePubblicaMessaggio_Test {
 		UserServiceStub userService = new UserServiceStub();
 		TypologicalServiceStub typologicalService = new TypologicalServiceStub();
 		
-		String userId = eventService.getSecureConfiguration().getUserId();
+		int userId = Integer.valueOf(eventService.getSecureConfiguration().getUserId());
 		
 		//Recupero i miei eventi
 		List<EventDTO> eventsByUser = userService.getEventsByUser(userId, MediaType.APPLICATION_JSON);
 		
 		//scelgo un evento di cui sono partecipante
 		EventDTO eventDTO = eventsByUser.get(0);
-		String eventId = eventDTO.getId();
+		int eventId = eventDTO.getId();
 		
 		//recupero la mia partecipazione
 		List<AttendanceDTO> partecipazioni = eventDTO.getPartecipazioni();
 		AttendanceDTO attendanceDTO = partecipazioni.get(0);
-		String attendanceId = attendanceDTO.getId();
+		int attendanceId = attendanceDTO.getId();
 		
 		//scelgo uno dei possibili messaggi standard
 		List<MessageStandardDTO> allStandardMessages = typologicalService.getAllStandardMessages(MediaType.APPLICATION_JSON);
 		MessageStandardDTO messageStandardDTO = allStandardMessages.get(0);
-		String sdtMsgId = messageStandardDTO.getId();
+		int sdtMsgId = messageStandardDTO.getId();
 		
 		WriteResultDTO postEventStandardMessageResult = eventService.postEventStandardMessage(eventId, attendanceId, sdtMsgId, MediaType.APPLICATION_JSON);
 		assertNotNull(postEventStandardMessageResult);
 		assertTrue(postEventStandardMessageResult.isOk());
 		assertTrue(postEventStandardMessageResult.getAffectedRecords()>0);
 		assertNotNull(postEventStandardMessageResult.getIdentifier());
-		assertFalse(postEventStandardMessageResult.getIdentifier().isEmpty());		
+		assertFalse(postEventStandardMessageResult.getIdentifier()<=0);		
 		
 		/*
 		 * Postconditions:  il messaggio è visibile nell'evento

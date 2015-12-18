@@ -85,7 +85,7 @@ public class UC09_RicercaEventoTest {
 		assertNotNull(searchEventsOutput.get(0).getId());
 		
 		// getEvent
-		String eventId = searchEventsOutput.get(0).getId();
+		int eventId = searchEventsOutput.get(0).getId();
 		EventDTO getEventOutput = eventService.getEvent(eventId, MediaType.APPLICATION_JSON);
 		assertNotNull(getEventOutput);
 		assertNotNull(getEventOutput.getId());
@@ -98,7 +98,7 @@ public class UC09_RicercaEventoTest {
 		 */
 		
 		// getAttendancesByEvent
-		String eventId2 = getEventOutput.getId();
+		int eventId2 = getEventOutput.getId();
 		List<AttendanceDTO> getAttendacesByEventOutput = eventService.getAttendacesByEvent(eventId2, MediaType.APPLICATION_JSON);
 		assertNotNull(getAttendacesByEventOutput);
 		assertTrue(getAttendacesByEventOutput.size()>0);
@@ -106,7 +106,7 @@ public class UC09_RicercaEventoTest {
 		assertNotNull(getAttendacesByEventOutput.get(0).getId());
 		
 		 //getUser
-		String userId = getAttendacesByEventOutput.get(0).getUserId();
+		int userId = getAttendacesByEventOutput.get(0).getUserId();
 		UserDTO getUserOutput = userService.getUser(userId, MediaType.APPLICATION_JSON);
 		assertNotNull(getUserOutput);
 		assertTrue(getUserOutput.isOk());

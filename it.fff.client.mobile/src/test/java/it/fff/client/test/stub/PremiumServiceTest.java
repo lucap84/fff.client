@@ -28,7 +28,7 @@ public class PremiumServiceTest extends WebServiceRestTest{
 	public void upgradeToPremiumShouldReturnConfirm(){
 		
 
-		String userIdAbbonato = "1"; 
+		int userIdAbbonato = 1; 
 				
 		SubscriptionDTO subscriptionDTO = new SubscriptionDTO();
 		subscriptionDTO.setUserIdAbbonato(userIdAbbonato);
@@ -53,7 +53,7 @@ public class PremiumServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}
 	

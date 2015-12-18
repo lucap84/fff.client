@@ -24,7 +24,7 @@ public class UserServiceStub  extends StubService{
 	public WriteResultDTO modifyUserData(UserDTO  userToUpdate, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_PUT_modifyUserData,userToUpdate.getId());
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_PUT_modifyUserData,String.valueOf(userToUpdate.getId()));
 		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.put(Entity.entity(userToUpdate, mediaType));
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
@@ -43,10 +43,10 @@ public class UserServiceStub  extends StubService{
 		return writeResult;
 	}	
 	
-	public List<EventDTO> getEventsByUser(String userId, String mediaType){
+	public List<EventDTO> getEventsByUser(int userId, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getEventsByUser,userId);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getEventsByUser,String.valueOf(userId));
 		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		final List<EventDTO> entity = response.readEntity(new GenericType<List<EventDTO>>(){});
@@ -54,10 +54,10 @@ public class UserServiceStub  extends StubService{
 		return entity;
 	}
 	
-	public UserDTO getUser(String userId, String mediaType){
+	public UserDTO getUser(int userId, String mediaType){
 		Client client = super.getClientInstance();
 
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getUser,userId);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getUser,String.valueOf(userId));
 		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.get();
 		UserDTO entity = response.readEntity(UserDTO.class);
@@ -65,7 +65,7 @@ public class UserServiceStub  extends StubService{
 		return entity;
 	}
 	
-	public WriteResultDTO updateProfileImage(String userId, String imageLocation, String mediaType){
+	public WriteResultDTO updateProfileImage(int userId, String imageLocation, String mediaType){
 		Client client = super.getClientInstance();
 		
 		File f = new File(imageLocation);
@@ -76,7 +76,7 @@ public class UserServiceStub  extends StubService{
 		final FormDataMultiPart multipart = new FormDataMultiPart();
 		multipart.bodyPart(uploadFilePart);
 
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_updateProfileImage,userId);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_updateProfileImage,String.valueOf(userId));
 		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request();
 		Response response = requestBuilder.post(Entity.entity(multipart, MediaType.MULTIPART_FORM_DATA));
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);	
@@ -84,10 +84,10 @@ public class UserServiceStub  extends StubService{
 		return writeResult;
 	}
 	
-	public WriteResultDTO cancelAttendance(String eventId, String userId, String mediaType){
+	public WriteResultDTO cancelAttendance(int eventId, int userId, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_DELETE_cancelAttendance, eventId,userId);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_DELETE_cancelAttendance, String.valueOf(eventId),String.valueOf(userId));
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.delete();
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);

@@ -40,7 +40,7 @@ public class UC06_ResetPassword_Test {
 			assertTrue(resultCheckVerificationCode.isOk());
 			assertTrue(resultCheckVerificationCode.getAffectedRecords()>0);
 			assertNotNull(resultCheckVerificationCode.getIdentifier());
-			assertFalse(resultCheckVerificationCode.getIdentifier().isEmpty());
+			assertFalse(resultCheckVerificationCode.getIdentifier()<=0);
 		}		
 		
 		//Se ho passato gli assert allora ci sono record modificati e il codice di verifica è corretto (ho marcato come verificato l'account)
@@ -57,7 +57,7 @@ public class UC06_ResetPassword_Test {
 			assertTrue(resultResetPassword.isOk());
 			assertTrue(resultResetPassword.getAffectedRecords()>0);
 			assertNotNull(resultResetPassword.getIdentifier());
-			assertFalse(resultResetPassword.getIdentifier().isEmpty());
+			assertFalse(resultResetPassword.getIdentifier()<=0);
 		}
 		
 		/*

@@ -48,7 +48,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 //			assertNotNull(result.getServerPublicKey());
 			assertNotNull(result.getUserId());
-			assertFalse(result.getUserId().isEmpty());
+			assertFalse(result.getUserId()<=0);
 		}
 		
 	}	
@@ -64,7 +64,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 
 	}
@@ -82,7 +82,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertNotNull(result.getUserId());
-			assertFalse(result.getUserId().isEmpty());
+			assertFalse(result.getUserId()<=0);
 //			assertNotNull(result.getServerPublicKey());
 //			assertFalse(result.getServerPublicKey().isEmpty());			
 		}
@@ -93,7 +93,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 	public void t4_updatePasswordShouldReturnConfirm(){
 		
 		UpdatePasswordDTO updatePasswordInput = new UpdatePasswordDTO();
-		updatePasswordInput.setUserId("1");
+		updatePasswordInput.setUserId(1);
 		updatePasswordInput.setEmail("lucap84@gmail.com");
 		updatePasswordInput.setOldPassword("mypassword");
 		updatePasswordInput.setNewPassword("mypasswordupdated");
@@ -106,7 +106,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}	
 	
@@ -121,7 +121,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}	
 	
@@ -137,7 +137,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}	
 	
@@ -158,7 +158,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(resultResetPassword.isOk());
 			assertTrue(resultResetPassword.getAffectedRecords()>0);
 			assertNotNull(resultResetPassword.getIdentifier());
-			assertFalse(resultResetPassword.getIdentifier().isEmpty());
+			assertFalse(resultResetPassword.getIdentifier()<=0);
 		}
 	}	
 	

@@ -29,7 +29,7 @@ public class UC12_VisualizzaMieiEventi_Test {
 		
 		UserServiceStub userService = new UserServiceStub();
 		
-		String userId = userService.getSecureConfiguration().getUserId();
+		int userId = Integer.valueOf(userService.getSecureConfiguration().getUserId());
 		List<EventDTO> result = null;
 
 		result = userService.getEventsByUser(userId, MediaType.APPLICATION_JSON);

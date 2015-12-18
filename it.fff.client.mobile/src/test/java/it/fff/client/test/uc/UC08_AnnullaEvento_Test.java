@@ -38,7 +38,7 @@ public class UC08_AnnullaEvento_Test {
 			assertTrue(cancelEventResult.isOk());
 			assertTrue(cancelEventResult.getAffectedRecords()>0);
 			assertNotNull(cancelEventResult.getIdentifier());
-			assertFalse(cancelEventResult.getIdentifier().isEmpty());
+			assertFalse(cancelEventResult.getIdentifier()<=0);
 		}	
 		
 		/*

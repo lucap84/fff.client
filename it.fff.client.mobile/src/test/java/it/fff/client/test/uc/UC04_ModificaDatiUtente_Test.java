@@ -36,14 +36,14 @@ public class UC04_ModificaDatiUtente_Test {
 		
 		//Carica una nuova immagine profilo
 		String imageLocation ="C:\\Users\\Luca\\fff\\client\\imagetest.jpg";
-		String userId = userService.getSecureConfiguration().getUserId();
+		int userId = Integer.valueOf(userService.getSecureConfiguration().getUserId());
 		
 		WriteResultDTO updateProfileImageResult = userService.updateProfileImage(userId, imageLocation, MediaType.APPLICATION_JSON);
 		assertNotNull(updateProfileImageResult);
 		assertTrue(updateProfileImageResult.isOk());
 		assertTrue(updateProfileImageResult.getAffectedRecords()>0);
 		assertNotNull(updateProfileImageResult.getIdentifier());
-		assertFalse(updateProfileImageResult.getIdentifier().isEmpty());
+		assertFalse(updateProfileImageResult.getIdentifier()<=0);
 		
 		//Modifica i propri dati
 		UserDTO  user = new UserDTO();
@@ -77,7 +77,7 @@ public class UC04_ModificaDatiUtente_Test {
 		assertTrue(modifyUserDataResult.isOk());
 		assertTrue(modifyUserDataResult.getAffectedRecords()>0);
 		assertNotNull(modifyUserDataResult.getIdentifier());
-		assertFalse(modifyUserDataResult.getIdentifier().isEmpty());
+		assertFalse(modifyUserDataResult.getIdentifier()<=0);
 		
 		
 		/*

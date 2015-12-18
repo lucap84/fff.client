@@ -35,7 +35,7 @@ public class UC02_Login_Test {
 		assertNotNull(loginOutput);
 		assertTrue(loginOutput.isOk());
 		assertNotNull(loginOutput.getUserId());
-		assertFalse(loginOutput.getUserId().isEmpty());
+		assertFalse(loginOutput.getUserId()<=0);
 		assertNotNull(loginOutput.getServerPublicKey());
 		assertFalse(loginOutput.getServerPublicKey().isEmpty());			
 		

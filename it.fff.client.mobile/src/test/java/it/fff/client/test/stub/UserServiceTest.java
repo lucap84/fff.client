@@ -28,7 +28,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	public void modifyUserDataShouldReturnConfirm(){
 		
 		UserDTO  user = new UserDTO();
-		user.setId("1");
+		user.setId(1);
 		user.setSesso("F");
 		user.setDataNascita("1900-01-01");
 		user.setNome("Nome mod");
@@ -40,13 +40,13 @@ public class UserServiceTest extends WebServiceRestTest{
 		user.setAccount(accountDTO);
 		
 		NationDTO nazionalita = new NationDTO();
-		nazionalita.setId("1");
+		nazionalita.setId(1);
 		user.setNazionalita(nazionalita);
 		
 		LanguageDTO l1 = new LanguageDTO();
-		l1.setId("1");
+		l1.setId(1);
 		LanguageDTO l2 = new LanguageDTO();
-		l1.setId("2");
+		l1.setId(2);
 		List<LanguageDTO> lingue = new ArrayList<LanguageDTO>();
 		lingue.add(l1);
 		lingue.add(l2);
@@ -67,7 +67,7 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}		
 		
 	}	
@@ -90,14 +90,14 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}	
 	}	
 	
 	@Test
 	public void getEventsByUserShouldReturnAtLeastOneEvent(){
 		
-		String userId = "1";
+		int userId = 1;
 
 		List<EventDTO> result = null;
 
@@ -114,7 +114,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	@Test
 	public void getUserShouldReturnOneUser(){
 
-		String userId = "8";
+		int userId = 8;
 
 		UserDTO result = null;
 
@@ -131,7 +131,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	public void updateProfileImageShouldReturnConfirm(){
 		
 		String imageLocation ="C:\\Users\\Luca\\fff\\client\\imagetest.jpg";
-		String userId = "1";
+		int userId = 1;
 		
 		WriteResultDTO result = null;
 
@@ -142,7 +142,7 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}	
 
 	}
@@ -150,8 +150,8 @@ public class UserServiceTest extends WebServiceRestTest{
 	@Test
 	public void cancelAttendanceShouldReturnConfirm(){//annulla partecipazione da parte di uno partecipante (abbandona evento)
 		
-		String eventId = "1";
-		String userId = "1";
+		int eventId = 1;
+		int userId = 1;
 		WriteResultDTO result = null;
 
 		{//Test JSON
@@ -161,7 +161,7 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier().isEmpty());
+			assertFalse(result.getIdentifier()<=0);
 		}
 	}		
 	

@@ -28,19 +28,19 @@ public class UC14_OrganizzatorePubblicaMessaggio_Test {
 		EventServiceStub eventService = new EventServiceStub();
 		UserServiceStub userService = new UserServiceStub();
 		
-		String userId = eventService.getSecureConfiguration().getUserId();
+		int userId = Integer.valueOf(eventService.getSecureConfiguration().getUserId());
 		
 		//Recupero i miei eventi
 		List<EventDTO> eventsByUser = userService.getEventsByUser(userId, MediaType.APPLICATION_JSON);
 		
 		//scelgo un evento di cui sono organizzatore
 		EventDTO eventDTO = eventsByUser.get(0);
-		String eventId = eventDTO.getId();
+		int eventId = eventDTO.getId();
 		
 		//recupero la mia partecipazione
 		List<AttendanceDTO> partecipazioni = eventDTO.getPartecipazioni();
 		AttendanceDTO attendanceDTO = partecipazioni.get(0);
-		String attendanceId = attendanceDTO.getId();
+		int attendanceId = attendanceDTO.getId();
 		
 		//Scrivo il mio messaggio custom a testo libero
 		String message = "Appuntamento davanti al chiosco!";
@@ -50,7 +50,7 @@ public class UC14_OrganizzatorePubblicaMessaggio_Test {
 		assertTrue(postEventMessageResult.isOk());
 		assertTrue(postEventMessageResult.getAffectedRecords()>0);
 		assertNotNull(postEventMessageResult.getIdentifier());
-		assertFalse(postEventMessageResult.getIdentifier().isEmpty());
+		assertFalse(postEventMessageResult.getIdentifier()<=0);
 		
 		/*
 		 * Postconditions:  il messaggio è visibile nell'evento

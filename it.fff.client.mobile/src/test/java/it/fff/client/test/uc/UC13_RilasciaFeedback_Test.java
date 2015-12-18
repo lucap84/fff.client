@@ -27,7 +27,7 @@ public class UC13_RilasciaFeedback_Test {
 		EventServiceStub eventService = new EventServiceStub();
 		UserServiceStub userService = new UserServiceStub();
 		
-		String userId = eventService.getSecureConfiguration().getUserId();
+		int userId = Integer.valueOf(eventService.getSecureConfiguration().getUserId());
 		
 		//Recupero i miei eventi
 		List<EventDTO> eventsByUser = userService.getEventsByUser(userId, MediaType.APPLICATION_JSON);
@@ -41,14 +41,14 @@ public class UC13_RilasciaFeedback_Test {
 		AttendanceDTO attendanceToAddFeedback = partecipazioni.get(0);
 		
 		//Imposto il feedback positivo/negativo
-		String attendanceId = attendanceToAddFeedback.getId();
+		int attendanceId = attendanceToAddFeedback.getId();
 		
 		WriteResultDTO result = eventService.addFeedback(eventDTO.getId(), attendanceId, FeedbackEnum.POSITIVE, MediaType.APPLICATION_JSON);
 		assertNotNull(result);
 		assertTrue(result.isOk());
 		assertTrue(result.getAffectedRecords()>0);
 		assertNotNull(result.getIdentifier());
-		assertFalse(result.getIdentifier().isEmpty());
+		assertFalse(result.getIdentifier()<=0);
 		
 		/*
 		 * Postconditions:  

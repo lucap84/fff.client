@@ -25,7 +25,7 @@ public class UC03_Logout_Test {
 		assertTrue(result.isOk());
 		assertTrue(result.getAffectedRecords()>0);
 		assertNotNull(result.getIdentifier());
-		assertFalse(result.getIdentifier().isEmpty());
+		assertFalse(result.getIdentifier()<=0);
 		
 		/*
 		 * Postconditions:  User and device are disconnected
