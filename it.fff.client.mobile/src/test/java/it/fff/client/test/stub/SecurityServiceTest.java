@@ -21,6 +21,7 @@ import it.fff.clientserver.common.dto.AccountDTO;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
 import it.fff.clientserver.common.dto.LoginInputDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
+import it.fff.clientserver.common.enums.UserSexEnum;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SecurityServiceTest extends WebServiceRestTest{
@@ -34,7 +35,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 		RegistrationInputDTO dtoInput = new RegistrationInputDTO();
 		dtoInput.setNome("Luca");
 		dtoInput.setCognome("Pelosi");
-		dtoInput.setSesso("M");
+		dtoInput.setSesso(UserSexEnum.M);
 		dtoInput.setDataNascita("1984-02-09");
 		dtoInput.setEmail("lucap84@gmail.com2");
 		dtoInput.setEncodedPassword(DigestUtils.md5Hex("mypassword"));
@@ -112,7 +113,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 	
 	@Test
 	public void t5_sendVerificationCodeShouldReturnConfirm(){
-		String email = "lucap84@gmail.com";
+		String email = "lucap84@gmail.com,gabrielepatrizi@gmail.com,juna.salviati@gmail.com";
 		WriteResultDTO result = null;
 		{//Test JSON
 			SecurityServiceStub stub = new SecurityServiceStub();

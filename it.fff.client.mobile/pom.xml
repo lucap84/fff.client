@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>it.fff.clientserver.common</groupId>
 			<artifactId>it.fff.clientserver.common</artifactId>
-			<version>1.0</version>
+			<version>1.1</version>
 		</dependency>	
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>

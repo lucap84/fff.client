@@ -16,6 +16,7 @@ import org.junit.Test;
 import it.fff.client.stub.EventServiceStub;
 import it.fff.client.stub.UserServiceStub;
 import it.fff.clientserver.common.dto.*;
+import it.fff.clientserver.common.enums.UserSexEnum;
 
 public class UserServiceTest extends WebServiceRestTest{
 
@@ -29,7 +30,7 @@ public class UserServiceTest extends WebServiceRestTest{
 		
 		UserDTO  user = new UserDTO();
 		user.setId(1);
-		user.setSesso("F");
+		user.setSesso(UserSexEnum.F);
 		user.setDataNascita("1900-01-01");
 		user.setNome("Nome mod");
 		user.setCognome("cognome mod");

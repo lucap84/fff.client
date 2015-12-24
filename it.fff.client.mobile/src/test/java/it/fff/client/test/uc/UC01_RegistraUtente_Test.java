@@ -14,6 +14,7 @@ import it.fff.client.stub.SecurityServiceStub;
 import it.fff.client.stub.StubService;
 import it.fff.clientserver.common.dto.AuthDataResponseDTO;
 import it.fff.clientserver.common.dto.RegistrationInputDTO;
+import it.fff.clientserver.common.enums.UserSexEnum;
 
 public class UC01_RegistraUtente_Test {
 	
@@ -28,9 +29,9 @@ public class UC01_RegistraUtente_Test {
 		RegistrationInputDTO input1 = new RegistrationInputDTO();
 		input1.setNome("Luca");
 		input1.setCognome("Pelosi");
-		input1.setSesso("M");
+		input1.setSesso(UserSexEnum.M);
 		input1.setDataNascita("1984-02-09");
-		input1.setEmail("lucap84@gmail.com2");
+		input1.setEmail("lucap84@gmail.com");
 		input1.setEncodedPassword(DigestUtils.md5Hex("mypassword"));
 
 		AuthDataResponseDTO result = securityService.registerUser(input1, MediaType.APPLICATION_JSON);

@@ -26,7 +26,7 @@ public class UC05_CambioPassword_Test {
 		updatePasswordInput.setUserId(Integer.valueOf(securityService.getSecureConfiguration().getUserId()));
 		updatePasswordInput.setEmail("lucap84@gmail.com");
 		updatePasswordInput.setOldPassword("mypassword");
-		updatePasswordInput.setNewPassword("mypasswordupdated");
+		updatePasswordInput.setNewPassword("mypasswor2");
 		
 		WriteResultDTO result = null;
 		{//Test JSON

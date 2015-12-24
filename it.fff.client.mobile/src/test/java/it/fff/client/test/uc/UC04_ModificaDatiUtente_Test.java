@@ -19,6 +19,7 @@ import it.fff.clientserver.common.dto.LanguageDTO;
 import it.fff.clientserver.common.dto.NationDTO;
 import it.fff.clientserver.common.dto.UserDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
+import it.fff.clientserver.common.enums.UserSexEnum;
 
 public class UC04_ModificaDatiUtente_Test {
 	
@@ -49,7 +50,7 @@ public class UC04_ModificaDatiUtente_Test {
 		UserDTO  user = new UserDTO();
 		user.setId(userId);
 //		user.setEmail("nuovamail@mail.it");
-		user.setSesso("F");
+		user.setSesso(UserSexEnum.F);
 		user.setDataNascita("1900-01-01");
 		user.setNome("Nome mod");
 		user.setCognome("cognome mod");
