@@ -120,13 +120,15 @@ public class SecurityServiceStub extends StubService{
 			resultDTO = (AuthDataResponseDTO)responseJSON.readEntity(AuthDataResponseDTO.class);
 			
 			String sharedSecret = null;
-			if(StubService.isSecurityEnabled()){
-				byte[] serverPublicKey =  Base64.decodeBase64(resultDTO.getServerPublicKey());
-				sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
+			if(resultDTO.isOk()){
+				if(StubService.isSecurityEnabled()){
+					byte[] serverPublicKey =  Base64.decodeBase64(resultDTO.getServerPublicKey());
+					sharedSecret = dhUtil.generateSharedSecret(clientKeyAgree, serverPublicKey);			
+				}
+				//Salvo sul client la chiave segreta condivisa con il server
+				Integer userId = Integer.valueOf(resultDTO.getUserId());
+				super.getSecureConfiguration().storeSharedKey(userId, deviceId, sharedSecret);
 			}
-			//Salvo sul client la chiave segreta condivisa con il server
-			Integer userId = Integer.valueOf(resultDTO.getUserId());
-			super.getSecureConfiguration().storeSharedKey(userId, deviceId, sharedSecret);				
 			
 		}
 		catch(Exception e){

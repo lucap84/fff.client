@@ -32,10 +32,10 @@ public class UserServiceStub  extends StubService{
 		return writeResult;
 	}	
 	
-	public WriteResultDTO setCurrentPosition(String userId, String eventId, PlaceDTO currentPlace, String mediaType){
+	public WriteResultDTO setCurrentPosition(int userId, int eventId, PlaceDTO currentPlace, String mediaType){
 		Client client = super.getClientInstance();
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_setCurrentPosition,userId,eventId);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_setCurrentPosition,String.valueOf(userId),String.valueOf(eventId));
 		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.post(Entity.entity(currentPlace, mediaType));
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);

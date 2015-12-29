@@ -46,8 +46,8 @@ public class UC09_RicercaEventoTest {
 		PlaceServiceStub placeService = new PlaceServiceStub();
 
 		//individuo la posizione dell'utente
-		double userGpsLat = 1.2;
-		double userGpsLong = 1.3;
+		double userGpsLat = 0.17;
+		double userGpsLong = 2.83;
 		
 		double radiusKM = 10; //ipotizzo di ricercare in un raggio di 10KM
 		
@@ -62,20 +62,20 @@ public class UC09_RicercaEventoTest {
 		List<PlaceDTO> filteredResults = this.filterByposition(resultGetPlacesByDescription, userGpsLat, userGpsLong, radiusKM);
 		//Scelgo uno tra i luoghi filtrati
 		PlaceDTO placeDTO = filteredResults.get(0);
-		String desideredGpsLat = placeDTO.getGpsLat();
-		String desideredGpsLong = placeDTO.getGpsLong();
+		double desideredGpsLat = placeDTO.getGpsLat();
+		double desideredGpsLong = placeDTO.getGpsLong();
 
 		//Altri criteri di ricerca
-		String idCategoria = "1";
-		String partecipanti = "3";
+		int idCategoria = 5;
+		int partecipanti = 3;
 		
 
 		// SearchEvents
-		List<EventDTO> searchEventsOutput = eventService.searchEvents(	String.valueOf(userGpsLat), 
-																		String.valueOf(userGpsLong), 
-																		String.valueOf(radiusKM),
-																		String.valueOf(desideredGpsLat), 
-																		String.valueOf(desideredGpsLong),
+		List<EventDTO> searchEventsOutput = eventService.searchEvents(	userGpsLat, 
+																		userGpsLong, 
+																		radiusKM,
+																		desideredGpsLat, 
+																		desideredGpsLong,
 																		idCategoria, 
 																		partecipanti, 
 																		MediaType.APPLICATION_JSON);

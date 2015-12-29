@@ -142,13 +142,13 @@ public class EventServiceStub  extends StubService{
 	}	
 	
 	
-	public List<EventDTO> searchEvents( String userGpsLat, 
-										String userGpsLong, 
-										String radiusKM, 
-										String desideredGpsLat, 
-										String desideredGpsLong,
-										String idCategoria, 
-										String partecipanti, 
+	public List<EventDTO> searchEvents( double userGpsLat, 
+										double userGpsLong, 
+										double radiusKM, 
+										double desideredGpsLat, 
+										double desideredGpsLong,
+										int idCategoria, 
+										int partecipanti, 
 										String mediaType){
 		Client client = super.getClientInstance();
 		

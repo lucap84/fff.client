@@ -103,7 +103,7 @@ public class EventServiceTest extends WebServiceRestTest{
 		attendanceToCreate.setEventId(1);
 		attendanceToCreate.setUserId(1);
 		attendanceToCreate.setOrganizer(false);
-		attendanceToCreate.setNumPartecipanti("22");
+		attendanceToCreate.setNumPartecipanti(22);
 		attendanceToCreate.setFeedback(FeedbackEnum.POSITIVE);
 		
 		WriteResultDTO result = null;
@@ -151,7 +151,7 @@ public class EventServiceTest extends WebServiceRestTest{
 		attendance.setOrganizer(true);
 		attendance.setValid(true);
 		attendance.setEventId(event.getId());
-		attendance.setNumPartecipanti("1");
+		attendance.setNumPartecipanti(1);
 		
 		List<AttendanceDTO> partecipazioni = new ArrayList<AttendanceDTO>();
 		partecipazioni.add(attendance);
@@ -200,7 +200,7 @@ public class EventServiceTest extends WebServiceRestTest{
 			EventServiceStub stub = new EventServiceStub();
 			result = stub.getEvent(requestedEventId, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
-			assertNotNull(result.getId());
+			assertTrue(result.getId()>0);
 		}
 	}
 
@@ -224,13 +224,13 @@ public class EventServiceTest extends WebServiceRestTest{
 	public void searchEventsShouldReturnAtLeastOneEvent(){
 		
 		
-		String userGpsLat = "1.1234";
-		String userGgpsLong = "2.4567";
-		String radiusKM = "10";
-		String desideredGpsLat = "1.1235";
-		String desideredGgpsLong = "2.4566";		
-		String idCategoria = "1";
-		String partecipanti = "3";
+		double userGpsLat = 1.1234;
+		double userGgpsLong = 2.4567;
+		double radiusKM = 10;
+		double desideredGpsLat = 1.1235;
+		double desideredGgpsLong = 2.4566;		
+		int idCategoria = 1;
+		int partecipanti = 3;
 		
 		List<EventDTO> result = null;
 

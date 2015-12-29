@@ -76,11 +76,11 @@ public class UserServiceTest extends WebServiceRestTest{
 	@Test
 	public void setCurrentPositionShouldReturnConfirm(){
 		
-		String userId = "1";
-		String eventId = "1";
+		int userId = 1;
+		int eventId = 1;
 		PlaceDTO currentPlace = new PlaceDTO();
-		currentPlace.setGpsLat("1001");
-		currentPlace.setGpsLong("2001");
+		currentPlace.setGpsLat(1.001);
+		currentPlace.setGpsLong(2.001);
 		
 		WriteResultDTO result = null;
 
@@ -115,7 +115,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	@Test
 	public void getUserShouldReturnOneUser(){
 
-		int userId = 8;
+		int userId = 2;
 
 		UserDTO result = null;
 

@@ -29,13 +29,13 @@ public class UC10_PartecipaEvento_Test {
 		int userId = Integer.valueOf(eventService.getSecureConfiguration().getUserId());
 		
 		//Cerco un evento
-		String userGpsLat = "1.23";
-		String userGpsLong = "1.33";
-		String radiusKM = "10"; //ipotizzo di ricercare in un raggio di 10KM
-		String desideredGpsLat = "1.24";
-		String desideredGpsLong = "1.32";		
-		String idCategoria = "1";
-		String partecipanti = "3";
+		double userGpsLat = 1.23;
+		double userGpsLong = 1.33;
+		double radiusKM = 10; //ipotizzo di ricercare in un raggio di 10KM
+		double desideredGpsLat = 1.24;
+		double desideredGpsLong = 1.32;		
+		int idCategoria = 1;
+		int partecipanti = 3;
 		
 		List<EventDTO> searchEventsOutput = eventService.searchEvents(userGpsLat, userGpsLong, radiusKM, desideredGpsLat, desideredGpsLong, idCategoria, partecipanti, MediaType.APPLICATION_JSON);
 		assertNotNull(searchEventsOutput);
@@ -52,7 +52,7 @@ public class UC10_PartecipaEvento_Test {
 		attendanceToCreate.setEventId(event.getId()); //la lego all'evento
 		attendanceToCreate.setUserId(userId);
 		attendanceToCreate.setOrganizer(false);
-		attendanceToCreate.setNumPartecipanti("3");
+		attendanceToCreate.setNumPartecipanti(3);
 		attendanceToCreate.setStato(AttendanceStateEnum.UNDETECTED);
 		attendanceToCreate.setValid(true);
 		
