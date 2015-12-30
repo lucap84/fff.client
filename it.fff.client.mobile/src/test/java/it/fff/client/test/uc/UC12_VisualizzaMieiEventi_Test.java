@@ -17,7 +17,7 @@ public class UC12_VisualizzaMieiEventi_Test {
 	@Test
 	public void test(){//Visualizza i miei eventi
 		/*
-		 * Preconditions: UC1/UC9 + UC3/UC4 
+		 * Preconditions: user registered and logged 
 		 */
 		
 //		UC01_RegistraUtente_Test registerTest = new UC01_RegistraUtente_Test();

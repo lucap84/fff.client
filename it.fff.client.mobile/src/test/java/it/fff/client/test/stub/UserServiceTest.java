@@ -98,7 +98,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	@Test
 	public void getEventsByUserShouldReturnAtLeastOneEvent(){
 		
-		int userId = 1;
+		int userId = 2;
 
 		List<EventDTO> result = null;
 

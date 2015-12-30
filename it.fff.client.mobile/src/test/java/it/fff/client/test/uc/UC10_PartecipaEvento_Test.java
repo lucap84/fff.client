@@ -29,12 +29,12 @@ public class UC10_PartecipaEvento_Test {
 		int userId = Integer.valueOf(eventService.getSecureConfiguration().getUserId());
 		
 		//Cerco un evento
-		double userGpsLat = 1.23;
-		double userGpsLong = 1.33;
-		double radiusKM = 10; //ipotizzo di ricercare in un raggio di 10KM
-		double desideredGpsLat = 1.24;
-		double desideredGpsLong = 1.32;		
-		int idCategoria = 1;
+		double userGpsLat = 0.17;
+		double userGpsLong = 2.83;
+		double radiusKM = 20; //ipotizzo di ricercare in un raggio di 10KM
+		double desideredGpsLat = 0.175;
+		double desideredGpsLong = 2.835;		
+		int idCategoria = 5;
 		int partecipanti = 3;
 		
 		List<EventDTO> searchEventsOutput = eventService.searchEvents(userGpsLat, userGpsLong, radiusKM, desideredGpsLat, desideredGpsLong, idCategoria, partecipanti, MediaType.APPLICATION_JSON);
@@ -49,11 +49,11 @@ public class UC10_PartecipaEvento_Test {
 		
 		//creo la partecipazione a questo evento
 		AttendanceDTO attendanceToCreate = new AttendanceDTO();
-		attendanceToCreate.setEventId(event.getId()); //la lego all'evento
-		attendanceToCreate.setUserId(userId);
+		attendanceToCreate.setEventId(event.getId()); //la associo all'evento scelto
+		attendanceToCreate.setUserId(userId); //la associo all utente che partecipa
 		attendanceToCreate.setOrganizer(false);
 		attendanceToCreate.setNumPartecipanti(3);
-		attendanceToCreate.setStato(AttendanceStateEnum.UNDETECTED);
+		attendanceToCreate.setStato(AttendanceStateEnum.UNDETECTED); //non ha stato appena creato
 		attendanceToCreate.setValid(true);
 		
 		WriteResultDTO resultJoinEvent = null;
