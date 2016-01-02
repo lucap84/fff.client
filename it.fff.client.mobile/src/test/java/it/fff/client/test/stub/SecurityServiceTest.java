@@ -37,7 +37,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 		dtoInput.setCognome("Pelosi");
 		dtoInput.setSesso(UserSexEnum.M);
 		dtoInput.setDataNascita("1984-02-09");
-		dtoInput.setEmail("lucap84@gmail.com2");
+		dtoInput.setEmail("lucap84@gmail.com");
 		dtoInput.setEncodedPassword(DigestUtils.md5Hex("mypassword"));
 
 		AuthDataResponseDTO result = null;
@@ -113,7 +113,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 	
 	@Test
 	public void t5_sendVerificationCodeShouldReturnConfirm(){
-		String email = "lucap84@gmail.com,gabrielepatrizi@gmail.com,juna.salviati@gmail.com";
+		String email = "lucap84@gmail.com";
 		WriteResultDTO result = null;
 		{//Test JSON
 			SecurityServiceStub stub = new SecurityServiceStub();
