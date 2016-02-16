@@ -13,10 +13,10 @@ import java.util.List;
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 
-import it.fff.client.stub.EventServiceStub;
 import it.fff.client.stub.UserServiceStub;
 import it.fff.clientserver.common.dto.*;
 import it.fff.clientserver.common.enums.UserSexEnum;
+import it.fff.client.test.stub.WebServiceRestTest;
 
 public class UserServiceTest extends WebServiceRestTest{
 
@@ -164,7 +164,20 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
 		}
-	}		
+	}
+	
+	@Test
+	public void isExistingMailShouldReturnBoolean(){//controllo se email presente su DB
+		
+		String email = "lucap84@gmail.com";
+		EmailInfoDTO result = null;
+
+		{//Test JSON
+			UserServiceStub stub = new UserServiceStub();
+			result = stub.isExistingEmail(email, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+		}
+	}	
 	
 	public static void main(String[] args) {
 		UserServiceTest test = new UserServiceTest();

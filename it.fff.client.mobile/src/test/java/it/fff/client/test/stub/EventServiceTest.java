@@ -21,7 +21,7 @@ public class EventServiceTest extends WebServiceRestTest{
 	@Test
 	public void getEventMessagesShouldReturnAtLeastOneMessage(){
 		
-		int eventId = 2;
+		int eventId = 1;
 		
 		List<MessageDTO> result = null;
 

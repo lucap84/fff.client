@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
 
+import it.fff.clientserver.common.dto.EmailInfoDTO;
 import it.fff.clientserver.common.dto.EventDTO;
 import it.fff.clientserver.common.dto.PlaceDTO;
 import it.fff.clientserver.common.dto.UserDTO;
@@ -91,6 +92,16 @@ public class UserServiceStub  extends StubService{
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		Response response = requestBuilder.delete();
 		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
+		return writeResult;
+	}
+	
+	public EmailInfoDTO isExistingEmail(String email, String mediaType){
+		Client client = super.getClientInstance();
+		
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_isExistingEmail, email);
+		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
+		Response response = requestBuilder.get();
+		EmailInfoDTO writeResult = (EmailInfoDTO)response.readEntity(EmailInfoDTO.class);
 		return writeResult;
 	}	
 }
