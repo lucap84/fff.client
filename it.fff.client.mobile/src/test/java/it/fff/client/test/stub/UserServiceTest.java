@@ -131,7 +131,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	@Test
 	public void updateProfileImageShouldReturnConfirm(){
 		
-		String imageLocation ="C:\\Users\\Luca\\fff\\client\\imagetest.jpg";
+		String imageLocation ="C:\\Users\\Luca\\fff\\client\\imagetest3.jpg";
 		int userId = 1;
 		
 		WriteResultDTO result = null;
