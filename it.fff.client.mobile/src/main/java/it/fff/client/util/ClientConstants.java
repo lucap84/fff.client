@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 
 public class ClientConstants {
 	
-	public final static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd_hh-mm-ss");
+	public final static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 
 	public static final String PROP_SECURE_FILEPATH		= "secure.configuration.file";
 	public static final String PROP_SECURE_DEVICE		= "device.id";

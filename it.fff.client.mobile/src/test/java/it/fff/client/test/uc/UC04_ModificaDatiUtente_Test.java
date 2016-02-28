@@ -68,7 +68,7 @@ public class UC04_ModificaDatiUtente_Test {
 		user.setLingue(lingue);
 		
 		//TODO info impostate in modo silente dal sistema
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd_hh-mm-ss");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		user.setLastPositionDate(df.format(new Date()));
 		user.setLastPositionLat("1.234");
 		user.setLastPositionLong("2.345");

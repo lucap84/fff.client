@@ -51,12 +51,13 @@
             <artifactId>jersey-media-sse</artifactId>
             <version>2.22.1</version>
         </dependency>        				
-		<!-- do not use Jackson because moxy is jersey default
+		<!-- do not use Jackson because moxy is jersey default 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.6.3</version>
-		</dependency-->
+		</dependency>
+		  -->
 		<dependency>
 			<groupId>org.glassfish.jersey.bundles</groupId>
 			<artifactId>jaxrs-ri</artifactId>
