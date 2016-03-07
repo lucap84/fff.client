@@ -39,6 +39,7 @@ public class StubService{
 	public static final String WSRS_PATH_GET_getEvent 					= "events/#/";
 	public static final String WSRS_PATH_GET_searchEvents 				= "events/";
 	public static final String WSRS_PATH_GET_getPlacesByDescription 	= "places/";
+	public static final String WSRS_PATH_GET_getCityByName 				= "places/cities/#/";
 	public static final String WSRS_PATH_POST_upgradeToPremium 			= "premium/subscriptions/#/";
 	public static final String WSRS_PATH_POST_registerUser 				= "security/registration/";
 	public static final String WSRS_PATH_POST_login 					= "security/login/";

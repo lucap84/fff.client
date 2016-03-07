@@ -16,9 +16,9 @@ public class PlaceServiceTest extends WebServiceRestTest{
 	@Test
 	public void getPlacesByDescriptionShouldReturnAtLeastOnePlace(){
 		
-		String description = "Colosseo";
-		double gpsLat = 0.456;
-		double gpsLong = 0.457;
+		String description = "Largo leonardo da vinci";
+		double gpsLat = 41.856947;
+		double gpsLong = 12.481142;
 		
 		List<PlaceDTO> result = null;
 
@@ -30,6 +30,23 @@ public class PlaceServiceTest extends WebServiceRestTest{
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getGpsLat());
 			assertNotNull(result.get(0).getGpsLong());
+		}
+	}
+	
+	@Test
+	public void getCityByNameShouldReturnoneCity(){
+		
+		String cityName = "Atçaèò' uù<s> s<";
+		String nationInternationalKey = "ITA";
+		
+		CityDTO result = null;
+
+		PlaceServiceStub stub = new PlaceServiceStub();
+		{//Test JSON
+			result = stub.getCityByName(cityName, nationInternationalKey, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+			assertTrue(result.getId()>0);
+			assertNotNull(result.getNazione());
 		}
 	}	
 
