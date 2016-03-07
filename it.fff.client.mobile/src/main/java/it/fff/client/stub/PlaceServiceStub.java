@@ -11,7 +11,7 @@ import it.fff.clientserver.common.dto.PlaceDTO;
 
 public class PlaceServiceStub extends StubService{
 
-	public List<PlaceDTO> getPlacesByDescription(String description, String mediaType){
+	public List<PlaceDTO> getPlacesByDescription(String description, double gpsLat, double gpsLong, String mediaType){
 		Client client = super.getClientInstance();
 		
 		List<PlaceDTO> entityFromJSON = null;
@@ -20,6 +20,8 @@ public class PlaceServiceStub extends StubService{
 		{//Test JSON
 			Builder requestBuilderJSON = client.target(getBaseURI()).path(restPath).
 					queryParam("description", description).
+					queryParam("userGpsLat", gpsLat).
+					queryParam("userGpsLong", gpsLong).
 					request(mediaType);
 			Response responseJSON = requestBuilderJSON.get();
 			entityFromJSON = responseJSON.readEntity(new GenericType<List<PlaceDTO>>(){});

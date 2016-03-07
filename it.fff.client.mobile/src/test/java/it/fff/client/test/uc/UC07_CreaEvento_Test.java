@@ -46,6 +46,8 @@ public class UC07_CreaEvento_Test {
 		EventServiceStub eventService = new EventServiceStub();
 		
 		int userId = Integer.valueOf(eventService.getSecureConfiguration().getUserId());
+		double userGpsLat = 1.234;
+		double userGpsLong = 1.235;
 		
 		EventDTO event = new EventDTO();
 		
@@ -80,7 +82,7 @@ public class UC07_CreaEvento_Test {
 		PlaceServiceStub placeService = new PlaceServiceStub();
 		List<PlaceDTO> getPlacesResult = null;
 		{//Test JSON
-			getPlacesResult =  placeService.getPlacesByDescription("birra", MediaType.APPLICATION_JSON);
+			getPlacesResult =  placeService.getPlacesByDescription("San paolo", userGpsLat, userGpsLong, MediaType.APPLICATION_JSON);
 			assertNotNull(getPlacesResult);
 			assertTrue(getPlacesResult.size()>0);
 			assertNotNull(getPlacesResult.get(0));

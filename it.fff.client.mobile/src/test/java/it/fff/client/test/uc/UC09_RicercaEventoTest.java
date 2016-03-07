@@ -52,9 +52,9 @@ public class UC09_RicercaEventoTest {
 		double radiusKM = 10; //ipotizzo di ricercare in un raggio di 10KM
 		
 		//cerco un luogo dove vorrei l'evento 
-		String description = "chiringuito";
+		String description = "Largo Leonardo da Vinci, 2 Roma";
 
-		List<PlaceDTO> resultGetPlacesByDescription = placeService.getPlacesByDescription(description, MediaType.APPLICATION_JSON);
+		List<PlaceDTO> resultGetPlacesByDescription = placeService.getPlacesByDescription(description, userGpsLat, userGpsLong, MediaType.APPLICATION_JSON);
 		assertNotNull(resultGetPlacesByDescription);
 		assertTrue(resultGetPlacesByDescription.size()>0);
 
