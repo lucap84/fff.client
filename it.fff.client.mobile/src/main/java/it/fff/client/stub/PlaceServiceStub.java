@@ -31,7 +31,7 @@ public class PlaceServiceStub extends StubService{
 		return entityFromJSON;
 	}
 	
-	public CityDTO getCityByName(String cityName, String nationKey, String mediaType){
+	public CityDTO getCityByName(String cityName, String nationInternationalCode, String mediaType){
 		Client client = super.getClientInstance();
 		
 		CityDTO entityFromJSON = null;
@@ -39,7 +39,7 @@ public class PlaceServiceStub extends StubService{
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getCityByName,cityName);
 		{//Test JSON
 			Builder requestBuilderJSON = client.target(getBaseURI()).path(restPath).
-					queryParam("nationKey", nationKey).
+					queryParam("nationCode", nationInternationalCode).
 					request(mediaType);
 			Response responseJSON = requestBuilderJSON.get();
 			entityFromJSON = (CityDTO)responseJSON.readEntity(CityDTO.class);

@@ -36,14 +36,14 @@ public class PlaceServiceTest extends WebServiceRestTest{
 	@Test
 	public void getCityByNameShouldReturnoneCity(){
 		
-		String cityName = "Atçaèò' uù<s> s<";
-		String nationInternationalKey = "ITA";
+		String cityName = "Roma";
+		String nationInternationalCode = "ITA";
 		
 		CityDTO result = null;
 
 		PlaceServiceStub stub = new PlaceServiceStub();
 		{//Test JSON
-			result = stub.getCityByName(cityName, nationInternationalKey, MediaType.APPLICATION_JSON);
+			result = stub.getCityByName(cityName, nationInternationalCode, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.getId()>0);
 			assertNotNull(result.getNazione());
