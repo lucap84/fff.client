@@ -103,5 +103,18 @@ public class UserServiceStub  extends StubService{
 		Response response = requestBuilder.get();
 		EmailInfoDTO writeResult = (EmailInfoDTO)response.readEntity(EmailInfoDTO.class);
 		return writeResult;
+	}
+
+	public UserDTO getFacebookUserData(String userFbToken, String mediaType) {
+		Client client = super.getClientInstance();
+
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getFacebookUserData);
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath)
+				.queryParam("token", userFbToken)
+				.request(mediaType);
+		Response response = requestBuilder.get();
+		UserDTO entity = response.readEntity(UserDTO.class);
+		
+		return entity;
 	}	
 }

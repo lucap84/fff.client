@@ -16,7 +16,7 @@ public class PlaceServiceTest extends WebServiceRestTest{
 	@Test
 	public void getPlacesByDescriptionShouldReturnAtLeastOnePlace(){
 		
-		String description = "Leonardo da vinci";
+		String description = "Via Leonardo da vinci";
 		double gpsLat = 41.856947;
 		double gpsLong = 12.481142;
 		
