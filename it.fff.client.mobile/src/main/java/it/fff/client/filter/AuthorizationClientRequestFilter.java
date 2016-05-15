@@ -15,7 +15,6 @@ import it.fff.client.secure.ClientSecureConfiguration;
 import it.fff.client.stub.StubService;
 import it.fff.client.util.ClientConstants;
 import it.fff.clientserver.common.secure.AuthenticationUtil;
-import it.fff.clientserver.common.secure.DHSecureConfiguration;
 
 public class AuthorizationClientRequestFilter implements ClientRequestFilter {
 

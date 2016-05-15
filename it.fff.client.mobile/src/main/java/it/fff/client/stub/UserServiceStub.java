@@ -17,8 +17,10 @@ import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
 import it.fff.clientserver.common.dto.EmailInfoDTO;
 import it.fff.clientserver.common.dto.EventDTO;
 import it.fff.clientserver.common.dto.PlaceDTO;
+import it.fff.clientserver.common.dto.ProfileImageDTO;
 import it.fff.clientserver.common.dto.UserDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
+import it.fff.clientserver.common.enums.FeedbackEnum;
 
 public class UserServiceStub  extends StubService{
 
@@ -85,6 +87,17 @@ public class UserServiceStub  extends StubService{
 		return writeResult;
 	}
 	
+	public ProfileImageDTO getProfileImage(int userId, String mediaType){
+		Client client = super.getClientInstance();
+		
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getProfileImage,String.valueOf(userId));
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request();
+		Response response = requestBuilder.get();
+		ProfileImageDTO imgDTO = (ProfileImageDTO)response.readEntity(ProfileImageDTO.class);	
+
+		return imgDTO;
+	}	
+	
 	public WriteResultDTO cancelAttendance(int eventId, int userId, String mediaType){
 		Client client = super.getClientInstance();
 		
@@ -114,6 +127,18 @@ public class UserServiceStub  extends StubService{
 				.request(mediaType);
 		Response response = requestBuilder.get();
 		UserDTO entity = response.readEntity(UserDTO.class);
+		
+		return entity;
+	}
+
+	public List<FeedbackEnum> getUserFeedbacks(int userId, String mediaType) {
+		Client client = super.getClientInstance();
+
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getUserFeedbacks, String.valueOf(userId));
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath)
+				.request(mediaType);
+		Response response = requestBuilder.get();
+		final List<FeedbackEnum> entity = response.readEntity(new GenericType<List<FeedbackEnum>>(){});
 		
 		return entity;
 	}	

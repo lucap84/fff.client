@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import it.fff.client.stub.UserServiceStub;
 import it.fff.clientserver.common.dto.*;
+import it.fff.clientserver.common.enums.FeedbackEnum;
 import it.fff.clientserver.common.enums.UserSexEnum;
 import it.fff.client.test.stub.WebServiceRestTest;
 
@@ -149,6 +150,23 @@ public class UserServiceTest extends WebServiceRestTest{
 	}
 	
 	@Test
+	public void getProfileImageShouldReturnAnImage(){
+		
+		int userId = 1;
+		
+		ProfileImageDTO result = null;
+
+		{//Test JSON
+			UserServiceStub stub = new UserServiceStub();
+			result = stub.getProfileImage(userId, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+			assertTrue(result.isOk());
+			assertTrue(result.getFileName()!=null);
+		}	
+
+	}	
+	
+	@Test
 	public void cancelAttendanceShouldReturnConfirm(){//annulla partecipazione da parte di uno partecipante (abbandona evento)
 		
 		int eventId = 1;
@@ -192,6 +210,21 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertNotNull(result.getId());
+		}
+	}
+	
+	@Test
+	public void getUserFeedbacksShouldReturnListOfFeedbacks(){
+
+		int userId = 1;
+
+		List<FeedbackEnum> result = null;
+
+		{//Test JSON
+			UserServiceStub stub = new UserServiceStub();
+			result = stub.getUserFeedbacks(userId, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+			assertTrue(result.size()>0);
 		}
 	}	
 	
