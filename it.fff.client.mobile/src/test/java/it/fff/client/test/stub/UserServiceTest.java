@@ -162,6 +162,7 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertTrue(result.getFileName()!=null);
+			assertNotNull(result.getImageAsB64());
 		}	
 
 	}	
