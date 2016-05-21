@@ -73,16 +73,13 @@ public class SecurityServiceStub extends StubService{
 		return resultDTO;
 	}
 
-	public WriteResultDTO logout(String mediaType){
+	public WriteResultDTO logout(int userId, String deviceId, String mediaType){
 		
 		Client client = super.getClientInstance();
 		
-		String userId = super.getSecureConfiguration().getUserId();
-		String deviceId = super.getSecureConfiguration().getDeviceId();
-		
 		WriteResultDTO result = null;	
 		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_logout, userId);
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_logout, String.valueOf(userId));
 		Builder requestBuilder  = client.target(getBaseURI()).path(restPath).request(mediaType);
 		
 		Response response = requestBuilder.post(null);

@@ -58,9 +58,13 @@ public class SecurityServiceTest extends WebServiceRestTest{
 	@Test
 	public void t2_logoutShouldReturnConfirm(){
 		WriteResultDTO result = null;
+		
+		int userId = 3;
+		String deviceId = "android-123";
+		
 		{//Test JSON
 			SecurityServiceStub stub = new SecurityServiceStub();
-			result = stub.logout(MediaType.APPLICATION_JSON);
+			result = stub.logout(userId, deviceId, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertTrue(result.getAffectedRecords()>0);

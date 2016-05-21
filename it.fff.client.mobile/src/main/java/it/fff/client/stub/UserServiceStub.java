@@ -14,6 +14,8 @@ import javax.ws.rs.core.Response;
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
 
+import it.fff.clientserver.common.dto.AccountDTO;
+import it.fff.clientserver.common.dto.AttendanceDTO;
 import it.fff.clientserver.common.dto.EmailInfoDTO;
 import it.fff.clientserver.common.dto.EventDTO;
 import it.fff.clientserver.common.dto.PlaceDTO;
@@ -139,6 +141,42 @@ public class UserServiceStub  extends StubService{
 				.request(mediaType);
 		Response response = requestBuilder.get();
 		final List<FeedbackEnum> entity = response.readEntity(new GenericType<List<FeedbackEnum>>(){});
+		
+		return entity;
+	}
+
+	public List<AttendanceDTO> getUserAttendances(int userId, String mediaType) {
+		Client client = super.getClientInstance();
+
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getUserAttendances, String.valueOf(userId));
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath)
+				.request(mediaType);
+		Response response = requestBuilder.get();
+		final List<AttendanceDTO> entity = response.readEntity(new GenericType<List<AttendanceDTO>>(){});
+		
+		return entity;
+	}
+
+	public AccountDTO getUserAccountByEmail(String email, String mediaType) {
+		Client client = super.getClientInstance();
+
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getUserAccountByEmail, email);
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath)
+				.request(mediaType);
+		Response response = requestBuilder.get();
+		AccountDTO entity = response.readEntity(AccountDTO.class);
+		
+		return entity;
+	}
+
+	public AccountDTO getUserAccountByFacebookId(long facebookId, String mediaType) {
+		Client client = super.getClientInstance();
+
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getUserAccountByFacebookId, String.valueOf(facebookId));
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath)
+				.request(mediaType);
+		Response response = requestBuilder.get();
+		AccountDTO entity = response.readEntity(AccountDTO.class);
 		
 		return entity;
 	}	

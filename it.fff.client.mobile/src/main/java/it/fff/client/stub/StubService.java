@@ -54,7 +54,10 @@ public class StubService{
 	public static final String WSRS_PATH_DELETE_cancelAttendance 		= "users/#/events/#/attendances/";
 	public static final String WSRS_PATH_GET_getUser 					= "users/#/";
 	public static final String WSRS_PATH_GET_getUserFeedbacks			= "users/#/feedbacks/";
+	public static final String WSRS_PATH_GET_getUserAttendances			= "users/#/attendances/";
 	public static final String WSRS_PATH_GET_getFacebookUserData		= "users/fb/";
+	public static final String WSRS_PATH_GET_getUserAccountByFacebookId	= "users/fb/#/account/";
+	public static final String WSRS_PATH_GET_getUserAccountByEmail		= "users/emails/#/account/";
 	public static final String WSRS_PATH_GET_isExistingEmail			= "users/emails/#/";
 	public static final String WSRS_PATH_POST_updateProfileImage 		= "users/#/images/";
 	public static final String WSRS_PATH_GET_getProfileImage 			= "users/#/images/";

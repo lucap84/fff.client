@@ -19,8 +19,11 @@ public class UC03_Logout_Test {
 		
 		SecurityServiceStub securityService = new SecurityServiceStub();
 
+		int userId = Integer.valueOf(securityService.getSecureConfiguration().getUserId());
+		String deviceId = securityService.getSecureConfiguration().getDeviceId();
+		
 		WriteResultDTO result = null;
-		result = securityService.logout(MediaType.APPLICATION_JSON);
+		result = securityService.logout(userId, deviceId, MediaType.APPLICATION_JSON);
 		assertNotNull(result);
 		assertTrue(result.isOk());
 		assertTrue(result.getAffectedRecords()>0);
@@ -31,8 +34,8 @@ public class UC03_Logout_Test {
 		 * Postconditions:  User and device are disconnected
 		 */
 		
-		assertNotEquals("", securityService.getSecureConfiguration().getUserId());
-		assertNotEquals("", securityService.getSecureConfiguration().getDeviceId());
+		assertNotEquals("", userId);
+		assertNotEquals("", deviceId);
 		assertEquals("", securityService.getSecureConfiguration().getSharedKey());
 		
 	}

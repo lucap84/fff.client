@@ -3,6 +3,7 @@ package it.fff.client.test.stub;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -226,6 +227,55 @@ public class UserServiceTest extends WebServiceRestTest{
 			result = stub.getUserFeedbacks(userId, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.size()>0);
+		}
+	}
+	
+	@Test
+	public void getUserAttendancesShouldReturnListOfAttendances(){
+
+		int userId = 1;
+
+		List<AttendanceDTO> result = null;
+
+		{//Test JSON
+			UserServiceStub stub = new UserServiceStub();
+			result = stub.getUserAttendances(userId, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+			assertTrue(result.size()>0);
+		}
+	}
+	
+	@Test
+	public void getUserAccountByEmailShouldReturnOneAccount(){
+
+		String email = "lucap84@gmail.com";
+		
+		AccountDTO result = null;
+
+		{//Test JSON
+			UserServiceStub stub = new UserServiceStub();
+			result = stub.getUserAccountByEmail(email, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+			assertEquals(email, result.getEmail());
+			assertTrue(result.isOk());
+			assertNotNull(result.getId());
+		}
+	}
+	
+	@Test
+	public void getUserAccountByFacebookIdShouldReturnOneAccount(){
+
+		long facebookId = 10209492373854191L;
+		
+		AccountDTO result = null;
+
+		{//Test JSON
+			UserServiceStub stub = new UserServiceStub();
+			result = stub.getUserAccountByFacebookId(facebookId, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+			assertEquals(facebookId, result.getFacebookId());
+			assertTrue(result.isOk());
+			assertNotNull(result.getId());
 		}
 	}	
 	
