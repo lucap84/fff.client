@@ -28,7 +28,7 @@ public class UC02_Login_Test {
 		
 		LoginInputDTO loginInfo = new LoginInputDTO();
 		loginInfo.setEmail("lucap84@gmail.com");
-		loginInfo.setPassword(DigestUtils.md5Hex("mypassword"));
+		loginInfo.setPassword(DigestUtils.md5Hex("password"));
 		
 		AuthDataResponseDTO loginOutput = null;
 		loginOutput = securityService.login(loginInfo, MediaType.APPLICATION_JSON);
