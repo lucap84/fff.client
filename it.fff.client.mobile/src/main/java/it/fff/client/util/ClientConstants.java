@@ -12,6 +12,7 @@ public class ClientConstants {
 	public static final String PROP_SECURE_DEVICE		= "device.id";
 	public static final String PROP_SECURE_SHAREDKEY	= "shared.key";
 	public static final String PROP_SECURE_USER 		= "user.id";
+	public static final String PROP_DTO_JSON_DIR		= "dto.json.path";
 
 	public static final String CLIENT_CONFIG_FILENAME	= "configuration.properties";
 	public static final String PROP_SERVER_REST_URI		= "server.restapi.uri";

@@ -71,6 +71,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}		
 		
 	}	
@@ -94,6 +96,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}	
 	}	
 	
@@ -111,6 +115,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getId());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}
 	
@@ -127,6 +133,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertNotNull(result.getId());
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}
 	
@@ -146,6 +154,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}	
 
 	}
@@ -164,6 +174,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.isOk());
 			assertTrue(result.getFileName()!=null);
 			assertNotNull(result.getImageAsB64());
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}	
 
 	}	
@@ -183,6 +195,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}
 	
@@ -196,6 +210,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			UserServiceStub stub = new UserServiceStub();
 			result = stub.isExistingEmail(email, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	
@@ -212,6 +228,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertNotNull(result.getId());
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}
 	
@@ -227,6 +245,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			result = stub.getUserFeedbacks(userId, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.size()>0);
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}
 	
@@ -242,6 +262,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			result = stub.getUserAttendances(userId, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.size()>0);
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}
 	
@@ -259,6 +281,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertEquals(email, result.getEmail());
 			assertTrue(result.isOk());
 			assertNotNull(result.getId());
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}
 	
@@ -276,6 +300,8 @@ public class UserServiceTest extends WebServiceRestTest{
 			assertEquals(facebookId, result.getFacebookId());
 			assertTrue(result.isOk());
 			assertNotNull(result.getId());
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	

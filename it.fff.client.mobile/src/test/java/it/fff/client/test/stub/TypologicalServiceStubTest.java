@@ -15,7 +15,6 @@ import it.fff.clientserver.common.dto.EventCategoryDTO;
 import it.fff.clientserver.common.dto.LanguageDTO;
 import it.fff.clientserver.common.dto.MessageStandardDTO;
 import it.fff.clientserver.common.dto.SubscriptionTypeDTO;
-import it.fff.clientserver.common.enums.EventStateEnum;
 
 public class TypologicalServiceStubTest extends WebServiceRestTest{
 
@@ -30,6 +29,8 @@ public class TypologicalServiceStubTest extends WebServiceRestTest{
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getId());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}
 	
@@ -44,6 +45,8 @@ public class TypologicalServiceStubTest extends WebServiceRestTest{
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getId());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}
 	
@@ -58,6 +61,8 @@ public class TypologicalServiceStubTest extends WebServiceRestTest{
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getId());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}	
 	
@@ -72,6 +77,8 @@ public class TypologicalServiceStubTest extends WebServiceRestTest{
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getId());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}
 	
@@ -113,6 +120,8 @@ public class TypologicalServiceStubTest extends WebServiceRestTest{
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getId());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}
 }

@@ -7,6 +7,7 @@ import it.fff.clientserver.common.enums.FeedbackEnum;
 import javax.ws.rs.core.MediaType;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getId());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}	
 	
@@ -52,6 +55,9 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
+			
 		}
 	}
 	
@@ -72,6 +78,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	
@@ -92,6 +100,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	
@@ -116,6 +126,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	
@@ -135,6 +147,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	
@@ -168,6 +182,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	
@@ -185,6 +201,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getId());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 		
 	}
@@ -201,6 +219,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			result = stub.getEvent(requestedEventId, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.getId()>0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}
 
@@ -216,6 +236,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			result = stub.getEventAsynch(requestedEventId, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertNotNull(result.getId());
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}
 
@@ -241,6 +263,8 @@ public class EventServiceTest extends WebServiceRestTest{
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getId());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 		
 	}	

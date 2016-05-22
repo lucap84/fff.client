@@ -30,6 +30,8 @@ public class PlaceServiceTest extends WebServiceRestTest{
 			assertNotNull(result.get(0));
 			assertNotNull(result.get(0).getGpsLat());
 			assertNotNull(result.get(0).getGpsLong());
+			
+			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}
 	
@@ -47,6 +49,8 @@ public class PlaceServiceTest extends WebServiceRestTest{
 			assertNotNull(result);
 			assertTrue(result.getId()>0);
 			assertNotNull(result.getNazione());
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 

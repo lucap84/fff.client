@@ -1,14 +1,14 @@
 package it.fff.client.util;
 
+//import it.fff.clientserver.common.dto.AttendanceDTO;
+//import it.fff.clientserver.common.enums.AttendanceStateEnum;
+
 //import com.fasterxml.jackson.core.JsonProcessingException;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 
-import it.fff.clientserver.common.dto.AttendanceDTO;
-import it.fff.clientserver.common.enums.AttendanceStateEnum;
 
 public class POJOConverter {
 //	public static void main(String[] args) {
-//		ObjectMapper mapper = new ObjectMapper();
 //		
 //		AttendanceDTO attendanceToCreate = new AttendanceDTO();
 //		attendanceToCreate.setEventId(1); //la associo all'evento scelto
@@ -19,6 +19,7 @@ public class POJOConverter {
 //		attendanceToCreate.setValid(true);
 //		
 //		try {
+//			ObjectMapper mapper = new ObjectMapper();
 //			String jsonInString = mapper.writeValueAsString(attendanceToCreate);
 //			System.out.println(jsonInString);
 //		} catch (JsonProcessingException e) {

@@ -50,6 +50,8 @@ public class SecurityServiceTest extends WebServiceRestTest{
 //			assertNotNull(result.getServerPublicKey());
 			assertNotNull(result.getUserId());
 			assertFalse(result.getUserId()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 		
 	}	
@@ -70,6 +72,8 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 
 	}
@@ -89,7 +93,9 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertNotNull(result.getUserId());
 			assertFalse(result.getUserId()<=0);
 //			assertNotNull(result.getServerPublicKey());
-//			assertFalse(result.getServerPublicKey().isEmpty());			
+//			assertFalse(result.getServerPublicKey().isEmpty());	
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 		
 	}		
@@ -112,6 +118,8 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	
@@ -127,6 +135,8 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	
@@ -143,6 +153,8 @@ public class SecurityServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	
@@ -154,16 +166,18 @@ public class SecurityServiceTest extends WebServiceRestTest{
 		resetPasswordInput.setNewPassword("mypasswordresettata");
 		resetPasswordInput.setVerificationCode("1234567890");
 		
-		WriteResultDTO resultResetPassword = null;
+		WriteResultDTO result = null;
 		
 		SecurityServiceStub stub = new SecurityServiceStub();
 		{//Test JSON
-			resultResetPassword = stub.resetPassword(resetPasswordInput, MediaType.APPLICATION_JSON);
-			assertNotNull(resultResetPassword);
-			assertTrue(resultResetPassword.isOk());
-			assertTrue(resultResetPassword.getAffectedRecords()>0);
-			assertNotNull(resultResetPassword.getIdentifier());
-			assertFalse(resultResetPassword.getIdentifier()<=0);
+			result = stub.resetPassword(resetPasswordInput, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+			assertTrue(result.isOk());
+			assertTrue(result.getAffectedRecords()>0);
+			assertNotNull(result.getIdentifier());
+			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}	
 	

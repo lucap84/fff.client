@@ -54,6 +54,8 @@ public class PremiumServiceTest extends WebServiceRestTest{
 			assertTrue(result.getAffectedRecords()>0);
 			assertNotNull(result.getIdentifier());
 			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
 	}
 	
