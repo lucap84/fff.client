@@ -52,7 +52,7 @@ public class UC10_PartecipaEvento_Test {
 		attendanceToCreate.setEventId(event.getId()); //la associo all'evento scelto
 		attendanceToCreate.setUserId(userId); //la associo all utente che partecipa
 		attendanceToCreate.setOrganizer(false);
-		attendanceToCreate.setNumPartecipanti(3);
+		attendanceToCreate.setNumeroOspiti(3);
 		attendanceToCreate.setStato(AttendanceStateEnum.UNDETECTED); //non ha stato appena creato
 		attendanceToCreate.setValid(true);
 		

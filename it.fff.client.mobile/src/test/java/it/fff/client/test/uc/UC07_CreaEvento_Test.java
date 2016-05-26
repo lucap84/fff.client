@@ -56,7 +56,7 @@ public class UC07_CreaEvento_Test {
 		attendance.setUserId(userId);
 		attendance.setOrganizer(true);
 		attendance.setValid(true);
-		attendance.setNumPartecipanti(3);
+		attendance.setNumeroOspiti(3);
 		attendance.setEventId(0);//non conosco l'id ancora perché l'evento ancora non esiste
 		attendance.setStato(AttendanceStateEnum.UNDETECTED);
 		partecipazioni.add(attendance);
