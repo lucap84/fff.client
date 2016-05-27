@@ -61,7 +61,7 @@ public class SecurityServiceTest extends WebServiceRestTest{
 	public void t2_logoutShouldReturnConfirm(){
 		WriteResultDTO result = null;
 		
-		int userId = 3;
+		int userId = 1;
 		String deviceId = "android-123";
 		
 		{//Test JSON

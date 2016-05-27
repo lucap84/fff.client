@@ -120,12 +120,13 @@ public class UserServiceStub  extends StubService{
 		return writeResult;
 	}
 
-	public UserDTO getFacebookUserData(String userFbToken, String mediaType) {
+	public UserDTO getFacebookUserData(String socialToken, int socialTokenExpires, String mediaType) {
 		Client client = super.getClientInstance();
 
 		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_GET_getFacebookUserData);
 		Builder requestBuilder = client.target(getBaseURI()).path(restPath)
-				.queryParam("token", userFbToken)
+				.queryParam("token", socialToken)
+				.queryParam("expires", socialTokenExpires)
 				.request(mediaType);
 		Response response = requestBuilder.get();
 		UserDTO entity = response.readEntity(UserDTO.class);

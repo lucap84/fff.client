@@ -218,13 +218,13 @@ public class UserServiceTest extends WebServiceRestTest{
 //	@Test
 	public void getFacebookUserDataShouldReturnOneUser(){
 
-		String userFbToken = "CAAOUWrdCLQkBAH2YWsYs2EBRymSTmbQ93LpWTcOozjqkM7Xxf67mnqz1isSwQTZBV5PnQxbHzpDs2KzQoNhiNBd9SHiZBPNSqrK55BCWGXevSRzQ343EQgFa2jneS6slqhA4eEmZC2ou1Pi1r4MvVHSuZCap89tD0Gck7ZCe1fDZAXlcPkMvZBuFWrZAjtjXCa2KS1fyg53ehQZDZD";
-		
+		String socialToken = "CAAOUWrdCLQkBAH2YWsYs2EBRymSTmbQ93LpWTcOozjqkM7Xxf67mnqz1isSwQTZBV5PnQxbHzpDs2KzQoNhiNBd9SHiZBPNSqrK55BCWGXevSRzQ343EQgFa2jneS6slqhA4eEmZC2ou1Pi1r4MvVHSuZCap89tD0Gck7ZCe1fDZAXlcPkMvZBuFWrZAjtjXCa2KS1fyg53ehQZDZD";
+		int socialTokenExpires = 999999999; 
 		UserDTO result = null;
 
 		{//Test JSON
 			UserServiceStub stub = new UserServiceStub();
-			result = stub.getFacebookUserData(userFbToken, MediaType.APPLICATION_JSON);
+			result = stub.getFacebookUserData(socialToken, socialTokenExpires, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.isOk());
 			assertNotNull(result.getId());
