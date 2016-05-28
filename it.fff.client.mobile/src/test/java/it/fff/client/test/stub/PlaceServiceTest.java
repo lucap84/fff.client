@@ -16,15 +16,15 @@ public class PlaceServiceTest extends WebServiceRestTest{
 	@Test
 	public void getPlacesByDescriptionShouldReturnAtLeastOnePlace(){
 		
-		String description = "Via Leonardo da vinci";
-		double gpsLat = 41.856947;
-		double gpsLong = 12.481142;
+		String description = "Via sesto fiorentino";
+		double myGpsLat = 41.856947;
+		double myGpsLong = 12.481142;
 		
 		List<PlaceDTO> result = null;
 
 		PlaceServiceStub stub = new PlaceServiceStub();
 		{//Test JSON
-			result = stub.getPlacesByDescription(description, gpsLat, gpsLong, MediaType.APPLICATION_JSON);
+			result = stub.getPlacesByDescription(description, myGpsLat, myGpsLong, MediaType.APPLICATION_JSON);
 			assertNotNull(result);
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
