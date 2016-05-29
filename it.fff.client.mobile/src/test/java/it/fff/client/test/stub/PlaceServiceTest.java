@@ -16,9 +16,12 @@ public class PlaceServiceTest extends WebServiceRestTest{
 	@Test
 	public void getPlacesByDescriptionShouldReturnAtLeastOnePlace(){
 		
-		String description = "Via sesto fiorentino";
-		double myGpsLat = 41.856947;
-		double myGpsLong = 12.481142;
+		String description = "Bar";
+		double myGpsLat = 41.8569478; double myGpsLong = 12.4811428; //Viale leonardo da vinci roma
+//		double myGpsLat = 52.52000659999999; double myGpsLong = 13.404953999999975; //Berlino
+//		double myGpsLat = 40.7127837; double myGpsLong = -74.00594130000002; //New York
+//		double myGpsLat = 35.6894875; double myGpsLong = 139.69170639999993; //Tokyo
+		
 		
 		List<PlaceDTO> result = null;
 
