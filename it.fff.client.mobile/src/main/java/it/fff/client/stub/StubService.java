@@ -49,7 +49,7 @@ public class StubService{
 	public static final String WSRS_PATH_PUT_checkVerificationCode 		= "security/#/verificationcode/";
 	public static final String WSRS_PATH_POST_sendVerificationCode 		= "security/#/verificationcode/";
 	public static final String WSRS_PATH_PUT_modifyUserData 			= "users/#/";
-	public static final String WSRS_PATH_POST_setCurrentPosition 		= "users/#/events/#/position/";
+	public static final String WSRS_PATH_PUT_setCurrentPosition 		= "users/#/position/";
 	public static final String WSRS_PATH_GET_getEventsByUser 			= "users/#/events/";
 	public static final String WSRS_PATH_DELETE_cancelAttendance 		= "users/#/events/#/attendances/";
 	public static final String WSRS_PATH_GET_getUser 					= "users/#/";

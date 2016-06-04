@@ -3,12 +3,14 @@ package it.fff.client.stub;
 import java.util.List;
 
 import javax.ws.rs.client.Client;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import it.fff.clientserver.common.dto.CityDTO;
 import it.fff.clientserver.common.dto.PlaceDTO;
+import it.fff.clientserver.common.dto.WriteResultDTO;
 
 public class PlaceServiceStub extends StubService{
 
@@ -46,5 +48,6 @@ public class PlaceServiceStub extends StubService{
 		}
 		
 		return entityFromJSON;
-	}	
+	}
+	
 }

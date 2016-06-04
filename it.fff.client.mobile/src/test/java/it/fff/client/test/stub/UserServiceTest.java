@@ -77,29 +77,6 @@ public class UserServiceTest extends WebServiceRestTest{
 		
 	}	
 	
-	@Test
-	public void setCurrentPositionShouldReturnConfirm(){
-		
-		int userId = 1;
-		int eventId = 1;
-		PlaceDTO currentPlace = new PlaceDTO();
-		currentPlace.setGpsLat(1.001);
-		currentPlace.setGpsLong(2.001);
-		
-		WriteResultDTO result = null;
-
-		{//Test JSON
-			UserServiceStub stub = new UserServiceStub();
-			result = stub.setCurrentPosition(userId, eventId, currentPlace, MediaType.APPLICATION_JSON);
-			assertNotNull(result);
-			assertTrue(result.isOk());
-			assertTrue(result.getAffectedRecords()>0);
-			assertNotNull(result.getIdentifier());
-			assertFalse(result.getIdentifier()<=0);
-			
-			super.saveJsonResult(result, result.getClass().getSimpleName());
-		}	
-	}	
 	
 	@Test
 	public void getEventsByUserShouldReturnAtLeastOneEvent(){
@@ -303,6 +280,29 @@ public class UserServiceTest extends WebServiceRestTest{
 			
 			super.saveJsonResult(result, result.getClass().getSimpleName());
 		}
+	}
+	
+	@Test
+	public void setUserCurrentPositionShouldReturnConfirm(){
+		
+		int userId = 1;
+		PlaceDTO currentPosition = new PlaceDTO();
+		currentPosition.setGpsLat(1.001);
+		currentPosition.setGpsLong(2.001);
+		
+		WriteResultDTO result = null;
+
+		{//Test JSON
+			UserServiceStub stub = new UserServiceStub();
+			result = stub.setCurrentPosition(userId, currentPosition, MediaType.APPLICATION_JSON);
+			assertNotNull(result);
+			assertTrue(result.isOk());
+			assertTrue(result.getAffectedRecords()>0);
+			assertNotNull(result.getIdentifier());
+			assertFalse(result.getIdentifier()<=0);
+			
+			super.saveJsonResult(result, result.getClass().getSimpleName());
+		}	
 	}	
 	
 	public static void main(String[] args) {

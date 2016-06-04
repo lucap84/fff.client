@@ -37,17 +37,6 @@ public class UserServiceStub  extends StubService{
 		return writeResult;
 	}	
 	
-	public WriteResultDTO setCurrentPosition(int userId, int eventId, PlaceDTO currentPlace, String mediaType){
-		Client client = super.getClientInstance();
-		
-		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_POST_setCurrentPosition,String.valueOf(userId),String.valueOf(eventId));
-		Builder requestBuilder = client.target(getBaseURI()).path(restPath).request(mediaType);
-		Response response = requestBuilder.post(Entity.entity(currentPlace, mediaType));
-		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
-		
-		return writeResult;
-	}	
-	
 	public List<EventDTO> getEventsByUser(int userId, String mediaType){
 		Client client = super.getClientInstance();
 		
@@ -180,5 +169,17 @@ public class UserServiceStub  extends StubService{
 		AccountDTO entity = response.readEntity(AccountDTO.class);
 		
 		return entity;
+	}
+	
+	public WriteResultDTO setCurrentPosition(int userId, PlaceDTO currentPosition, String mediaType){
+		Client client = super.getClientInstance();
+		
+		String restPath = super.getWsRspath(mediaType, StubService.WSRS_PATH_PUT_setCurrentPosition,String.valueOf(userId));
+		Builder requestBuilder = client.target(getBaseURI()).path(restPath).
+				request(mediaType);
+		Response response = requestBuilder.put(Entity.entity(currentPosition,mediaType));
+		WriteResultDTO writeResult = (WriteResultDTO)response.readEntity(WriteResultDTO.class);
+		
+		return writeResult;
 	}	
 }
