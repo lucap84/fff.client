@@ -100,7 +100,7 @@ public class UserServiceTest extends WebServiceRestTest{
 	@Test
 	public void getUserShouldReturnOneUser(){
 
-		int userId = 2;
+		int userId = 1;
 
 		UserDTO result = null;
 
