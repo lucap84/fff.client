@@ -1,13 +1,11 @@
 package it.fff.client.test.stub;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import java.util.List;
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 import it.fff.client.stub.PlaceServiceStub;
-import it.fff.client.stub.UserServiceStub;
 import it.fff.clientserver.common.dto.*;
 
 public class PlaceServiceTest extends WebServiceRestTest{
