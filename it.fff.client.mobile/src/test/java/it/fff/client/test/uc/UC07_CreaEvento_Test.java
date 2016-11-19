@@ -14,19 +14,15 @@ import org.junit.Test;
 
 import it.fff.client.stub.EventServiceStub;
 import it.fff.client.stub.PlaceServiceStub;
-import it.fff.client.stub.StubService;
 import it.fff.client.stub.TypologicalServiceStub;
 import it.fff.client.util.ClientConstants;
 import it.fff.clientserver.common.dto.AttendanceDTO;
-import it.fff.clientserver.common.dto.CityDTO;
 import it.fff.clientserver.common.dto.EventCategoryDTO;
 import it.fff.clientserver.common.dto.EventDTO;
 import it.fff.clientserver.common.dto.PlaceDTO;
-import it.fff.clientserver.common.dto.UserDTO;
 import it.fff.clientserver.common.dto.WriteResultDTO;
 import it.fff.clientserver.common.enums.AttendanceStateEnum;
 import it.fff.clientserver.common.enums.EventStateEnum;
-import it.fff.clientserver.common.secure.SecureConfiguration;
 
 public class UC07_CreaEvento_Test {
 	
@@ -66,16 +62,7 @@ public class UC07_CreaEvento_Test {
 		event.setTitolo("nuovo evento");
 		event.setDescrizione("Descr nuovo evento");
 
-		TypologicalServiceStub typologicalService = new TypologicalServiceStub();
 
-		//Scelgo stato ATTIVO in creazione evento
-//		List<EventStateDTO> allEventStates = typologicalService.getAllEventStates(MediaType.APPLICATION_JSON);
-//		EventStateDTO statoAttivo = null;
-//		for (EventStateDTO eventStateDTO : allEventStates) {
-//			if(eventStateDTO.getNome().equalsIgnoreCase("ACTIVE")){
-//				statoAttivo = eventStateDTO;
-//			}
-//		}
 		event.setStato(EventStateEnum.ACTIVE);
 		
 		//Scelta luogo
@@ -98,6 +85,7 @@ public class UC07_CreaEvento_Test {
 		event.setDataInizio(dataStartEvento);
 		event.setDurata(5);
 		
+		TypologicalServiceStub typologicalService = new TypologicalServiceStub();
 		List<EventCategoryDTO> allEventCategories = typologicalService.getAllEventCategories(MediaType.APPLICATION_JSON);
 		EventCategoryDTO categoriaEvento = allEventCategories.get(0); //Scelgo categoria
 		

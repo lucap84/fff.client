@@ -31,15 +31,15 @@ public class PlaceServiceTest extends WebServiceRestTest{
 			assertNotNull(result);
 			assertTrue(result.size()>0);
 			assertNotNull(result.get(0));
-			assertNotNull(result.get(0).getGpsLat());
-			assertNotNull(result.get(0).getGpsLong());
+			assertTrue(result.get(0).getGpsLat() != 0);
+			assertTrue(result.get(0).getGpsLong() != 0);
 			
 			super.saveJsonResult(result.get(0), result.get(0).getClass().getSimpleName());
 		}
 	}
 	
 	@Test
-	public void getCityByNameShouldReturnoneCity(){
+	public void getCityByNameShouldReturnOneCity(){
 		
 		String cityName = "Roma";
 		String nationInternationalCode = "ITA";

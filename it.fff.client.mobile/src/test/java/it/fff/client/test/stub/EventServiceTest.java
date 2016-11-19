@@ -156,8 +156,8 @@ public class EventServiceTest extends WebServiceRestTest{
 	public void createEventShouldReturnConfirm(){
 		
 		EventDTO event = new EventDTO();
-		event.setTitolo("nuovo evento");
-		event.setDescrizione("Descr nuovo evento");
+		event.setTitolo("nuovo evento test x Juna");
+		event.setDescrizione("Descr nuovo evento test x Juna");
 		event.setDurata(3);
 		
 		AttendanceDTO attendance = new AttendanceDTO();
