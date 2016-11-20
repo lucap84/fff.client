@@ -49,7 +49,7 @@ public class UC11_AbbandonaEvento_Test {
 		assertFalse(cancelAttendanceResult.getIdentifier()<=0);		
 		
 		/*
-		 * Postconditions:  l'evento non è piu tra gli eventi dell'utente
+		 * Postconditions:  l'evento non e' piu tra gli eventi dell'utente
 		 */
 		List<EventDTO> resultGetEventsByUserAfter = userService.getEventsByUser(userId, MediaType.APPLICATION_JSON);
 		for (EventDTO e : resultGetEventsByUserAfter) {

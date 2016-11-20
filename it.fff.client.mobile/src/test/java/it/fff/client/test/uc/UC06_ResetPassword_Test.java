@@ -43,7 +43,7 @@ public class UC06_ResetPassword_Test {
 			assertFalse(resultCheckVerificationCode.getIdentifier()<=0);
 		}		
 		
-		//Se ho passato gli assert allora ci sono record modificati e il codice di verifica è corretto (ho marcato come verificato l'account)
+		//Se ho passato gli assert allora ci sono record modificati e il codice di verifica e' corretto (ho marcato come verificato l'account)
 		
 		ResetPasswordDTO resetPasswordInput = new ResetPasswordDTO();
 		resetPasswordInput.setEmail(email);
@@ -61,7 +61,7 @@ public class UC06_ResetPassword_Test {
 		}
 		
 		/*
-		 * Postconditions:  è possibile fare login con email e password nuova
+		 * Postconditions:  E' possibile fare login con email e password nuova
 		 */
 		
 		

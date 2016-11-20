@@ -58,7 +58,7 @@ public class UC15_PartecipantePubblicaMessaggio_Test {
 		assertFalse(postEventStandardMessageResult.getIdentifier()<=0);		
 		
 		/*
-		 * Postconditions:  il messaggio è visibile nell'evento
+		 * Postconditions:  il messaggio e' visibile nell'evento
 		 */
 		
 		List<MessageDTO> eventMessages = eventService.getEventMessages(eventId, MediaType.APPLICATION_JSON);

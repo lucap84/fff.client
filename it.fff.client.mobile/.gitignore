@@ -2,7 +2,7 @@
 /bin/
 /target/
 /.classpath
-
+/.settings/
 
 ##IntelliJ ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
@@ -33,3 +33,4 @@ fabric.properties
 ### Intellij Patch ###
 *.iml
 .idea/
+

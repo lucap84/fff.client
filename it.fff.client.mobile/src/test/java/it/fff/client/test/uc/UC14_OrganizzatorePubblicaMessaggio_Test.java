@@ -53,7 +53,7 @@ public class UC14_OrganizzatorePubblicaMessaggio_Test {
 		assertFalse(postEventMessageResult.getIdentifier()<=0);
 		
 		/*
-		 * Postconditions:  il messaggio è visibile nell'evento
+		 * Postconditions:  il messaggio e' visibile nell'evento
 		 */
 		
 		List<MessageDTO> eventMessages = eventService.getEventMessages(eventId, MediaType.APPLICATION_JSON);
