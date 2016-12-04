@@ -3,6 +3,7 @@ package it.fff.client.test.uc;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,8 +43,8 @@ public class UC07_CreaEvento_Test {
 		EventServiceStub eventService = new EventServiceStub();
 		
 		int userId = Integer.valueOf(eventService.getSecureConfiguration().getUserId());
-		double userGpsLat = 1.234;
-		double userGpsLong = 1.235;
+		double userGpsLat = 1.236;
+		double userGpsLong = 1.237;
 		
 		EventDTO event = new EventDTO();
 		
@@ -52,15 +53,18 @@ public class UC07_CreaEvento_Test {
 		attendance.setUserId(userId);
 		attendance.setOrganizer(true);
 		attendance.setValid(true);
-		attendance.setNumeroOspiti(3);
+		int numeroOspiti = 3;
+		attendance.setNumeroOspiti(numeroOspiti);
 		attendance.setEventId(0);//non conosco l'id ancora perché l'evento ancora non esiste
 		attendance.setStato(AttendanceStateEnum.UNDETECTED);
 		partecipazioni.add(attendance);
 
 		event.setPartecipazioni(partecipazioni);
-
-		event.setTitolo("nuovo evento");
-		event.setDescrizione("Descr nuovo evento");
+		
+		String titoloEvento = "nuovo evento zzzz";
+		String descrizioneEvento = "nuovo evento zzzz";
+		event.setTitolo(titoloEvento);
+		event.setDescrizione(descrizioneEvento);
 
 
 		event.setStato(EventStateEnum.ACTIVE);
@@ -69,12 +73,17 @@ public class UC07_CreaEvento_Test {
 		PlaceServiceStub placeService = new PlaceServiceStub();
 		List<PlaceDTO> getPlacesResult = null;
 		{//Test JSON
-			getPlacesResult =  placeService.getPlacesByDescription("San paolo", userGpsLat, userGpsLong, MediaType.APPLICATION_JSON);
+			getPlacesResult =  placeService.getPlacesByDescription("Huston", userGpsLat, userGpsLong, MediaType.APPLICATION_JSON);
 			assertNotNull(getPlacesResult);
 			assertTrue(getPlacesResult.size()>0);
 			assertNotNull(getPlacesResult.get(0));
 			assertNotNull(getPlacesResult.get(0).getGpsLat());
 			assertNotNull(getPlacesResult.get(0).getGpsLong());
+			assertNotNull(getPlacesResult.get(0).getCity());
+			assertNotNull(getPlacesResult.get(0).getNome());
+//			assertNotNull(getPlacesResult.get(0).getId()); // IL place potrebbe non avere ID perche' il risultato proviene direttamente da google e non da flokker
+//			assertTrue(getPlacesResult.get(0).getId() > 0);
+			assertNotNull(getPlacesResult.get(0).getPlaceType());
 		}	
 		
 		PlaceDTO luogo = getPlacesResult.get(0);//utente sceglie un luogo tra i vari proposti
@@ -83,7 +92,8 @@ public class UC07_CreaEvento_Test {
 		
 		String dataStartEvento = ClientConstants.DATE_FORMATTER.format(new Date());
 		event.setDataInizio(dataStartEvento);
-		event.setDurata(5);
+		int duraraEventoOre = 5;
+		event.setDurata(duraraEventoOre);
 		
 		TypologicalServiceStub typologicalService = new TypologicalServiceStub();
 		List<EventCategoryDTO> allEventCategories = typologicalService.getAllEventCategories(MediaType.APPLICATION_JSON);
@@ -112,6 +122,27 @@ public class UC07_CreaEvento_Test {
 			getEventResult = eventService.getEvent(createEventResult.getIdentifier(), MediaType.APPLICATION_JSON);
 			assertNotNull(getEventResult);
 			assertNotNull(getEventResult.getId());
+			assertEquals(titoloEvento, getEventResult.getTitolo());
+			assertEquals(descrizioneEvento, getEventResult.getDescrizione());
+			assertNotNull(getEventResult.getDataInizio());
+			assertTrue(getEventResult.getDataInizio().startsWith(dataStartEvento));
+			assertEquals(duraraEventoOre, getEventResult.getDurata());
+			assertNotNull(getEventResult.getCategoria());
+			assertEquals(categoriaEvento.getId(), getEventResult.getCategoria().getId());
+			assertEquals(categoriaEvento.getNome(), getEventResult.getCategoria().getNome());
+		}
+		
+		List<AttendanceDTO> getAttendacesByEventResult = null;
+		{
+			getAttendacesByEventResult = eventService.getAttendacesByEvent(createEventResult.getIdentifier(), MediaType.APPLICATION_JSON);
+			assertNotNull(getAttendacesByEventResult);
+			assertTrue(getAttendacesByEventResult.size()>0);
+			assertNotNull(getAttendacesByEventResult.get(0));
+			assertTrue(getAttendacesByEventResult.get(0).isValid());
+			assertEquals(userId, getAttendacesByEventResult.get(0).getUserId());
+			assertTrue(getAttendacesByEventResult.get(0).isOrganizer());
+			assertEquals(numeroOspiti, getAttendacesByEventResult.get(0).getNumeroOspiti());
+			assertNotNull(getAttendacesByEventResult.get(0).getStato());
 		}
 	}
 
